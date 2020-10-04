@@ -1,0 +1,15 @@
+.card-image {
+    height: 250px;
+    transform: scale(1, 1);
+    transition: all .5s ease;
+}
+
+.card:hover .card-image {
+    transform: scale(1.2, 1.2);
+    transition: all .5s ease;
+    opacity: 70%;
+}
+
+.image-wrapper {
+    overflow: hidden;
+}
