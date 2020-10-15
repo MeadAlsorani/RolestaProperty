@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">Add Property</div>
+            <div class="card-body">
+                <form (onSubmit)="onSubmit()" #AddForm="ngForm">
+                    <div>
+                        <tabset #FormTabs>
+                            <tab heading="Basic info" id="tab1">
+                                <div class="form-group col-12">
+                                    <label for="Name">Name</label>
+                                    <input type="text" class="form-control" name="Name" ngModel #propName="ngModel" required [(ngModel)]="propertyPreview.Name">
+                                </div>
+                                <div class="form-group col-12">
+                                    <label for="Type">Type</label>
+                                    <input type="text" class="form-control" name="Type" ngModel #propName="ngModel" required [(ngModel)]="propertyPreview.Type">
+                                </div>
+
+                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(1)">Next</button>
+                            </tab>
+                            <tab heading="Pricing and area">
+                                <div class="form-group col-12">
+                                    <label for="Price">Price</label>
+                                    <input type="text" class="form-control" name="Price" ngModel #propName="ngModel" required [(ngModel)]="propertyPreview.Price">
+                                </div>
+                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(0)">Back</button>
+                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(2)">Next</button>
+
+                            </tab>
+                            <tab heading="Address">
+                                <div class="form-group col-12">
+                                    <label for="Provience">Provience</label>
+                                    <input type="text" class="form-control" name="Provience" ngModel #propName="ngModel" required [(ngModel)]="propertyPreview.provience">
+                                </div>
+                                <div class="form-group col-12">
+                                    <label for="City">City</label>
+                                    <input type="text" class="form-control" name="City" ngModel #propName="ngModel" required [(ngModel)]="propertyPreview.city">
+                                </div>
+                                <div class="form-group col-12">
+                                    <label for="Street">Street</label>
+                                    <input type="text" class="form-control" name="Street" ngModel #propName="ngModel" required [(ngModel)]="propertyPreview.street">
+                                </div>
+                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(1)">Back</button>
+                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(3)">Next</button>
+                            </tab>
+                            <tab heading="Other Details">
+                                <div class="form-group col-12">
+                                    <label for="NoOfRooms">Number of rooms</label>
+                                    <input type="text" class="form-control" name="NoOfRooms" ngModel #propName="ngModel" required [(ngModel)]="propertyPreview.NoOfRooms">
+                                </div>
+                                <div class="form-group col-12">
+                                    <label for="Description">Description</label>
+                                    <input type="text" class="form-control" name="Description" ngModel #propName="ngModel" required>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(2)">Back</button>
+                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(4)">Next</button>
+                            </tab>
+                            <tab heading="Photos">
+                                <div class="col-sm-12 form-group">
+                                    <div class="photo-control">
+                                        <button class="mt-5" type="button">Upload</button> this is under construction
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-md">Save</button>
+                                <button type="reset" class="btn btn-primary btn-md">Reset</button>
+                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(3)">Back</button>
+                            </tab>
+                        </tabset>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">
+                Property Preview
+            </div>
+            <div class="card-body">
+                <h3>{{propertyPreview.Name}}</h3>
+                <h4>{{propertyPreview.Type}}</h4>
+                <h5>{{propertyPreview.Price}}</h5>
+                <span style="color: grey;">
+                  <span *ngIf="propertyPreview.provience">{{propertyPreview.provience}}-</span><span *ngIf="propertyPreview.city">{{propertyPreview.city}}-</span>{{propertyPreview.street}}
+                </span>
+                <br>
+                <span *ngIf="propertyPreview.NoOfRooms">
+                  {{propertyPreview.NoOfRooms}}+1
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
