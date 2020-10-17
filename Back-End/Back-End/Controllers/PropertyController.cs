@@ -29,17 +29,21 @@ namespace Back_End.Controllers
       return Ok(property);
     }
 
-    [HttpPut]
-    public IActionResult AddProperty(Property property)
+    [HttpPost("add-property")]
+    public IActionResult AddProperty([FromBody]Property property)
     {
-      return Ok(db.properties.Add(property));
+      db.properties.Add(property);
+      db.SaveChanges();
+      return Ok(property);
     }
 
     [HttpDelete("deleteProperty/{id}")]
     public IActionResult deleteProperty(int id)
     {
       var property = db.properties.Find(id);
-      return Ok(db.Remove(property));
+      db.Remove(property);
+      db.SaveChanges();
+      return Ok(property);
     }
   }
 }
