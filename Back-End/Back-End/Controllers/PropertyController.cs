@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Back_End.Data;
 using Back_End.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace Back_End.Controllers
 {
@@ -23,7 +19,7 @@ namespace Back_End.Controllers
     [HttpGet]
     public IActionResult getAllProperties()
     {
-      return Ok(this.db.properties.ToList());
+      return Ok(db.properties.ToList());
     }
 
     [HttpGet("{id}")]
@@ -36,7 +32,14 @@ namespace Back_End.Controllers
     [HttpPut]
     public IActionResult AddProperty(Property property)
     {
-      return Ok(this.db.properties.Add(property));
+      return Ok(db.properties.Add(property));
+    }
+
+    [HttpDelete("deleteProperty/{id}")]
+    public IActionResult deleteProperty(int id)
+    {
+      var property = db.properties.Find(id);
+      return Ok(db.Remove(property));
     }
   }
 }
