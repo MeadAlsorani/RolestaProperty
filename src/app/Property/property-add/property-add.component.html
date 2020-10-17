@@ -3,17 +3,17 @@
         <div class="card">
             <div class="card-header">Add Property</div>
             <div class="card-body">
-                <form (onSubmit)="onSubmit()" #AddForm="ngForm">
+                <form (ngSubmit)="onSubmit()" [formGroup]="AddForm">
                     <div>
                         <tabset #FormTabs>
                             <tab heading="Basic info" id="tab1">
                                 <div class="form-group col-12">
                                     <label for="Name">Name</label>
-                                    <input type="text" class="form-control" name="Name" ngModel #propName="ngModel" required [(ngModel)]="propertyPreview.Name">
+                                    <input type="text" class="form-control" name="Name" formControlName="Name" [(ngModel)]="propertyPreview.Name">
                                 </div>
                                 <div class="form-group col-12">
                                     <label for="Type">Type</label>
-                                    <input type="text" class="form-control" name="Type" ngModel #propName="ngModel" required [(ngModel)]="propertyPreview.Type">
+                                    <input type="text" class="form-control" name="Type" formControlName="Type" [(ngModel)]="propertyPreview.Type">
                                 </div>
 
                                 <button type="button" class="btn btn-primary btn-md" (click)="selectTab(1)">Next</button>
@@ -21,38 +21,38 @@
                             <tab heading="Pricing and area">
                                 <div class="form-group col-12">
                                     <label for="Price">Price</label>
-                                    <input type="text" class="form-control" name="Price" ngModel #propName="ngModel" required [(ngModel)]="propertyPreview.Price">
+                                    <input type="text" class="form-control" name="Price" formControlName="Price" [(ngModel)]="propertyPreview.Price">
                                 </div>
-                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(0)">Back</button>
+                                <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(0)">Back</button>
                                 <button type="button" class="btn btn-primary btn-md" (click)="selectTab(2)">Next</button>
 
                             </tab>
                             <tab heading="Address">
                                 <div class="form-group col-12">
                                     <label for="Provience">Provience</label>
-                                    <input type="text" class="form-control" name="Provience" ngModel #propName="ngModel" required [(ngModel)]="propertyPreview.provience">
+                                    <input type="text" class="form-control" name="Provience" formControlName="Provience" [(ngModel)]="propertyPreview.provience">
                                 </div>
                                 <div class="form-group col-12">
                                     <label for="City">City</label>
-                                    <input type="text" class="form-control" name="City" ngModel #propName="ngModel" required [(ngModel)]="propertyPreview.city">
+                                    <input type="text" class="form-control" name="City" formControlName="City" [(ngModel)]="propertyPreview.city">
                                 </div>
                                 <div class="form-group col-12">
                                     <label for="Street">Street</label>
-                                    <input type="text" class="form-control" name="Street" ngModel #propName="ngModel" required [(ngModel)]="propertyPreview.street">
+                                    <input type="text" class="form-control" name="Street" formControlName="Street" [(ngModel)]="propertyPreview.street">
                                 </div>
-                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(1)">Back</button>
+                                <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(1)">Back</button>
                                 <button type="button" class="btn btn-primary btn-md" (click)="selectTab(3)">Next</button>
                             </tab>
                             <tab heading="Other Details">
                                 <div class="form-group col-12">
                                     <label for="NoOfRooms">Number of rooms</label>
-                                    <input type="text" class="form-control" name="NoOfRooms" ngModel #propName="ngModel" required [(ngModel)]="propertyPreview.NoOfRooms">
+                                    <input type="text" class="form-control" name="NoOfRooms" formControlName="NoOfRooms" [(ngModel)]="propertyPreview.NoOfRooms">
                                 </div>
                                 <div class="form-group col-12">
                                     <label for="Description">Description</label>
-                                    <input type="text" class="form-control" name="Description" ngModel #propName="ngModel" required>
+                                    <input type="text" class="form-control" name="Description" formControlName="Description">
                                 </div>
-                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(2)">Back</button>
+                                <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(2)">Back</button>
                                 <button type="button" class="btn btn-primary btn-md" (click)="selectTab(4)">Next</button>
                             </tab>
                             <tab heading="Photos">
@@ -61,8 +61,8 @@
                                         <button class="mt-5" type="button">Upload</button> this is under construction
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-md">Save</button>
-                                <button type="reset" class="btn btn-primary btn-md">Reset</button>
+                                <button [disabled]="!AddForm.valid" type="submit" class="btn btn-success btn-md mr-1">Save</button>
+                                <button type="reset" class="btn btn-warning btn-md mr-1">Reset</button>
                                 <button type="button" class="btn btn-primary btn-md" (click)="selectTab(3)">Back</button>
                             </tab>
                         </tabset>

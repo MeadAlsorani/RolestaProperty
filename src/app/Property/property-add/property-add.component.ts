@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ɵConsole } from '@angular/core';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
-import {NgForm} from '@angular/forms;'
+import {NgForm,FormGroup,FormControl, Validators} from '@angular/forms';
 import { IProperty } from '../IProperty';
 
 @Component({
@@ -9,8 +9,9 @@ import { IProperty } from '../IProperty';
   styleUrls: ['./property-add.component.css']
 })
 export class PropertyAddComponent implements OnInit {
-  @ViewChild('AddForm') AddForm: NgForm;
+  // @ViewChild('AddForm') AddForm: NgForm;
   @ViewChild('FormTabs') FormTabs: TabsetComponent ;
+  AddForm:FormGroup;
 
   propertyPreview:IProperty={
     id:null,
@@ -26,10 +27,24 @@ export class PropertyAddComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.AddForm);
+
+    this.AddForm=new FormGroup({
+      Name:new FormControl(null,[Validators.required,Validators.minLength(5)]),
+      Price:new FormControl(null,[Validators.required]),
+      Provience:new FormControl(null,Validators.required),
+      City:new FormControl(null,Validators.required),
+      Street:new FormControl(null,Validators.required),
+      NoOfRooms:new FormControl(null,Validators.required),
+      Type:new FormControl(null,Validators.required),
+      Description:new FormControl(null,Validators.required)
+    })
   }
 
   selectTab(tabId: number) {
     this.FormTabs.tabs[tabId].active = true;
   }
-  onSubmit(){}
+  onSubmit(){
+    console.log(this.AddForm);
+  }
 }
