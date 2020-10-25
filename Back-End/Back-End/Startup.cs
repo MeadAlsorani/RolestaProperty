@@ -38,10 +38,10 @@ namespace Back_End
       {
         app.UseDeveloperExceptionPage();
       }
-
       app.UseRouting();
 
-      app.UseCors(m => m.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+      app.UseCors(builder => 
+        builder.AllowAnyOrigin().WithMethods("GET","POST","PUST","DELETE").AllowAnyHeader());
 
       app.UseAuthorization();
 

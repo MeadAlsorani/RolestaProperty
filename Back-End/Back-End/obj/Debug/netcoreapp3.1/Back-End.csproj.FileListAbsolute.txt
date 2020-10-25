@@ -129,5 +129,10 @@ E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\ru\Microso
 E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\System.Web.Cors.dll
+E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\System.Web.Http.Cors.dll
+E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 E:\Projects\RolestaProperty\Back-End\Back-End\obj\Debug\netcoreapp3.1\Back-End.csproj.CoreCompileInputs.cache
 E:\Projects\RolestaProperty\Back-End\Back-End\obj\Debug\netcoreapp3.1\Back-End.MvcApplicationPartsAssemblyInfo.cache

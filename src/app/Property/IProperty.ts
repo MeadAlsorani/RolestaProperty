@@ -1,7 +1,7 @@
 export interface IProperty {
   id:number,
-  Name:string,
-  Price:number,
+  name:string,
+  price:number,
   provience:string,
   city:string,
   street:string,

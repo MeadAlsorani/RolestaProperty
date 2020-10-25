@@ -2,7 +2,10 @@ import { Component, OnInit, ViewChild, ɵConsole } from '@angular/core';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import {NgForm,FormGroup,FormControl, Validators} from '@angular/forms';
 import { IProperty } from '../IProperty';
-
+import { HttpClient } from '@angular/common/http';
+import { HousingService } from '../../Services/Housing.service';
+import * as alertifyjs from 'alertifyjs';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-property-add',
   templateUrl: './property-add.component.html',
@@ -15,8 +18,8 @@ export class PropertyAddComponent implements OnInit {
 
   propertyPreview:IProperty={
     id:null,
-    Name:"",
-    Price:null,
+    name:"",
+    price:null,
     provience:'',
     city:'',
     street:'',
@@ -24,14 +27,17 @@ export class PropertyAddComponent implements OnInit {
     Type:'',
     Description:''
   }
-  constructor() { }
+  constructor(
+    private hs:HousingService,
+    private router:Router,
+    ) { }
 
   ngOnInit() {
     console.log(this.AddForm);
 
     this.AddForm=new FormGroup({
-      Name:new FormControl(null,[Validators.required,Validators.minLength(5)]),
-      Price:new FormControl(null,[Validators.required]),
+      name:new FormControl(null,[Validators.required,Validators.minLength(5)]),
+      price:new FormControl(null,[Validators.required]),
       Provience:new FormControl(null,Validators.required),
       City:new FormControl(null,Validators.required),
       Street:new FormControl(null,Validators.required),
@@ -44,7 +50,18 @@ export class PropertyAddComponent implements OnInit {
   selectTab(tabId: number) {
     this.FormTabs.tabs[tabId].active = true;
   }
-  onSubmit(){
-    console.log(this.AddForm);
+  onSubmit(propertyPreview){
+    this.hs.addProperty(propertyPreview.getRawValue()).subscribe(
+      data=>{
+        console.log(data);
+        alertifyjs.success("Property has been added successfuly");
+        this.router.navigate(['property-list']);
+      },
+      error=>{
+        console.log(error);
+        alertifyjs.error("An error has happend!! please check entered data..")
+      }
+    );
+
   }
 }

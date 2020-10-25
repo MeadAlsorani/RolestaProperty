@@ -16,6 +16,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 
 const appRoutes:Routes=[
   {path:'',component:PropertyListComponent},
+  {path:'property-list',component:PropertyListComponent},
   {path:'property-detail/:id',component:PropertyDetailComponent},
   {path:'property-add', component:PropertyAddComponent}
 ]

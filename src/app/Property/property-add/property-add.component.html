@@ -3,13 +3,13 @@
         <div class="card">
             <div class="card-header">Add Property</div>
             <div class="card-body">
-                <form (ngSubmit)="onSubmit()" [formGroup]="AddForm">
+                <form (ngSubmit)="onSubmit(AddForm)" [formGroup]="AddForm">
                     <div>
                         <tabset #FormTabs>
                             <tab heading="Basic info" id="tab1">
                                 <div class="form-group col-12">
                                     <label for="Name">Name</label>
-                                    <input type="text" class="form-control" name="Name" formControlName="Name" [(ngModel)]="propertyPreview.Name">
+                                    <input type="text" class="form-control" name="name" formControlName="name" [(ngModel)]="propertyPreview.name">
                                 </div>
                                 <div class="form-group col-12">
                                     <label for="Type">Type</label>
@@ -21,7 +21,7 @@
                             <tab heading="Pricing and area">
                                 <div class="form-group col-12">
                                     <label for="Price">Price</label>
-                                    <input type="text" class="form-control" name="Price" formControlName="Price" [(ngModel)]="propertyPreview.Price">
+                                    <input type="number" class="form-control" name="price" formControlName="price" [(ngModel)]="propertyPreview.price">
                                 </div>
                                 <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(0)">Back</button>
                                 <button type="button" class="btn btn-primary btn-md" (click)="selectTab(2)">Next</button>
@@ -46,7 +46,7 @@
                             <tab heading="Other Details">
                                 <div class="form-group col-12">
                                     <label for="NoOfRooms">Number of rooms</label>
-                                    <input type="text" class="form-control" name="NoOfRooms" formControlName="NoOfRooms" [(ngModel)]="propertyPreview.NoOfRooms">
+                                    <input type="number" class="form-control" name="NoOfRooms" formControlName="NoOfRooms" [(ngModel)]="propertyPreview.NoOfRooms">
                                 </div>
                                 <div class="form-group col-12">
                                     <label for="Description">Description</label>
@@ -77,9 +77,9 @@
                 Property Preview
             </div>
             <div class="card-body">
-                <h3>{{propertyPreview.Name}}</h3>
+                <h3>{{propertyPreview.name}}</h3>
                 <h4>{{propertyPreview.Type}}</h4>
-                <h5>{{propertyPreview.Price}}</h5>
+                <h5>{{propertyPreview.price}}</h5>
                 <span style="color: grey;">
                   <span *ngIf="propertyPreview.provience">{{propertyPreview.provience}}-</span><span *ngIf="propertyPreview.city">{{propertyPreview.city}}-</span>{{propertyPreview.street}}
                 </span>

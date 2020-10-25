@@ -8,7 +8,7 @@ import { IProperty } from '../IProperty';
   styleUrls: ['./property-list.component.css']
 })
 export class PropertyListComponent implements OnInit {
-  properties :Array<IProperty>;
+  properties :Array<string>;
   constructor(private housnigService:HousingService) { }
 
   ngOnInit() {

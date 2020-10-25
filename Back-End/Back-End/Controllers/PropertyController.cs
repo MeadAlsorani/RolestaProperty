@@ -19,7 +19,8 @@ namespace Back_End.Controllers
     [HttpGet]
     public IActionResult getAllProperties()
     {
-      return Ok(db.properties.ToList());
+      var properties = db.properties.ToList();
+      return Ok(properties);
     }
 
     [HttpGet("{id}")]
