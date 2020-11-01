@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { HousingService } from '../../Services/Housing.service';
 import * as alertifyjs from 'alertifyjs';
 import {Router} from '@angular/router';
+import { AlertService } from '../../Services/Alert.service';
 @Component({
   selector: 'app-property-add',
   templateUrl: './property-add.component.html',
@@ -23,13 +24,14 @@ export class PropertyAddComponent implements OnInit {
     provience:'',
     city:'',
     street:'',
-    NoOfRooms:null,
-    Type:'',
-    Description:''
+    noOfRooms:null,
+    type:'',
+    description:''
   }
   constructor(
     private hs:HousingService,
     private router:Router,
+    private alert:AlertService
     ) { }
 
   ngOnInit() {
@@ -41,9 +43,9 @@ export class PropertyAddComponent implements OnInit {
       Provience:new FormControl(null,Validators.required),
       City:new FormControl(null,Validators.required),
       Street:new FormControl(null,Validators.required),
-      NoOfRooms:new FormControl(null,Validators.required),
-      Type:new FormControl(null,Validators.required),
-      Description:new FormControl(null,Validators.required)
+      noOfRooms:new FormControl(null,Validators.required),
+      type:new FormControl(null,Validators.required),
+      description:new FormControl(null,Validators.required)
     })
   }
 
@@ -54,12 +56,12 @@ export class PropertyAddComponent implements OnInit {
     this.hs.addProperty(propertyPreview.getRawValue()).subscribe(
       data=>{
         console.log(data);
-        alertifyjs.success("Property has been added successfuly");
+        this.alert.success("Property has been added successfuly");
         this.router.navigate(['property-list']);
       },
       error=>{
         console.log(error);
-        alertifyjs.error("An error has happend!! please check entered data..")
+        this.alert.error("An error has happend!! please check entered data..")
       }
     );
 

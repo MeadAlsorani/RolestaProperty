@@ -1,5 +1,86 @@
-<p>property-detail works!</p>
+<div class="row shadow">
+    <div class="col-sm-4 p-0">
+        <div class="card">
 
-<h4>property Id is {{propertyId}}</h4>
+            <div class="card-body">
+                <h1 class="card-title">{{property.name}}</h1>
+                <div>
+                    <strong>{{property.price}}</strong>
+                </div>
+                <div>
+                    <strong>in {{property.city}}</strong>
+                </div>
+                <hr>
+                <div>
+                    <strong>Street: </strong> {{property.street}}
+                </div>
 
-<button class="btn btn-primary" (click)='onNext()'>Next</button>
+                <div>
+                    <strong>Type: </strong> {{property.type}}
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <div class="btn-group d-flex">
+                    <button class="btn btn-primary">Like</button>
+                    <button class="btn btn-success">Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8 p-0">
+        <div class="tab-panel p-3">
+            <tabset class="member-tabset">
+                <tab heading="Overview">
+                    <h1>Overview</h1>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="heading">
+                                <strong>Project Name</strong>
+                                <p>{{property.name}}</p>
+                            </div>
+
+                            <div class="heading">
+                                <strong>Number of rooms</strong>
+                                <p>{{property.noOfRooms}}</p>
+                            </div>
+
+                            <div class="heading">
+                                <strong>Description</strong>
+                                <p>{{property.description}}</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="heading">
+                                <strong>About Property</strong>
+                                <p>{{property.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </tab>
+                <!-- <tab heading="Address">
+                    <div class="col-sm-12">
+                        <h1>Address</h1>
+                        <div class="heading">
+                            <strong>{{property.Address}}</strong><br/>
+                            <strong>{{property.Address2}}</strong><br/>
+                            <strong>{{property.City}}</strong>
+                        </div>
+                    </div>
+
+                </tab> -->
+                <!-- <tab heading="Photos">
+                    <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+                </tab> -->
+                <tab heading="Contact">
+                    <h1>Contact Detail</h1>
+                    This should be restricted area and only registered user should be able to see seller contact details
+                </tab>
+            </tabset>
+        </div>
+    </div>
+</div>

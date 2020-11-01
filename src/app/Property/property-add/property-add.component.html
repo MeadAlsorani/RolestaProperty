@@ -13,7 +13,7 @@
                                 </div>
                                 <div class="form-group col-12">
                                     <label for="Type">Type</label>
-                                    <input type="text" class="form-control" name="Type" formControlName="Type" [(ngModel)]="propertyPreview.Type">
+                                    <input type="text" class="form-control" name="type" formControlName="type" [(ngModel)]="propertyPreview.type">
                                 </div>
 
                                 <button type="button" class="btn btn-primary btn-md" (click)="selectTab(1)">Next</button>
@@ -46,11 +46,11 @@
                             <tab heading="Other Details">
                                 <div class="form-group col-12">
                                     <label for="NoOfRooms">Number of rooms</label>
-                                    <input type="number" class="form-control" name="NoOfRooms" formControlName="NoOfRooms" [(ngModel)]="propertyPreview.NoOfRooms">
+                                    <input type="number" class="form-control" name="noOfRooms" formControlName="noOfRooms" [(ngModel)]="propertyPreview.noOfRooms">
                                 </div>
                                 <div class="form-group col-12">
                                     <label for="Description">Description</label>
-                                    <input type="text" class="form-control" name="Description" formControlName="Description">
+                                    <input type="text" class="form-control" name="description" formControlName="description">
                                 </div>
                                 <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(2)">Back</button>
                                 <button type="button" class="btn btn-primary btn-md" (click)="selectTab(4)">Next</button>
@@ -58,7 +58,7 @@
                             <tab heading="Photos">
                                 <div class="col-sm-12 form-group">
                                     <div class="photo-control">
-                                        <button class="mt-5" type="button">Upload</button> this is under construction
+                                        <input class="mt-5" type="file">
                                     </div>
                                 </div>
                                 <button [disabled]="!AddForm.valid" type="submit" class="btn btn-success btn-md mr-1">Save</button>
@@ -78,14 +78,14 @@
             </div>
             <div class="card-body">
                 <h3>{{propertyPreview.name}}</h3>
-                <h4>{{propertyPreview.Type}}</h4>
+                <h4>{{propertyPreview.type}}</h4>
                 <h5>{{propertyPreview.price}}</h5>
                 <span style="color: grey;">
                   <span *ngIf="propertyPreview.provience">{{propertyPreview.provience}}-</span><span *ngIf="propertyPreview.city">{{propertyPreview.city}}-</span>{{propertyPreview.street}}
                 </span>
                 <br>
-                <span *ngIf="propertyPreview.NoOfRooms">
-                  {{propertyPreview.NoOfRooms}}+1
+                <span *ngIf="propertyPreview.noOfRooms">
+                  {{propertyPreview.noOfRooms}}+1
                 </span>
             </div>
         </div>

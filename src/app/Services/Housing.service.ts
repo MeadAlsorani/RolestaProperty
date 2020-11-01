@@ -14,6 +14,10 @@ getAllProperties() : Observable<string[]>{
   return this.http.get<string[]>(this.url);
 }
 
+getPropertyById(id:number): Observable<IProperty>{
+  return this.http.get<IProperty>(this.url+"/"+id);
+}
+
 addProperty(Property:IProperty) :Observable<IProperty>{
   let json=JSON.stringify(Property);
   return this.http.post<IProperty>(this.url+"/add-property",json,{
@@ -22,5 +26,11 @@ addProperty(Property:IProperty) :Observable<IProperty>{
     })
   })
 }
+
+  deleteProperty(id:number) : Observable<IProperty>{
+    return this.http.delete<IProperty>(this.url+"/property-delete/"+id);
+  }
+
+
 
 }

@@ -5,7 +5,7 @@ export interface IProperty {
   provience:string,
   city:string,
   street:string,
-  NoOfRooms:number,
-  Type:string,
-  Description:string,
+  noOfRooms:number,
+  type:string,
+  description:string,
 }

@@ -3,8 +3,16 @@
         <img class="card-image card-img-top" src="assets/house.png" alt="">
     </div>
     <div class="car-body p-3">
-        <h2>{{property.name}}</h2>
-        <h4>{{property.price}}</h4>
+        <h3>{{property.name}}</h3>
+        <h4>{{property.type}}</h4>
+        <h5>{{property.price}}</h5>
+        <span style="color: grey;">
+        <span *ngIf="property.provience">{{property.provience}}-</span><span *ngIf="property.city">{{property.city}}-</span>{{property.street}}
+        </span>
+        <br>
+        <span *ngIf="property.noOfRooms">
+        {{property.noOfRooms}}+1
+      </span>
         <a routerLink="property-detail/{{property.id}}" class="btn btn-primary"> details</a>
     </div>
 </div>

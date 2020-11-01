@@ -12,13 +12,15 @@ import { PropertyListComponent } from './Property/property-list/property-list.co
 import {PropertyAddComponent} from './Property/property-add/property-add.component';
 import { PropertyDetailComponent } from './Property/property-detail/property-detail.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import {PropertyDeleteComponent} from './Property/property-delete/property-delete.component';
 
 
 const appRoutes:Routes=[
   {path:'',component:PropertyListComponent},
   {path:'property-list',component:PropertyListComponent},
   {path:'property-detail/:id',component:PropertyDetailComponent},
-  {path:'property-add', component:PropertyAddComponent}
+  {path:'property-add', component:PropertyAddComponent},
+  {path:'property-delete/:id', component:PropertyDeleteComponent}
 ]
 
 
