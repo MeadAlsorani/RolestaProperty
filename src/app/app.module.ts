@@ -13,7 +13,7 @@ import {PropertyAddComponent} from './Property/property-add/property-add.compone
 import { PropertyDetailComponent } from './Property/property-detail/property-detail.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import {PropertyDeleteComponent} from './Property/property-delete/property-delete.component';
-
+import{UplaodImageComponent} from './Property/property-add/uplaodImage/uplaodImage.component'
 
 const appRoutes:Routes=[
   {path:'',component:PropertyListComponent},
@@ -31,7 +31,8 @@ const appRoutes:Routes=[
       PropertyCardComponent,
       PropertyListComponent,
       PropertyDetailComponent,
-      PropertyAddComponent
+      PropertyAddComponent,
+      UplaodImageComponent
    ],
   imports: [
     BrowserModule,

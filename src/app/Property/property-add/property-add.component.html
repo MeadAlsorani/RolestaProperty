@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-header">Add Property</div>
             <div class="card-body">
-                <form (ngSubmit)="onSubmit(AddForm)" [formGroup]="AddForm">
+                <form (ngSubmit)="onSubmit(AddForm)" [formGroup]="AddForm" enctype="multipart/form-data">
                     <div>
                         <tabset #FormTabs>
                             <tab heading="Basic info" id="tab1">
@@ -58,7 +58,7 @@
                             <tab heading="Photos">
                                 <div class="col-sm-12 form-group">
                                     <div class="photo-control">
-                                        <input class="mt-5" type="file">
+                                        <app-uplaodImage (onUploadFinished)="uploadFinished($event)"></app-uplaodImage>
                                     </div>
                                 </div>
                                 <button [disabled]="!AddForm.valid" type="submit" class="btn btn-success btn-md mr-1">Save</button>

@@ -1,0 +1,10 @@
+<input class="mt-5" #file type="file" name="image" (change)="onUpload(file.files)" style="display: none;">
+<button type="button" (click)="file.click()">upload</button>
+<div class="col-md-4">
+    <span class="upload" *ngIf="progress > 0">
+     {{progress}}%
+   </span>
+    <span class="upload" *ngIf="message">
+     {{message}}
+   </span>
+</div>

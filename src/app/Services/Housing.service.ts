@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import { from, Observable } from 'rxjs';
-import { IProperty } from '../Property/IProperty';
+import { IProperty } from '../Property/IProperty.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,13 +18,8 @@ getPropertyById(id:number): Observable<IProperty>{
   return this.http.get<IProperty>(this.url+"/"+id);
 }
 
-addProperty(Property:IProperty) :Observable<IProperty>{
-  let json=JSON.stringify(Property);
-  return this.http.post<IProperty>(this.url+"/add-property",json,{
-    headers:new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  })
+addProperty(data:IProperty) :Observable<IProperty>{
+  return this.http.post<IProperty>(this.url+"/add-property",data);
 }
 
   deleteProperty(id:number) : Observable<IProperty>{

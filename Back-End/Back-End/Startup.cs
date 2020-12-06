@@ -1,17 +1,22 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Back_End.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 namespace Back_End
 {
   public class Startup
@@ -28,7 +33,21 @@ namespace Back_End
     {
       services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
       services.AddControllers();
-      services.AddCors();
+      services.AddControllers().AddNewtonsoftJson();
+      services.AddCors(options =>
+      {
+        options.AddPolicy("CorsPolicy",
+            builder => builder.WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
+      });
+      services.Configure<FormOptions>(option =>
+      {
+        option.ValueLengthLimit = int.MaxValue;
+        option.MultipartBodyLengthLimit = int.MaxValue;
+        option.MemoryBufferThreshold = int.MaxValue;
+      });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,9 +59,13 @@ namespace Back_End
       }
       app.UseRouting();
 
-      app.UseCors(builder => 
-        builder.AllowAnyOrigin().WithMethods("GET","POST","PUST","DELETE").AllowAnyHeader());
-
+      app.UseCors("CorsPolicy");
+      app.UseStaticFiles();
+      app.UseStaticFiles(new StaticFileOptions()
+      {
+        FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+        RequestPath = new PathString("/Resources")
+      });
       app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>

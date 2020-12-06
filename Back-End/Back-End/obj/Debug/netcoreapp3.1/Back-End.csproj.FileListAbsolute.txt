@@ -134,5 +134,7 @@ E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\System.Net
 E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\System.Web.Http.dll
 E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\System.Web.Http.Cors.dll
 E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 E:\Projects\RolestaProperty\Back-End\Back-End\obj\Debug\netcoreapp3.1\Back-End.csproj.CoreCompileInputs.cache
 E:\Projects\RolestaProperty\Back-End\Back-End\obj\Debug\netcoreapp3.1\Back-End.MvcApplicationPartsAssemblyInfo.cache
