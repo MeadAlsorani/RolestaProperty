@@ -1,32 +1,6 @@
 <div class="row shadow">
     <div class="col-sm-4 p-0">
-        <div class="card">
-
-            <div class="card-body">
-                <h1 class="card-title">{{property.name}}</h1>
-                <div>
-                    <strong>{{property.price}}</strong>
-                </div>
-                <div>
-                    <strong>in {{property.city}}</strong>
-                </div>
-                <hr>
-                <div>
-                    <strong>Street: </strong> {{property.street}}
-                </div>
-
-                <div>
-                    <strong>Type: </strong> {{property.type}}
-                </div>
-
-            </div>
-            <div class="card-footer">
-                <div class="btn-group d-flex">
-                    <button class="btn btn-primary">Like</button>
-                    <button class="btn btn-success">Message</button>
-                </div>
-            </div>
-        </div>
+        <app-property-card [property]="property"></app-property-card>
     </div>
     <div class="col-sm-8 p-0">
         <div class="tab-panel p-3">
@@ -45,10 +19,10 @@
                                 <p>{{property.noOfRooms}}</p>
                             </div>
 
-                            <div class="heading">
+                            <!-- <div class="heading">
                                 <strong>Description</strong>
                                 <p>{{property.description}}</p>
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="col-sm-6">

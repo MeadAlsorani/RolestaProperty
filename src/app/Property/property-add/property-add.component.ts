@@ -16,14 +16,13 @@ export class PropertyAddComponent implements OnInit {
   // @ViewChild('AddForm') AddForm: NgForm;
   @ViewChild('FormTabs') FormTabs: TabsetComponent ;
   AddForm:FormGroup;
-  public response: {dbPath: ''};
+  public response: string;
 
 
   constructor(
     private hs:HousingService,
     private router:Router,
     private alert:AlertService,
-    private http:HttpClient
     ) { }
     propertyPreview:IProperty={
       id:null,
@@ -63,14 +62,16 @@ export class PropertyAddComponent implements OnInit {
     console.log('eee', event.test);
 
   }
-  get name(){
-    return this.AddForm.controls.name as FormControl;
-  }
 
   onSubmit(propertyPreview) : void{
-    this.hs.addProperty(propertyPreview.getRawValue()).subscribe(
+    console.log(this.response);
+    propertyPreview.image=this.response;
+    console.log(propertyPreview);
+
+    this.hs.addProperty(propertyPreview).subscribe(
       data=>{
         console.log(data);
+        data.image=this.response;
         this.alert.success("Property has been added successfuly");
         this.router.navigate(['']);
       },
@@ -79,6 +80,5 @@ export class PropertyAddComponent implements OnInit {
         this.alert.error("An error has happend!! please check entered data..")
       }
     );
-    console.log(this.AddForm);
   }
 }

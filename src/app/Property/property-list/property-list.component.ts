@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HousingService } from '../../Services/Housing.service';
-import { IProperty } from '../IProperty';
+import { IProperty } from '../IProperty.interface';
 
 @Component({
   selector: 'app-property-list',

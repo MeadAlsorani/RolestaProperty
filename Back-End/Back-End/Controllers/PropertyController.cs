@@ -83,7 +83,7 @@ namespace Back_End.Controllers
           {
             await file.CopyToAsync(stream);
           }
-          var test = Path.Combine( "http://localhost:5000/" , dbPath);
+          string test = Path.Combine( "http://localhost:5000/" , dbPath);
           return Ok(new {test });
         }
         else

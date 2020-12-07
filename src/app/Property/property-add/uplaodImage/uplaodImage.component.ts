@@ -20,26 +20,16 @@ export class UplaodImageComponent implements OnInit {
 
   onUpload(files){
     let file=<File>files[0];
-
-
     const uploadData=new FormData();
     uploadData.append('image',file,file.name);
 
-    console.log('aaaaa', );
-
     this.http.post("http://localhost:5000/api/Property",uploadData,{reportProgress:true,observe:'events'}).subscribe(
       event=>{
-        console.log('111');
-
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round(100 * event.loaded / event.total);
-          console.log('2222');
-
         }
         else if (event.type === HttpEventType.Response) {
           this.message = 'Upload success.';
-        console.log('3333');
-
           this.onUploadFinished.emit(event.body);
         }
       }

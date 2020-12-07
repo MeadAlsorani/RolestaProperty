@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IProperty } from '../IProperty';
+import { IProperty } from '../IProperty.interface';
 import { HousingService } from '../../Services/Housing.service';
 
 @Component({
@@ -10,18 +10,18 @@ import { HousingService } from '../../Services/Housing.service';
 })
 export class PropertyDetailComponent implements OnInit {
   propertyId:number;
-  property:IProperty;
+
   constructor(
     private route:ActivatedRoute
     ,private router:Router
     ,private hs:HousingService) { }
-
+    property:IProperty;
   ngOnInit(): void {
     this.propertyId=+this.route.snapshot.params['id'];
     this.hs.getPropertyById(this.propertyId).subscribe(
       data=>{
         this.property=data;
-        console.log(data);
+        console.log(this.property);
       }
     )
   }
