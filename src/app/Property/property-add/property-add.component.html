@@ -28,15 +28,15 @@
                             <tab heading="Address">
                                 <div class="form-group col-12">
                                     <label for="Provience">Provience</label>
-                                    <input type="text" class="form-control" name="Provience" formControlName="Provience">
+                                    <input type="text" class="form-control" name="provience" formControlName="provience">
                                 </div>
                                 <div class="form-group col-12">
                                     <label for="City">City</label>
-                                    <input type="text" class="form-control" name="City" formControlName="City">
+                                    <input type="text" class="form-control" name="city" formControlName="city">
                                 </div>
                                 <div class="form-group col-12">
                                     <label for="Street">Street</label>
-                                    <input type="text" class="form-control" name="Street" formControlName="Street">
+                                    <input type="text" class="form-control" name="street" formControlName="street">
                                 </div>
                                 <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(1)">Back</button>
                                 <button type="button" class="btn btn-primary btn-md" (click)="selectTab(3)">Next</button>
@@ -60,7 +60,7 @@
                                     </div>
                                 </div>
                                 <button [disabled]="!AddForm.valid" type="submit" class="btn btn-success btn-md mr-1">Save</button>
-                                <button type="reset" class="btn btn-warning btn-md mr-1">Reset</button>
+                                <button type="reset" (click)="onReset()" class="btn btn-warning btn-md mr-1">Reset</button>
                                 <button type="button" class="btn btn-primary btn-md" (click)="selectTab(3)">Back</button>
                             </tab>
                         </tabset>
@@ -70,6 +70,6 @@
         </div>
     </div>
     <div class="col-4">
-        <app-property-card [property]="propertyPreview" [ifPreview]="false"></app-property-card>
+        <app-property-card [property]="AddForm.value" [ifPreview]="false"></app-property-card>
     </div>
 </div>

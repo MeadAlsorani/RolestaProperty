@@ -1,22 +1,22 @@
 <div class="card">
     <div class="image-wrapper">
-        <img *ngIf="!property.image" class="card-image card-img-top" src="assets/house.png" alt="">
-        <img *ngIf="property.image" class="card-image card-img-top" [src]="property.image" alt="">
+        <img *ngIf="!property.image" class="card-image card-img-top" src="assets/house.png" alt="" />
+        <img *ngIf="property.image" class="card-image card-img-top" [src]="property.image" alt="" />
     </div>
     <div class="car-body p-4">
-        <h3>{{property.name}}</h3>
-        <h4>{{property.type}}</h4>
-        <h5>{{property.price}}</h5>
-        <span style="color: grey;">
-        <span *ngIf="property.provience">{{property.provience}}-</span><span *ngIf="property.city">{{property.city}}-</span>{{property.street}}
+        <h3>{{ property.name }}</h3>
+        <h4>{{ property.type }}</h4>
+        <h5>{{ property.price }}</h5>
+        <span style="color: grey">
+      <span *ngIf="property.provience">{{ property.provience }}-</span>
+        <span *ngIf="property.city">{{ property.city }}-</span>{{ property.street }}
         </span>
-        <br>
-        <span *ngIf="property.noOfRooms">
-        {{property.noOfRooms}}+1
-      </span>
+        <br />
+        <span *ngIf="property.noOfRooms"> {{ property.noOfRooms }}+1 </span>
         <div *ngIf="ifPreview">
-            <a routerLink="property-detail/{{property.id}}" class="btn btn-primary"> details</a>
-        </div>
-
+            <a routerLink="property-detail/{{ property.id }}" class="btn btn-primary">
+        details</a
+      >
     </div>
+  </div>
 </div>

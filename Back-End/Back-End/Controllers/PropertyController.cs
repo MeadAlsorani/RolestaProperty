@@ -16,11 +16,12 @@ namespace Back_End.Controllers
   public class PropertyController : ControllerBase
   {
     private readonly DataContext db;
+    private IWebHostEnvironment _hostEnv;
 
-
-    public PropertyController(DataContext db)
+    public PropertyController(DataContext db,IWebHostEnvironment env)
     {
       this.db = db;
+      _hostEnv = env;
     }
 
     [HttpGet]
@@ -39,11 +40,9 @@ namespace Back_End.Controllers
 
     [HttpPost("add-property")]
     public async Task<IActionResult> AddProperty(Property property)
-    {
-      System.Console.WriteLine("12");
+    {      
       try
-      {
-        System.Console.WriteLine("123");        
+      {               
           db.properties.Add(new Property
           {
             Name = property.Name,
@@ -82,9 +81,8 @@ namespace Back_End.Controllers
           using (var stream = new FileStream(fullPath, FileMode.Create))
           {
             await file.CopyToAsync(stream);
-          }
-          string test = Path.Combine( "http://localhost:5000/" , dbPath);
-          return Ok(new {test });
+          }          
+          return Ok(new {fileName});
         }
         else
         {
@@ -95,6 +93,32 @@ namespace Back_End.Controllers
       {
         return StatusCode(500, $"Internal server error: {ex}");
       }
+    }
+
+    [HttpPost("file-delete")]
+    public IActionResult deleteFile([FromForm]string path)
+    {
+      string FullPath = Path.Combine(_hostEnv.ContentRootPath,"Resources/Images", path);
+      Console.WriteLine(FullPath);
+      try
+      {
+        if (System.IO.File.Exists(FullPath))
+        {
+          
+          System.IO.File.Delete(FullPath);
+          return Ok();
+        }
+        else
+        {
+          return NotFound();
+        }
+      }
+      catch (Exception ex)
+      {
+
+        return StatusCode(500, $"Internal server error: {ex}");
+      }
+      
     }
 
     [HttpDelete("deleteProperty/{id}")]

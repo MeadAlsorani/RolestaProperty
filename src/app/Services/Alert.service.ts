@@ -14,5 +14,7 @@ success(message:string){
 error(message:string){
   return alertifyjs.error(message);
 }
-
+notify(message:string){
+  return alertifyjs.notify(message);
+}
 }
