@@ -14,7 +14,7 @@ import { PropertyDetailComponent } from './Property/property-detail/property-det
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import {PropertyDeleteComponent} from './Property/property-delete/property-delete.component';
 import{UplaodImageComponent} from './Property/property-add/uplaodImage/uplaodImage.component'
-
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 const appRoutes:Routes=[
   {path:'',component:PropertyListComponent},
   {path:'property-list',component:PropertyListComponent},
@@ -41,7 +41,8 @@ const appRoutes:Routes=[
     TabsModule.forRoot(),
     FormsModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CarouselModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

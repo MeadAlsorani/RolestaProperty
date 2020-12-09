@@ -20,7 +20,14 @@ imageUrl:string="Resources/Images/";
     console.log(myGlobals.apiUrl);
 
     if(this.property.image){
-      this.property.image=myGlobals.apiUrl+this.imageUrl+this.property.image;
+      for(let i=0;i<this.property.image.length;i++){
+        this.property.image[i]=myGlobals.apiUrl+this.imageUrl+this.property.image[i];
+      }
+      console.log(this.property.image);
+      let objectTest=Object.assign({},this.property.image);
+      console.log(objectTest);
+
+      // this.property.image=myGlobals.apiUrl+this.imageUrl+this.property.image;
     }
   }
 

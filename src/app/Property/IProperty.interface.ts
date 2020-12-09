@@ -8,5 +8,5 @@ export interface IProperty {
   noOfRooms:number,
   type:string,
   description:string,
-  image:string
+  image:string[]
 }
