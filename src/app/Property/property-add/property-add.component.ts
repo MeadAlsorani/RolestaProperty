@@ -68,9 +68,7 @@ export class PropertyAddComponent implements OnInit {
   }
 
   onSubmit(propertyPreview): void {
-    console.log(this.response);
     propertyPreview.image = this.response;
-    console.log(propertyPreview);
 
     this.hs.addProperty(propertyPreview).subscribe(
       (data) => {

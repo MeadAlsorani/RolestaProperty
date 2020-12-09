@@ -18,7 +18,7 @@ namespace Back_End.Controllers
   public class PropertyController : ControllerBase
   {
     private readonly DataContext db;
-    private IWebHostEnvironment _hostEnv;    
+    private IWebHostEnvironment _hostEnv;
     public PropertyController(DataContext db, IWebHostEnvironment env)
     {
       this.db = db;
@@ -88,8 +88,8 @@ namespace Back_End.Controllers
               using (var stream = new FileStream(filePath, FileMode.Create))
               {
                 await images[i].CopyToAsync(stream);
-              }                            
-            }            
+              }
+            }
           }
           return Ok(imagesNames);
         }
@@ -108,27 +108,30 @@ namespace Back_End.Controllers
     [HttpPost("file-delete")]
     public IActionResult deleteFile([FromForm]string path)
     {
-      string FullPath = Path.Combine(_hostEnv.ContentRootPath, "Resources/Images", path);
-      Console.WriteLine(FullPath);
+      List<string> pathList = new List<string>();
+      pathList = path.Split(',').ToList();
+      Console.WriteLine(pathList);
       try
       {
-        if (System.IO.File.Exists(FullPath))
+        foreach (var item in pathList)
         {
-
-          System.IO.File.Delete(FullPath);
-          return Ok();
+          string FullPath = Path.Combine(_hostEnv.ContentRootPath, "Resources/Images", item);
+          if (System.IO.File.Exists(FullPath))
+          {
+            System.IO.File.Delete(FullPath);            
+          }
+          else
+          {
+            return NotFound();
+          }
         }
-        else
-        {
-          return NotFound();
-        }
+        return Ok();
       }
       catch (Exception ex)
       {
 
         return StatusCode(500, $"Internal server error: {ex}");
       }
-
     }
 
     [HttpDelete("deleteProperty/{id}")]
