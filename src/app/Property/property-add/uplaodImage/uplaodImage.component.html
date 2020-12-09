@@ -1,4 +1,4 @@
-<input class="mt-5" #file type="file" name="image" (change)="onUpload(file.files)" style="display: none;">
+<input class="mt-5" multiple accept=".jpg,.jpeg,.png" #file type="file" name="image" (change)="selectFiles($event)" style="display: none;">
 <button type="button" (click)="file.click()">upload</button>
 <div class="col-md-4">
     <span class="upload" *ngIf="progress > 0">

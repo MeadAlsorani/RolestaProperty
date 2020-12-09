@@ -63,7 +63,8 @@ export class PropertyAddComponent implements OnInit {
   }
 
   uploadFinished(event) {
-    this.response = event.fileName;
+    this.response = event;
+    console.log(this.response);
   }
 
   onSubmit(propertyPreview): void {
