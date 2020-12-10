@@ -4,6 +4,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {Routes,RouterModule} from '@angular/router';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {MatTableModule} from '@angular/material/table';
+
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -15,12 +17,14 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import {PropertyDeleteComponent} from './Property/property-delete/property-delete.component';
 import{UplaodImageComponent} from './Property/property-add/uplaodImage/uplaodImage.component'
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { ControlListComponent } from './Property/control-list/control-list.component';
 const appRoutes:Routes=[
   {path:'',component:PropertyListComponent},
   {path:'property-list',component:PropertyListComponent},
   {path:'property-detail/:id',component:PropertyDetailComponent},
   {path:'property-add', component:PropertyAddComponent},
-  {path:'property-delete/:id', component:PropertyDeleteComponent}
+  {path:'property-delete/:id', component:PropertyDeleteComponent},
+  {path:'control-list',component:ControlListComponent}
 ]
 
 
@@ -32,7 +36,8 @@ const appRoutes:Routes=[
       PropertyListComponent,
       PropertyDetailComponent,
       PropertyAddComponent,
-      UplaodImageComponent
+      UplaodImageComponent,
+      ControlListComponent
    ],
   imports: [
     BrowserModule,
@@ -42,7 +47,8 @@ const appRoutes:Routes=[
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

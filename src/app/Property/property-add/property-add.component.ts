@@ -37,7 +37,7 @@ export class PropertyAddComponent implements OnInit {
     noOfRooms: null,
     type: '',
     description: '',
-    image: '',
+    image: [''],
   };
   ngOnInit() {
     console.log(this.AddForm);
@@ -73,7 +73,6 @@ export class PropertyAddComponent implements OnInit {
     this.hs.addProperty(propertyPreview).subscribe(
       (data) => {
         console.log(data);
-        data.image = this.response;
         this.alert.success('Property has been added successfuly');
         this.router.navigate(['']);
       },

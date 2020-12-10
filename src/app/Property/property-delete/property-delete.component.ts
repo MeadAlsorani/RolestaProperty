@@ -16,7 +16,6 @@ export class PropertyDeleteComponent implements OnInit {
     this.hs.deleteProperty(this.propertyId).subscribe(
       data=>{
         console.log(data);
-
       }
     );
   }
