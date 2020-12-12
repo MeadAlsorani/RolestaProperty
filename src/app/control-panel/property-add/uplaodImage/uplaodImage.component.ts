@@ -25,7 +25,7 @@ export class UplaodImageComponent implements OnInit {
   }
   onUpload() {
     this.http
-      .post('http://localhost:5000/api/Property', this.uploadData, {
+      .post(myGolbals.apiUrl+'Property', this.uploadData, {
         reportProgress: true,
         observe: 'events',
       })

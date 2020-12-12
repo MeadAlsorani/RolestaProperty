@@ -1,0 +1,43 @@
+.mat-table {
+    width: 100%;
+    /* background-color: rgb(10, 10, 180); */
+}
+
+.mat-header-row {
+    background: rgb(88, 62, 235);
+}
+
+.mat-header-row th {
+    font-weight: 500;
+    color: white;
+    font-size: 16px;
+}
+
+.mat-row {
+    background: #f1f1f1;
+}
+
+.mat-row td {
+    color: black;
+}
+
+.mat-paginator {
+    background: rgb(165, 159, 199);
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+mat-label {
+    color: rgb(88, 62, 235);
+    border-bottom: solid 1px black;
+}
