@@ -21,7 +21,7 @@ imageUrl:string="Resources/Images/";
 
     if(this.property.image){
       for(let i=0;i<this.property.image.length;i++){
-        this.property.image[i]=myGlobals.apiUrl+this.imageUrl+this.property.image[i];
+        this.property.image[i]=myGlobals.baseUrl+this.imageUrl+this.property.image[i];
       }
       console.log(this.property.image);
       let objectTest=Object.assign({},this.property.image);

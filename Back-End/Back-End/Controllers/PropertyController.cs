@@ -35,7 +35,7 @@ namespace Back_End.Controllers
     [HttpGet("{id}")]
     public IActionResult getPropertyById(int id)
     {
-      var property = db.properties.Find(id);
+      var property = db.properties.FirstOrDefault(p => p.id == id);
       return Ok(property);
     }
 

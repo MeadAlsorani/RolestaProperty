@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild,AfterViewInit } from '@angular/core';
+import { Component, OnInit,ViewChild,TemplateRef } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -6,6 +6,7 @@ import { IProperty } from '../../Property/IProperty.interface';
 import {HousingService} from '../../Services/Housing.service';
 import {AlertService} from '../../Services/Alert.service';
 import {MatTable} from '@angular/material/table';
+import {BsModalService,BsModalRef} from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-control-list',
   templateUrl: './control-list.component.html',
@@ -19,9 +20,11 @@ export class ControlListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<any>;
   dataSource:MatTableDataSource<IProperty> = new MatTableDataSource([]);
+  propertyId:number;
   constructor(
     private hs:HousingService,
-    private alert:AlertService
+    private alert:AlertService,
+    private modalService: BsModalService
     ) { }
   ngOnInit() {
     this.hs.getAllProperties().subscribe(
@@ -39,19 +42,62 @@ export class ControlListComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  eventBool:any;
 
   RowDelete(event){
-    return this.hs.deleteProperty(event).subscribe(
-      ()=>{
-        this.table.renderRows();
-        this.alert.success("Property have been deleted");
-      },
-      ()=>{
-        this.alert.error("Error deleting the property...")
+    return this.hs.getPropertyById(event).subscribe(
+      getData=>{
+        this.hs.deleteProperty(getData.id).subscribe(
+          ()=>{
+            let imagesNames:string=getData.image as undefined;
+            console.log(imagesNames);
+            let images=getData.image.toString();
+            console.log(images);
+            let images1=getData.image.toLocaleString();
+            console.log(images1);
+
+
+            let frmData=new FormData();
+            frmData.append('path',imagesNames);
+            console.log(frmData);
+
+            this.hs.deleteImage(frmData).subscribe(
+              dara=>{
+                console.log(dara);
+                console.log(frmData);
+              }
+            );
+            this.hs.getAllProperties().subscribe(
+              AllProperties=>{this.dataSource.data=AllProperties;}
+            )
+              this.alert.success("property have been deleted successfuly");
+          },
+          ()=>{
+            this.alert.error("some error has happend!!")
+          }
+        )
       }
-    );
+    )
   }
+  openEditDialog(event){}
+
   RowEdit(event){
     console.log(event);
   }
+
+  modalRef: BsModalRef;
+  openModal(template: TemplateRef<any>,id) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+    this.propertyId=id;
+  }
+
+  confirm(): void {
+    this.RowDelete(this.propertyId);
+    this.modalRef.hide();
+  }
+
+  decline(): void {
+    this.modalRef.hide();
+  }
 }
+

@@ -9,6 +9,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {ModalModule} from 'ngx-bootstrap/modal';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -21,7 +22,6 @@ import {PropertyDeleteComponent} from './control-panel/property-delete/property-
 import{UplaodImageComponent} from './control-panel/property-add/uplaodImage/uplaodImage.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ControlListComponent } from './control-panel/control-list/control-list.component';
-import { from } from 'rxjs';
 const appRoutes:Routes=[
   {path:'',component:PropertyListComponent},
   {path:'property-list',component:PropertyListComponent},
@@ -56,7 +56,8 @@ const appRoutes:Routes=[
     ReactiveFormsModule,
     CarouselModule.forRoot(),
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ModalModule.forRoot()
   ],
   exports:[
     MatFormFieldModule,

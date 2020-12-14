@@ -74,7 +74,7 @@ export class PropertyAddComponent implements OnInit {
       (data) => {
         console.log(data);
         this.alert.success('Property has been added successfuly');
-        this.router.navigate(['']);
+        this.router.navigate(['/control-list']);
       },
       (error) => {
         console.log(error);
@@ -94,8 +94,7 @@ export class PropertyAddComponent implements OnInit {
         },
         (error) => {
           console.log(error);
-
-          this.alert.error(error);
+          this.alert.error("Some error has happend...");
         }
       );
     }
