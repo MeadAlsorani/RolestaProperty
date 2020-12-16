@@ -48,25 +48,23 @@ export class ControlListComponent implements OnInit {
     return this.hs.getPropertyById(event).subscribe(
       getData=>{
         this.hs.deleteProperty(getData.id).subscribe(
-          ()=>{
-            let imagesNames:string=getData.image as undefined;
+          propData=>{
+
+            if(propData.image){
+              let imagesNames:string=getData.image as undefined;
             console.log(imagesNames);
-            let images=getData.image.toString();
-            console.log(images);
-            let images1=getData.image.toLocaleString();
-            console.log(images1);
+              let frmData=new FormData();
+              frmData.append('path',imagesNames);
+              console.log(frmData);
 
+              this.hs.deleteImage(frmData).subscribe(
+                dara=>{
+                  console.log(dara);
+                  console.log(frmData);
+                }
+              );
+            }
 
-            let frmData=new FormData();
-            frmData.append('path',imagesNames);
-            console.log(frmData);
-
-            this.hs.deleteImage(frmData).subscribe(
-              dara=>{
-                console.log(dara);
-                console.log(frmData);
-              }
-            );
             this.hs.getAllProperties().subscribe(
               AllProperties=>{this.dataSource.data=AllProperties;}
             )
@@ -79,7 +77,6 @@ export class ControlListComponent implements OnInit {
       }
     )
   }
-  openEditDialog(event){}
 
   RowEdit(event){
     console.log(event);

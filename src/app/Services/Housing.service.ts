@@ -32,4 +32,7 @@ export class HousingService {
     return this.http.post<string>(this.url+"file-delete",path);
   }
 
+  editProperty(id:number,property:IProperty):Observable<IProperty>{
+    return this.http.put<IProperty>(this.url+id,property);
+  }
 }

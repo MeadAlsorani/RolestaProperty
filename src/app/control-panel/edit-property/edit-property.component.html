@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">Edit Property</div>
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit(EditForm.value)" [formGroup]="EditForm" enctype="multipart/form-data">
+                    <div>
+                        <tabset #FormTabs>
+                            <tab heading="Basic info" id="tab1">
+                                <div class="form-group col-12">
+                                    <label for="Name">Name</label>
+                                    <input type="text" class="form-control" name="name" formControlName="name">
+                                </div>
+                                <div class="form-group col-12">
+                                    <label for="Type">Type</label>
+                                    <input type="text" class="form-control" name="type" formControlName="type">
+                                </div>
+                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(1)">Next</button>
+                            </tab>
+                            <tab heading="Pricing and area">
+                                <div class="form-group col-12">
+                                    <label for="Price">Price</label>
+                                    <input type="number" class="form-control" name="price" formControlName="price">
+                                </div>
+                                <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(0)">Back</button>
+                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(2)">Next</button>
+                            </tab>
+                            <tab heading="Address">
+                                <div class="form-group col-12">
+                                    <label for="Provience">Provience</label>
+                                    <input type="text" class="form-control" name="provience" formControlName="provience">
+                                </div>
+                                <div class="form-group col-12">
+                                    <label for="City">City</label>
+                                    <input type="text" class="form-control" name="city" formControlName="city">
+                                </div>
+                                <div class="form-group col-12">
+                                    <label for="Street">Street</label>
+                                    <input type="text" class="form-control" name="street" formControlName="street">
+                                </div>
+                                <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(1)">Back</button>
+                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(3)">Next</button>
+                            </tab>
+                            <tab heading="Other Details">
+                                <div class="form-group col-12">
+                                    <label for="NoOfRooms">Number of rooms</label>
+                                    <input type="number" class="form-control" name="noOfRooms" formControlName="noOfRooms">
+                                </div>
+                                <div class="form-group col-12">
+                                    <label for="Description">Description</label>
+                                    <input type="text" class="form-control" name="description" formControlName="description">
+                                </div>
+                                <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(2)">Back</button>
+                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(4)">Next</button>
+                            </tab>
+                            <tab heading="Photos">
+                                <div class="col-sm-12 form-group">
+                                    <div class="photo-control">
+                                        <app-uplaodImage (onUploadFinished)="uploadFinished($event)"></app-uplaodImage>
+                                    </div>
+                                </div>
+                                <button [disabled]="!EditForm.valid" type="submit" class="btn btn-success btn-md mr-1">Save</button>
+                                <button type="reset" (click)="onReset()" class="btn btn-warning btn-md mr-1">Reset</button>
+                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(3)">Back</button>
+                            </tab>
+                        </tabset>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <app-property-card [property]="EditForm.value" [ifPreview]="false"></app-property-card>
+    </div>
+</div>

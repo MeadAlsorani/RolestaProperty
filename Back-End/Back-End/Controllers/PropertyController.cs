@@ -3,6 +3,7 @@ using Back_End.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Net.Http.Headers;
 using System;
@@ -133,7 +134,34 @@ namespace Back_End.Controllers
         return StatusCode(500, $"Internal server error: {ex}");
       }
     }
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutTodoItem(int id, Property property)
+    {
+      if (id != property.id)
+      {
+        return BadRequest();
+      }
 
+      db.Entry(property).State = EntityState.Modified;
+
+      try
+      {
+        await db.SaveChangesAsync();
+      }
+      catch (DbUpdateConcurrencyException)
+      {
+        if (!propertyExists(id))
+        {
+          return NotFound();
+        }
+        else
+        {
+          throw;
+        }
+      }
+
+      return NoContent();
+    }
     [HttpDelete("deleteProperty/{id}")]
     public IActionResult deleteProperty(int id)
     {
@@ -141,6 +169,11 @@ namespace Back_End.Controllers
       db.Remove(property);
       db.SaveChanges();
       return Ok(property);
+    }
+
+    private bool propertyExists(int id)
+    {
+      return db.properties.Any(e => e.id == id);
     }
   }
 }

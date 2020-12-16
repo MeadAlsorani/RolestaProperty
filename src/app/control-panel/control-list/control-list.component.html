@@ -41,7 +41,7 @@
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
                 <td mat-cell *matCellDef="let user">
-                    <button (click)="openModal(template)" mat-button class="btn btn-primary m-1">Edit</button>
+                    <button [routerLink]="['/edit-property',user.id]" mat-button class="btn btn-primary m-1">Edit</button>
                     <button (click)="openModal(template,user.id)" mat-button class="btn btn-danger m-1">Delete</button>
                     <button routerLink="/property-detail/{{user.id}}" class="btn btn-warning">Details</button>
                 </td>

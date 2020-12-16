@@ -18,17 +18,17 @@ import { PropertyListComponent } from './Property/property-list/property-list.co
 import {PropertyAddComponent} from './control-panel/property-add/property-add.component';
 import { PropertyDetailComponent } from './Property/property-detail/property-detail.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import {PropertyDeleteComponent} from './control-panel/property-delete/property-delete.component';
 import{UplaodImageComponent} from './control-panel/property-add/uplaodImage/uplaodImage.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ControlListComponent } from './control-panel/control-list/control-list.component';
+import {EditPropertyComponent} from './control-panel/edit-property/edit-property.component';
 const appRoutes:Routes=[
   {path:'',component:PropertyListComponent},
   {path:'property-list',component:PropertyListComponent},
   {path:'property-detail/:id',component:PropertyDetailComponent},
   {path:'property-add', component:PropertyAddComponent},
-  {path:'property-delete/:id', component:PropertyDeleteComponent},
-  {path:'control-list',component:ControlListComponent}
+  {path:'control-list',component:ControlListComponent},
+  {path:'edit-property/:id',component:EditPropertyComponent}
 ]
 
 
@@ -41,7 +41,8 @@ const appRoutes:Routes=[
       PropertyDetailComponent,
       PropertyAddComponent,
       UplaodImageComponent,
-      ControlListComponent
+      ControlListComponent,
+      EditPropertyComponent
    ],
   imports: [
     BrowserModule,
