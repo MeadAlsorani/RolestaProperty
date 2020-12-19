@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { from } from 'rxjs';
+import * as myGlobals from '../assets/global';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,5 @@ import { from } from 'rxjs';
 })
 export class AppComponent {
   title = 'RolestaProperty';
+  dis=myGlobals.disableContainer();
 }

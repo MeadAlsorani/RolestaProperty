@@ -45,18 +45,7 @@ namespace Back_End.Controllers
     {
       try
       {
-        db.properties.Add(new Property
-        {
-          Name = property.Name,
-          Price = property.Price,
-          provience = property.provience,
-          city = property.city,
-          street = property.street,
-          NoOfRooms = property.NoOfRooms,
-          Type = property.Type,
-          Description = property.Description,
-          Image = property.Image
-        });
+        db.properties.Add(property);
         await db.SaveChangesAsync();
         return Ok(property);
       }

@@ -15,7 +15,8 @@
                                     <label for="Type">Type</label>
                                     <input type="text" class="form-control" name="type" formControlName="type">
                                 </div>
-                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(1)">Next</button>
+                                <button type="button" class="btn btn-primary btn-md m-1" (click)="selectTab(1)">Next</button>
+                                <button routerLink="/control-list" class="btn btn-warning btn-md">Back to list</button>
                             </tab>
                             <tab heading="Pricing and area">
                                 <div class="form-group col-12">
@@ -60,8 +61,8 @@
                                     </div>
                                 </div>
                                 <button [disabled]="!EditForm.valid" type="submit" class="btn btn-success btn-md mr-1">Save</button>
-                                <button type="reset" (click)="onReset()" class="btn btn-warning btn-md mr-1">Reset</button>
-                                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(3)">Back</button>
+                                <button type="button" class="btn btn-primary btn-md mr-1" (click)="selectTab(3)">Back</button>
+                                <button routerLink="/control-list" class="btn btn-warning btn-md">Back to list</button>
                             </tab>
                         </tabset>
                     </div>

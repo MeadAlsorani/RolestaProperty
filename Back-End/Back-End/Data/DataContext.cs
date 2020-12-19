@@ -19,5 +19,8 @@ namespace Back_End.Data
                 v => v.Split(',', StringSplitOptions.RemoveEmptyEntries));
     }
     public DbSet<Property> properties { get; set; }
+    public DbSet<user> users { get; set; }
+    public DbSet<heating> heatings { get; set; }
+    public DbSet<type> types { get; set; }
   }
 }

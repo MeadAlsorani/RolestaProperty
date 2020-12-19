@@ -10,6 +10,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ModalModule} from 'ngx-bootstrap/modal';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -22,13 +24,16 @@ import{UplaodImageComponent} from './control-panel/property-add/uplaodImage/upla
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ControlListComponent } from './control-panel/control-list/control-list.component';
 import {EditPropertyComponent} from './control-panel/edit-property/edit-property.component';
+import {ControlPanelComponent} from './control-panel/control-panel.component';
+
 const appRoutes:Routes=[
   {path:'',component:PropertyListComponent},
   {path:'property-list',component:PropertyListComponent},
   {path:'property-detail/:id',component:PropertyDetailComponent},
   {path:'property-add', component:PropertyAddComponent},
   {path:'control-list',component:ControlListComponent},
-  {path:'edit-property/:id',component:EditPropertyComponent}
+  {path:'edit-property/:id',component:EditPropertyComponent},
+  {path:'control-panel',component:ControlPanelComponent}
 ]
 
 
@@ -42,7 +47,8 @@ const appRoutes:Routes=[
       PropertyAddComponent,
       UplaodImageComponent,
       ControlListComponent,
-      EditPropertyComponent
+      EditPropertyComponent,
+      ControlPanelComponent
    ],
   imports: [
     BrowserModule,
@@ -58,7 +64,9 @@ const appRoutes:Routes=[
     CarouselModule.forRoot(),
     MatFormFieldModule,
     MatInputModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    MatSidenavModule,
+    MatMenuModule
   ],
   exports:[
     MatFormFieldModule,
