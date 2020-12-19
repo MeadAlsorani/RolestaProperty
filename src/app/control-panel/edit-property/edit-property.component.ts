@@ -14,7 +14,7 @@ import {
 import { HousingService } from '../../Services/Housing.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../../Services/Alert.service';
-import { IProperty } from '../../Property/IProperty.interface';
+import { IProperty } from '../../Interfaces/IProperty.interface';
 import * as myGlobals from '../../../assets/global';
 @Component({
   selector: 'app-edit-property',

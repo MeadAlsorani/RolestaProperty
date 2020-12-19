@@ -2,7 +2,7 @@ import { Component, OnInit,ViewChild,TemplateRef } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import { IProperty } from '../../Property/IProperty.interface';
+import { IProperty } from '../../Interfaces/IProperty.interface';
 import {HousingService} from '../../Services/Housing.service';
 import {AlertService} from '../../Services/Alert.service';
 import {MatTable} from '@angular/material/table';

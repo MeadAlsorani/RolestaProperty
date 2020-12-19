@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
-import { IProperty } from '../../Property/IProperty.interface';
+import { IProperty } from '../../Interfaces/IProperty.interface';
 import { HousingService } from '../../Services/Housing.service';
 import { Router } from '@angular/router';
 import { AlertService } from '../../Services/Alert.service';

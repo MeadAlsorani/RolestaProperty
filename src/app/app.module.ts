@@ -25,7 +25,6 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ControlListComponent } from './control-panel/control-list/control-list.component';
 import {EditPropertyComponent} from './control-panel/edit-property/edit-property.component';
 import {ControlPanelComponent} from './control-panel/control-panel.component';
-
 const appRoutes:Routes=[
   {path:'',component:PropertyListComponent},
   {path:'property-list',component:PropertyListComponent},

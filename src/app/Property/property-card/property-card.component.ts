@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IProperty } from '../IProperty.interface';
+import { IProperty } from '../../Interfaces/IProperty.interface';
 import {Router} from '@angular/router';
 import * as myGlobals from '../../../assets/global';
 

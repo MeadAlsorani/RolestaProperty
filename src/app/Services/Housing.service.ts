@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import {Observable, Subscription } from 'rxjs';
-import { IProperty } from '../Property/IProperty.interface';
+import { IProperty } from '../Interfaces/IProperty.interface';
 import * as myGlobals from '../../assets/global';
 @Injectable({
   providedIn: 'root',
