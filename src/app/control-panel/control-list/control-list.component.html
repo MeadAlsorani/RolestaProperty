@@ -14,17 +14,9 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> price </th>
                 <td mat-cell *matCellDef="let user"> {{user.price}} </td>
             </ng-container>
-            <ng-container matColumnDef="provience">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> provience </th>
-                <td mat-cell *matCellDef="let user"> {{user.provience}} </td>
-            </ng-container>
-            <ng-container matColumnDef="city">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> city </th>
-                <td mat-cell *matCellDef="let user"> {{user.city}} </td>
-            </ng-container>
-            <ng-container matColumnDef="street">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> street </th>
-                <td mat-cell *matCellDef="let user"> {{user.street}} </td>
+            <ng-container matColumnDef="Adress">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Adress </th>
+                <td mat-cell *matCellDef="let user"> {{user.provience}}/{{user.city}}/{{user.street}} </td>
             </ng-container>
             <ng-container matColumnDef="noOfRooms">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> number Of Rooms </th>
@@ -32,7 +24,7 @@
             </ng-container>
             <ng-container matColumnDef="type">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> type </th>
-                <td mat-cell *matCellDef="let user"> {{user.type}} </td>
+                <td mat-cell *matCellDef="let user"> {{user.type.typeName}} </td>
             </ng-container>
             <ng-container matColumnDef="description">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> description </th>

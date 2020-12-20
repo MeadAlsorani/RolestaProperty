@@ -2,7 +2,7 @@ import { Component, OnInit,ViewChild,TemplateRef } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import { IProperty } from '../../Interfaces/IProperty.interface';
+import { IProperty, IType, IHeating } from '../../Interfaces/IProperty.interface';
 import {HousingService} from '../../Services/Housing.service';
 import {AlertService} from '../../Services/Alert.service';
 import {MatTable} from '@angular/material/table';
@@ -15,20 +15,38 @@ import {BsModalService,BsModalRef} from 'ngx-bootstrap/modal';
 
 export class ControlListComponent implements OnInit {
   propertyList:Array<IProperty>;
-  displayedColumns: string[] = [ 'name', 'price', 'provience','city','street','noOfRooms','type','description','id'];
+  displayedColumns: string[] = [ 'name', 'price', 'Adress','noOfRooms','type','description','id'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<any>;
   dataSource:MatTableDataSource<IProperty> = new MatTableDataSource([]);
   propertyId:number;
+  typesArray:Array<IType>;
+  heatingArray:Array<IHeating>;
   constructor(
     private hs:HousingService,
     private alert:AlertService,
     private modalService: BsModalService
     ) { }
   ngOnInit() {
+    this.hs.getTypes().subscribe(
+      data=>{
+        this.typesArray=data;
+        console.log(this.typesArray);
+      }
+    );
+      this.hs.getHeatings().subscribe(
+        data=>{
+          this.heatingArray=data;
+          console.log(this.heatingArray);
+        }
+      )
     this.hs.getAllProperties().subscribe(
       data=>{
+        for (let product = 0; product < data.length; product++) {
+          data[product].type=this.typesArray.find(x=>x.id==data[product].typeId);
+          data[product].heating=this.heatingArray.find(y=>y.id==data[product].heatingId);
+        }
         this.dataSource.data=data;
       }
     );
