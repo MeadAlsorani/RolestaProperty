@@ -1,27 +1,29 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  ɵConsole,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
-import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
-import { IProperty } from '../../Interfaces/IProperty.interface';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  IProperty,
+  IHeating,
+  IType,
+} from '../../Interfaces/IProperty.interface';
 import { HousingService } from '../../Services/Housing.service';
 import { Router } from '@angular/router';
 import { AlertService } from '../../Services/Alert.service';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-property-add',
   templateUrl: './property-add.component.html',
   styleUrls: ['./property-add.component.css'],
+  providers: [DatePipe],
 })
 export class PropertyAddComponent implements OnInit {
   @ViewChild('FormTabs') FormTabs: TabsetComponent;
   AddForm: FormGroup;
   public response: string;
-
+  myDate = Date.now();
+  selectedValue: string;
+  types: Array<IType>;
+  heatings: Array<IHeating>;
   constructor(
     private hs: HousingService,
     private router: Router,
@@ -35,33 +37,59 @@ export class PropertyAddComponent implements OnInit {
     city: '',
     street: '',
     noOfRooms: null,
-    type: '',
+    typeId: null,
     description: '',
     image: [''],
+    area: null,
+    buildingAge: null,
+    floor: null,
+    buildingFloors: null,
+    heatingId: null,
+    adOwner: '',
+    date: new Date(2020, 10),
+    isFurnished: true,
+    inSite: true,
+    heating: null,
+    proceeds: null,
+    type: null,
   };
   ngOnInit() {
-    console.log(this.AddForm);
-
     this.AddForm = new FormGroup({
-      name: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(5),
-      ]),
+      name: new FormControl(null, [Validators.required]),
       price: new FormControl(null, [Validators.required]),
       provience: new FormControl(null, Validators.required),
       city: new FormControl(null, Validators.required),
       street: new FormControl(null, Validators.required),
       noOfRooms: new FormControl(null, Validators.required),
-      type: new FormControl(null, Validators.required),
+      typeId: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),
       image: new FormControl(),
+      area: new FormControl(null, [Validators.required]),
+      buildingAge: new FormControl(null, [Validators.required]),
+      floor: new FormControl(null, [Validators.required]),
+      buildingFloors: new FormControl(null, [Validators.required]),
+      heatingId: new FormControl(null, [Validators.required]),
+      adOwner: new FormControl(null, [Validators.required]),
+      isFurnished: new FormControl(null, [Validators.required]),
+      inSite: new FormControl(null, [Validators.required]),
+      proceeds: new FormControl(null, [Validators.required]),
     });
+    this.hs.getTypes().subscribe((data) => {
+      this.types = data;
+    });
+    this.hs.getHeatings().subscribe((data) => {
+      this.heatings = data;
+    });
+    console.log(this.Name);
   }
 
   selectTab(tabId: number) {
     this.FormTabs.tabs[tabId].active = true;
   }
+  log(event){
+    console.log(event);
 
+  }
   uploadFinished(event) {
     this.response = event;
     console.log(this.response);
@@ -69,7 +97,7 @@ export class PropertyAddComponent implements OnInit {
 
   onSubmit(propertyPreview): void {
     propertyPreview.image = this.response;
-
+    propertyPreview.date = this.myDate;
     this.hs.addProperty(propertyPreview).subscribe(
       (data) => {
         console.log(data);
@@ -94,13 +122,54 @@ export class PropertyAddComponent implements OnInit {
         },
         (error) => {
           console.log(error);
-          this.alert.error("Some error has happend...");
+          this.alert.error('Some error has happend...');
         }
       );
-    }
-    else{
+    } else {
       this.selectTab(0);
       this.alert.notify('Form have been reseted');
     }
   }
+
+  //#region Getters
+  get Name() {
+    return this.AddForm.get('name');
+  }
+  get provience() {
+    return this.AddForm.get('provience') as FormControl;
+  }
+  get price() {
+    return this.AddForm.get('price') as FormControl;
+  }
+  get city() {
+    return this.AddForm.get('city') as FormControl;
+  }
+  get street() {
+    return this.AddForm.get('street') as FormControl;
+  }
+  get noOfRooms() {
+    return this.AddForm.get('noOfRooms') as FormControl;
+  }
+  get description() {
+    return this.AddForm.get('description') as FormControl;
+  }
+  get area() {
+    return this.AddForm.get('area') as FormControl;
+  }
+  get buildingFloors() {
+    return this.AddForm.get('buildingFloors') as FormControl;
+  }
+  get adOwner() {
+    return this.AddForm.get('adOwner') as FormControl;
+  }
+  get proceeds() {
+    return this.AddForm.get('proceeds') as FormControl;
+  }
+  get floor(){
+    return this.AddForm.get('floor');
+  }
+  get buildingAge(){
+    return this.AddForm.get('buildingAge');
+  }
+  //#endregion
 }

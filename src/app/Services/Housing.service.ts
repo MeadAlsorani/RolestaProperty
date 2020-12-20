@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import {Observable, Subscription } from 'rxjs';
-import { IProperty } from '../Interfaces/IProperty.interface';
+import { IProperty, IHeating, IType } from '../Interfaces/IProperty.interface';
 import * as myGlobals from '../../assets/global';
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ export class HousingService {
   subVar:Subscription;
   url: string = myGlobals.apiUrl+"Property/";
   constructor(private http: HttpClient) {}
-
+  //#region property methods
   getAllProperties(): Observable<IProperty[]> {
     return this.http.get<IProperty[]>(this.url);
   }
@@ -34,5 +34,20 @@ export class HousingService {
 
   editProperty(id:number,property:IProperty):Observable<IProperty>{
     return this.http.put<IProperty>(this.url+id,property);
+  }
+  //#endregion
+
+  getHeatings():Observable<IHeating[]>{
+    return this.http.get<IHeating[]>(myGlobals.heatingApi);
+  }
+  getHeatingById(id:number):Observable<IHeating>{
+    return this.http.get<IHeating>(myGlobals.heatingApi+id);
+  }
+
+  getTypes():Observable<IType[]>{
+   return this.http.get<IType[]>(myGlobals.typeApi);
+  }
+  getTypesById(id:number):Observable<IType>{
+    return this.http.get<IType>(myGlobals.typeApi+id);
   }
 }

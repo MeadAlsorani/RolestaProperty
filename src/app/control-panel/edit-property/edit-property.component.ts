@@ -43,9 +43,21 @@ export class EditPropertyComponent implements OnInit {
     city: '',
     street: '',
     noOfRooms: null,
-    type: '',
+    typeId: null,
     description: '',
     image: [''],
+    area:null,
+    buildingAge:null,
+    floor:null,
+    buildingFloors:null,
+    heatingId:null,
+    adOwner:'',
+    date:new Date(2020,10),
+    isFurnished:true,
+    inSite:true,
+    heating:null,
+    proceeds:null,
+    type:null
   };
 
   ngOnInit() {
@@ -65,10 +77,6 @@ export class EditPropertyComponent implements OnInit {
       description: new FormControl(null, Validators.required),
       image: new FormControl(),
     });
-    // for (let i = 0; i < this.property.image.length; i++) {
-    //   this.property.image[i] =
-    //     myGlobals.baseUrl + this.imageUrl + this.property.image[i];
-    // }
   }
 
   GetPropertyInfo() {

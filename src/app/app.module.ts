@@ -12,6 +12,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -65,7 +67,9 @@ const appRoutes:Routes=[
     MatInputModule,
     ModalModule.forRoot(),
     MatSidenavModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule,
+    MatButtonToggleModule
   ],
   exports:[
     MatFormFieldModule,
