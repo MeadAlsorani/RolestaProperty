@@ -14,7 +14,7 @@ import {
 import { HousingService } from '../../Services/Housing.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../../Services/Alert.service';
-import { IProperty } from '../../Interfaces/IProperty.interface';
+import { IProperty, IType, IHeating } from '../../Interfaces/IProperty.interface';
 import * as myGlobals from '../../../assets/global';
 @Component({
   selector: 'app-edit-property',
@@ -28,6 +28,9 @@ export class EditPropertyComponent implements OnInit {
   propertyId: number;
   property: IProperty;
   imageUrl: string = 'Resources/Images/';
+  types: Array<IType>;
+  heatingValue:IHeating;
+  heatings: Array<IHeating>;
   constructor(
     private route: ActivatedRoute,
     private hs: HousingService,
@@ -62,36 +65,63 @@ export class EditPropertyComponent implements OnInit {
 
   ngOnInit() {
     this.propertyId = +this.route.snapshot.params['id'];
-    this.GetPropertyInfo();
+    this.hs.getTypes().subscribe(
+      types=>{
+        this.types=types;
+      }
+    )
+    this.hs.getHeatings().subscribe(heat=>{
+      this.heatings=heat;
+    })
     this.EditForm = this.fb.group({
-      name: new FormControl(this.propertyPreview.name, [
-        Validators.required,
-        Validators.minLength(5),
-      ]),
+      name: new FormControl(null, [Validators.required]),
       price: new FormControl(null, [Validators.required]),
       provience: new FormControl(null, Validators.required),
       city: new FormControl(null, Validators.required),
       street: new FormControl(null, Validators.required),
       noOfRooms: new FormControl(null, Validators.required),
-      type: new FormControl(null, Validators.required),
+      typeId: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),
       image: new FormControl(),
+      area: new FormControl(null, [Validators.required]),
+      buildingAge: new FormControl(null, [Validators.required]),
+      floor: new FormControl(null, [Validators.required]),
+      buildingFloors: new FormControl(null, [Validators.required]),
+      heatingId: new FormControl(null, [Validators.required]),
+      adOwner: new FormControl(null, [Validators.required]),
+      isFurnished: new FormControl(null, [Validators.required]),
+      inSite: new FormControl(null, [Validators.required]),
+      proceeds: new FormControl(null, [Validators.required]),
+      type:new FormControl(),
+      id:new FormControl(),
     });
+
+  }
+  ngAfterViewInit(){
+    this.GetPropertyInfo();
   }
 
   GetPropertyInfo() {
     return this.hs.getPropertyById(this.propertyId).subscribe((data) => {
       this.propertyPreview = data;
-      console.log(this.propertyPreview);
       this.Name.setValue(this.propertyPreview.name);
       this.price.setValue(this.propertyPreview.price);
-      this.type.setValue(this.propertyPreview.type);
       this.provience.setValue(this.propertyPreview.provience);
       this.street.setValue(this.propertyPreview.street);
       this.city.setValue(this.propertyPreview.city);
       this.description.setValue(this.propertyPreview.description);
       this.noOfRooms.setValue(this.propertyPreview.noOfRooms);
       this.image.setValue(this.propertyPreview.image);
+      this.floor.setValue(this.propertyPreview.floor);
+      this.buildingAge.setValue(this.propertyPreview.buildingAge);
+      this.buildingFloors.setValue(this.propertyPreview.buildingFloors);
+      this.proceeds.setValue(this.propertyPreview.proceeds);
+      this.area.setValue(this.propertyPreview.area);
+      this.adOwner.setValue(this.propertyPreview.adOwner);
+      this.isFurnished.setValue(this.propertyPreview.isFurnished);
+      this.inSite.setValue(this.propertyPreview.inSite);
+      this.heatingId.setValue(this.propertyPreview.heatingId);
+      this.typeId.setValue(this.propertyPreview.typeId);
     });
   }
   selectTab(tabId: number) {
@@ -123,55 +153,67 @@ export class EditPropertyComponent implements OnInit {
       }
     );
   }
-
-  onReset() {
-    // if (this.response) {
-    //   let frmData = new FormData();
-    //   frmData.append('path', this.response);
-    //   this.hs.deleteImage(frmData).subscribe(
-    //     () => {
-    //       this.selectTab(0);
-    //       this.alert.notify('Form have been reseted');
-    //     },
-    //     (error) => {
-    //       console.log(error);
-    //       this.alert.error("Some error has happend...");
-    //     }
-    //   );
-    // }
-    // else{
-    //   this.selectTab(0);
-    //   this.alert.notify('Form have been reseted');
-    // }
+  log(){
+    console.log(this.EditForm);
   }
 
   //#region getters
   get Name() {
     return this.EditForm.get('name');
   }
-  get price() {
-    return this.EditForm.get('price');
-  }
   get provience() {
-    return this.EditForm.get('provience');
+    return this.EditForm.get('provience') as FormControl;
+  }
+  get price() {
+    return this.EditForm.get('price') as FormControl;
   }
   get city() {
-    return this.EditForm.get('city');
+    return this.EditForm.get('city') as FormControl;
   }
   get street() {
-    return this.EditForm.get('street');
+    return this.EditForm.get('street') as FormControl;
   }
   get noOfRooms() {
-    return this.EditForm.get('noOfRooms');
-  }
-  get type() {
-    return this.EditForm.get('type');
+    return this.EditForm.get('noOfRooms') as FormControl;
   }
   get description() {
-    return this.EditForm.get('description');
+    return this.EditForm.get('description') as FormControl;
   }
-  get image() {
+  get area() {
+    return this.EditForm.get('area') as FormControl;
+  }
+  get buildingFloors() {
+    return this.EditForm.get('buildingFloors') as FormControl;
+  }
+  get adOwner() {
+    return this.EditForm.get('adOwner') as FormControl;
+  }
+  get proceeds() {
+    return this.EditForm.get('proceeds') as FormControl;
+  }
+  get floor(){
+    return this.EditForm.get('floor');
+  }
+  get buildingAge(){
+    return this.EditForm.get('buildingAge');
+  }
+  get image(){
     return this.EditForm.get('image');
+  }
+  get type(){
+    return this.EditForm.get('type');
+  }
+  get isFurnished(){
+    return this.EditForm.get('isFurnished');
+  }
+  get inSite(){
+    return this.EditForm.get('inSite');
+  }
+  get heatingId(){
+    return this.EditForm.get('heatingId');
+  }
+  get typeId(){
+    return this.EditForm.get('typeId');
   }
   //#endregion
 }

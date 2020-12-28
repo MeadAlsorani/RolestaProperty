@@ -32,28 +32,28 @@ export class ControlListComponent implements OnInit {
     this.hs.getTypes().subscribe(
       data=>{
         this.typesArray=data;
-        console.log(this.typesArray);
       }
     );
       this.hs.getHeatings().subscribe(
         data=>{
           this.heatingArray=data;
-          console.log(this.heatingArray);
         }
       )
-    this.hs.getAllProperties().subscribe(
-      data=>{
-        for (let product = 0; product < data.length; product++) {
-          data[product].type=this.typesArray.find(x=>x.id==data[product].typeId);
-          data[product].heating=this.heatingArray.find(y=>y.id==data[product].heatingId);
-        }
-        this.dataSource.data=data;
-      }
-    );
+
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.hs.getAllProperties().subscribe(
+      data=>{
+        for (let product = 0; product < data.length; product++) {
+          data[product].type=this.typesArray.find(x=>x.id===data[product].typeId);
+          data[product].heating=this.heatingArray.find(y=>y.id===data[product].heatingId);
+
+        }
+        this.dataSource.data=data;
+      }
+    );
   }
 
   applyFilter(event: Event) {
@@ -70,15 +70,11 @@ export class ControlListComponent implements OnInit {
 
             if(propData.image){
               let imagesNames:string=getData.image as undefined;
-            console.log(imagesNames);
               let frmData=new FormData();
               frmData.append('path',imagesNames);
-              console.log(frmData);
 
               this.hs.deleteImage(frmData).subscribe(
                 dara=>{
-                  console.log(dara);
-                  console.log(frmData);
                 }
               );
             }
