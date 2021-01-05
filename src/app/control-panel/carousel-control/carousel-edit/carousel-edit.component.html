@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <form (ngSubmit)="onSubmit(Editcarousel.value)" [formGroup]="Editcarousel" enctype="multipart/form-data">
+            <div class="form-group">
+                <mat-form-field class="example-full-width">
+                    <mat-label>العنوان</mat-label>
+                    <input matInput placeholder="عنوان الصورة" formControlName="title">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="example-full-width">
+                    <mat-label>الشرح</mat-label>
+                    <input matInput placeholder="شرح الصورة" formControlName="description">
+                </mat-form-field>
+            </div>
+            <div mat-dialog-actions>
+                <button mat-button type="button" class="btn btn-default" (click)="onNoClick()">الغاء</button>
+                <button mat-button cdkFocusInitial class="btn btn-success" type="submit">تعديل</button>
+            </div>
+        </form>
+    </div>
+</div>

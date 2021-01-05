@@ -14,6 +14,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -27,6 +28,10 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ControlListComponent } from './control-panel/control-list/control-list.component';
 import {EditPropertyComponent} from './control-panel/edit-property/edit-property.component';
 import {ControlPanelComponent} from './control-panel/control-panel.component';
+import {CarouselControlComponent} from './control-panel/carousel-control/carousel-control.component';
+import {CarouselAddComponent} from './control-panel/carousel-control/carousel-add/carousel-add.component';
+import {CarouselCardComponent} from './control-panel/carousel-control/carousel-card/carousel-card.component';
+import {CarouselEditComponent} from './control-panel/carousel-control/carousel-edit/carousel-edit.component';
 const appRoutes:Routes=[
   {path:'',component:PropertyListComponent},
   {path:'property-list',component:PropertyListComponent},
@@ -34,7 +39,8 @@ const appRoutes:Routes=[
   {path:'property-add', component:PropertyAddComponent},
   {path:'control-list',component:ControlListComponent},
   {path:'edit-property/:id',component:EditPropertyComponent},
-  {path:'control-panel',component:ControlPanelComponent}
+  {path:'control-panel',component:ControlPanelComponent},
+  {path:'carousel-control',component:CarouselControlComponent}
 ]
 
 
@@ -49,7 +55,11 @@ const appRoutes:Routes=[
       UplaodImageComponent,
       ControlListComponent,
       EditPropertyComponent,
-      ControlPanelComponent
+      ControlPanelComponent,
+      CarouselControlComponent,
+      CarouselAddComponent,
+      CarouselCardComponent,
+      CarouselEditComponent
    ],
   imports: [
     BrowserModule,
@@ -69,7 +79,8 @@ const appRoutes:Routes=[
     MatSidenavModule,
     MatMenuModule,
     MatSelectModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatDialogModule
   ],
   exports:[
     MatFormFieldModule,

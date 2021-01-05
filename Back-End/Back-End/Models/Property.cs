@@ -42,5 +42,14 @@ namespace Back_End.Models
 
     public int heatingId { get; set; }
     public heating heating { get; set; }
+
+    public int? CategoryId { get; set; }
+    public category category { get; set; }
+
+    public int? subCategoryId { get; set; }
+    public subCategory subCategory { get; set; }
+
+    public int? secondSubCategoryId { get; set; }
+    public SecondSubCategory SecondSubCategory { get; set; }
   }
 }

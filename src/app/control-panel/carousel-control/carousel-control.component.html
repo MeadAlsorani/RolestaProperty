@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="row">
+        <button mat-raised-button class="btn btn-outline-primary" (click)="openDialog()">انشاء شريحة</button>
+        <button class="btn btn-outline-secondary" routerLink="/control-panel">العودة الى لوحة التحكم</button>
+        <div *ngFor="let caro of carousels" class="carousel-itterator p-3">
+            <app-carousel-card [carousel]="caro"></app-carousel-card>
+        </div>
+    </div>
+</div>

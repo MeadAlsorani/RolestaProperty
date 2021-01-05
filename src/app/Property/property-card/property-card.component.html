@@ -8,15 +8,16 @@
         </carousel>
     </div>
     <div class="car-body p-4">
-        <h3>{{ property.name }}</h3>
-        <h4>{{ property.type.typeName }}</h4>
-        <h5>{{ property.price }}</h5>
+        <h3>{{ property.name }} <span class="subTitle">{{ type.typeName }} /
+          <span *ngIf="property.noOfRooms"> {{ property.noOfRooms }}+1 </span>
+            </span>
+            <span class="subPrice">{{ property.price }}</span>
+        </h3>
         <span style="color: grey">
       <span *ngIf="property.provience">{{ property.provience }}-</span>
         <span *ngIf="property.city">{{ property.city }}-</span>{{ property.street }}
         </span>
         <br />
-        <span *ngIf="property.noOfRooms"> {{ property.noOfRooms }}+1 </span>
         <div *ngIf="ifPreview">
             <a routerLink="property-detail/{{ property.id }}" class="btn btn-primary">
         details</a

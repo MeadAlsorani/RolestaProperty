@@ -1,5 +1,12 @@
-<div class="row">
-    <div *ngFor="let PCArd of properties" class="card-list col-sm-4">
-        <app-property-card [property]="PCArd" [ifPreview]="true"></app-property-card>
+<carousel [isAnimated]="true">
+    <slide *ngFor="let carousel of carousels">
+        <img [src]="imageUrl+carousel.picture" alt="first slide" class="carousel-image" style="display: block; width: 100%;">
+    </slide>
+</carousel>
+<div class="container">
+    <div class="row">
+        <div *ngFor="let PCArd of properties" class="card-list col-sm-4">
+            <app-property-card [property]="PCArd" [ifPreview]="true"></app-property-card>
+        </div>
     </div>
 </div>

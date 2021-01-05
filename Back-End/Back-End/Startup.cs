@@ -42,6 +42,9 @@ namespace Back_End
             .AllowAnyHeader()
             .AllowCredentials());
       });
+      services.AddControllersWithViews()
+                 .AddNewtonsoftJson(options =>
+                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
       services.Configure<FormOptions>(option =>
       {
         option.ValueLengthLimit = int.MaxValue;
@@ -57,8 +60,6 @@ namespace Back_End
       {
         app.UseDeveloperExceptionPage();
       }
-      app.UseRouting();
-
       app.UseCors("CorsPolicy");
       app.UseStaticFiles();
       app.UseStaticFiles(new StaticFileOptions()
@@ -66,6 +67,8 @@ namespace Back_End
         FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
         RequestPath = new PathString("/Resources")
       });
+      app.UseRouting();
+
       app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>

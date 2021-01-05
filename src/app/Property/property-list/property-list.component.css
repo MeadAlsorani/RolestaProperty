@@ -2,6 +2,27 @@
     height: 250px;
 }
 
+.carousel {
+    margin-top: 5rem;
+}
+
 .card-list {
     margin: 1rem 0;
+}
+
+.carousel-control {
+    margin-top: .5%;
+}
+
+.carousel-image {
+    height: 400px;
+}
+
+.carousel-caption {
+    background: radial-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .2), rgba(0, 0, 0, 0));
+    border-radius: 30px;
+}
+
+.carousel-inner {
+    max-height: 400px;
 }

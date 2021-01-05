@@ -12,15 +12,25 @@ export class PropertyCardComponent implements OnInit {
 
 @Input() property:IProperty;
 @Input() ifPreview:boolean;
-type:IType;
+type:IType={
+  id:null,
+  typeName:""
+};
 imageUrl:string="Resources/Images/";
 baseUrl=myGlobals.baseUrl;
+viewProperty:IProperty;
   constructor(private hs:HousingService) { }
 
   ngOnInit() {
+    this.viewProperty=this.property;
   }
   ngAfterViewInit(){
-
+    this.hs.getTypesById(this.property.typeId).subscribe(type=>{
+      this.type=type;
+    });
+    this.hs.getHeatingById(this.property.heatingId).subscribe(heat=>{
+      this.viewProperty.heating=heat;
+    });
 
   }
 }

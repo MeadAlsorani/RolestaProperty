@@ -13,3 +13,13 @@
 .image-wrapper {
     overflow: hidden;
 }
+
+.subTitle {
+    font-size: 15px;
+    color: grey;
+}
+
+.subPrice {
+    font-size: 15px;
+    color: brown;
+}

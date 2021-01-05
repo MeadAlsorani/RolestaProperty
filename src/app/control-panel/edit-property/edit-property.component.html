@@ -42,8 +42,11 @@
                                     </mat-form-field>
                                 </div>
                                 <button type="button" class="btn btn-primary btn-md" (click)="selectTab(1)">
-                                  Next
-                                </button>
+                                   Next
+                                 </button>
+                                <button type="button" routerLink="/control-list" class="btn btn-warning btn-md ml-1">
+                                   Back to menu
+                                 </button>
                             </tab>
                             <tab heading="Building Info">
                                 <div class="form-group col-12">
@@ -68,11 +71,11 @@
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(0)">
-                                  Back
-                                </button>
+                                   Back
+                                 </button>
                                 <button type="button" class="btn btn-primary btn-md" (click)="selectTab(2)">
-                                  Next
-                                </button>
+                                   Next
+                                 </button>
                             </tab>
                             <tab heading="Pricing and area">
                                 <div class="form-group col-12">
@@ -90,11 +93,11 @@
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(1)">
-                                  Back
-                                </button>
+                                   Back
+                                 </button>
                                 <button type="button" class="btn btn-primary btn-md" (click)="selectTab(3)">
-                                  Next
-                                </button>
+                                    Next
+                                  </button>
                             </tab>
                             <tab heading="Address">
                                 <div class="form-group col-12">
@@ -119,11 +122,11 @@
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(2)">
-                                 Back
-                                </button>
+                                    Back
+                                  </button>
                                 <button type="button" class="btn btn-primary btn-md" (click)="selectTab(4)">
-                                 Next
-                             </button>
+                                    Next
+                                  </button>
                             </tab>
                             <tab heading="Other Details">
                                 <div class="form-group col-12">
@@ -142,7 +145,7 @@
                                 </div>
                                 <div class="form-group col-12">
                                     <label for="adOwner">advertisment Owner</label>
-                                    <input type="text" class="form-control" name="adOwner" formControlName="adOwner">
+                                    <input type="text" class="form-control" name="adOwner" formControlName="adOwner" />
                                     <div *ngIf="!adOwner.valid && adOwner.touched" class="form-validation text-danger">
                                         هذا الحقل مطلوب
                                     </div>
@@ -160,11 +163,11 @@
                                     </mat-button-toggle-group>
                                 </div>
                                 <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(3)">
-                                 Back
-                               </button>
+                                    Back
+                                  </button>
                                 <button type="button" class="btn btn-primary btn-md" (click)="selectTab(5)">
-                              Next
-                           </button>
+                                    Next
+                                  </button>
                             </tab>
                             <tab heading="Photos">
                                 <div class="col-sm-12 form-group">
@@ -173,20 +176,18 @@
                                     </div>
                                 </div>
                                 <button [disabled]="!EditForm.valid" type="submit" class="btn btn-success btn-md mr-1">
-                             Save
-                            </button>
+                                    Save
+                                 </button>
                                 <button type="button" routerLink="/control-list" class="btn btn-warning btn-md mr-1">
-                             Back to menu
-                            </button>
+                                   Back to menu
+                                 </button>
                                 <button type="button" class="btn btn-primary btn-md" (click)="selectTab(4)">
-                              Back
-                            </button>
-
+                                   Back
+                                 </button>
                             </tab>
                         </tabset>
                     </div>
                 </form>
-                <button (click)="log()">log</button>
             </div>
         </div>
     </div>

@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <form (ngSubmit)="onSubmit(Addcarousel.value)" [formGroup]="Addcarousel" enctype="multipart/form-data">
+            <div class="form-group">
+                <mat-form-field class="example-full-width">
+                    <mat-label>العنوان</mat-label>
+                    <input matInput placeholder="عنوان الصورة" formControlName="title">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="example-full-width">
+                    <mat-label>الشرح</mat-label>
+                    <input matInput placeholder="شرح الصورة" formControlName="description">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <input class="mt-5" accept=".jpg,.jpeg,.png" #file type="file" formControlName="picture" (change)="selectFiles($event)" style="display: none;">
+                <button type="button" (click)="file.click()" class="btn btn-outline-success">تحديد الصور</button>
+                <div class="col-md-4">
+                    <span class="upload" *ngIf="progress > 0">
+                   {{progress}}%
+                 </span>
+                    <span class="upload" *ngIf="message">
+                   {{message}}
+                 </span>
+                </div>
+            </div>
+            <div mat-dialog-actions>
+                <button mat-button (click)="onNoClick()">No Thanks</button>
+                <button mat-button cdkFocusInitial type="submit">Ok</button>
+            </div>
+        </form>
+    </div>
+</div>

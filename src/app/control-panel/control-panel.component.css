@@ -1,9 +1,5 @@
 .control-panel {
-    padding: 3rem;
-    width: 100%;
-    background: url(../../assets/control-panel.jpg);
-    background-size: cover;
-    height: 100vh;
+    padding: 1rem;
     width: 100%;
 }
 

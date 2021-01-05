@@ -1,0 +1,47 @@
+.carousel-card-img {
+    height: 200px;
+    width: 100%;
+}
+
+.card-header {
+    position: relative;
+    transition: 300ms all ease;
+}
+
+.card-header:hover {
+    background-color: rgba(180, 107, 24, 0.4);
+}
+
+.carousel-delete-btn {
+    position: absolute;
+    overflow: hidden;
+    left: -.5rem;
+    opacity: 0;
+    transition: all 300ms ease;
+}
+
+.carousel-edit-btn {
+    position: absolute;
+    overflow: hidden;
+    bottom: -.5rem;
+    left: 50%;
+    opacity: 0;
+    transition: all 300ms ease;
+}
+
+.card-header:hover .carousel-delete-btn {
+    opacity: 100;
+    left: 1rem;
+}
+
+.card-header:hover .carousel-edit-btn {
+    opacity: 100;
+    bottom: 1rem;
+}
+
+.carousel-delete-btn>button {
+    color: white;
+    font-size: 25px;
+    background-color: rgba(50, 50, 50, .3);
+    border-radius: 50%;
+}
