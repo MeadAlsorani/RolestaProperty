@@ -1,3 +1,5 @@
+import { ICategory, ISubCategory, ISecondSubCategory } from "./ICategory";
+
 export interface IProperty {
   id:number,
   name:string,
@@ -21,6 +23,12 @@ export interface IProperty {
   type:IType,
   heatingId:number,
   heating:IHeating
+  categoryId:number,
+  category:ICategory,
+  subCategoryId:number,
+  subCategory:ISubCategory,
+  secondSubCategoryId:number,
+  SecondSubCategory:ISecondSubCategory
 }
 
 export interface IType{

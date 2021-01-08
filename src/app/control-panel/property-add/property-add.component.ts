@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {
@@ -10,6 +10,12 @@ import { HousingService } from '../../Services/Housing.service';
 import { Router } from '@angular/router';
 import { AlertService } from '../../Services/Alert.service';
 import { DatePipe } from '@angular/common';
+import {
+  ICategory,
+  ISubCategory,
+  ISecondSubCategory,
+} from '../../Interfaces/ICategory';
+import { CategoryService } from '../../Services/category.service';
 @Component({
   selector: 'app-property-add',
   templateUrl: './property-add.component.html',
@@ -24,10 +30,14 @@ export class PropertyAddComponent implements OnInit {
   selectedValue: string;
   types: Array<IType>;
   heatings: Array<IHeating>;
+  categories: Array<ICategory>;
+  subCategories: Array<ISubCategory>;
+  secondSubCategories: Array<ISecondSubCategory>;
   constructor(
     private hs: HousingService,
     private router: Router,
-    private alert: AlertService
+    private alert: AlertService,
+    private categoryService: CategoryService
   ) {}
   propertyPreview: IProperty = {
     id: null,
@@ -52,6 +62,12 @@ export class PropertyAddComponent implements OnInit {
     heating: null,
     proceeds: null,
     type: null,
+    CategoryId: null,
+    category: null,
+    subCategoryId: null,
+    subCategory: null,
+    secondSubCategoryId: null,
+    SecondSubCategory: null,
   };
   ngOnInit() {
     this.AddForm = new FormGroup({
@@ -73,6 +89,9 @@ export class PropertyAddComponent implements OnInit {
       isFurnished: new FormControl(null, [Validators.required]),
       inSite: new FormControl(null, [Validators.required]),
       proceeds: new FormControl(null, [Validators.required]),
+      CategoryId: new FormControl(null, Validators.required),
+      subCategoryId: new FormControl(null, Validators.required),
+      secondSubCategoryId: new FormControl(null),
     });
     this.hs.getTypes().subscribe((data) => {
       this.types = data;
@@ -80,15 +99,28 @@ export class PropertyAddComponent implements OnInit {
     this.hs.getHeatings().subscribe((data) => {
       this.heatings = data;
     });
-    console.log(this.Name);
+    this.categoryService.getCategoris().subscribe((data) => {
+      this.categories = data;
+    });
   }
 
+  getSubCategories(CategoryId) {
+    if (CategoryId.value) {
+      this.categoryService.getSubCategories().subscribe((data) => {
+        this.subCategories = data.filter(x=>x.categoryId==CategoryId.value);
+      });
+    }
+  }
+  getSecondSubCategory(CategoryId){
+    this.categoryService.getSecondSubCategories().subscribe((data) => {
+      this.secondSubCategories = data.filter(x=>x.subCategoryId==CategoryId.value);
+    });
+  }
   selectTab(tabId: number) {
     this.FormTabs.tabs[tabId].active = true;
   }
-  log(event){
+  log(event) {
     console.log(event);
-
   }
   uploadFinished(event) {
     this.response = event;
@@ -165,11 +197,14 @@ export class PropertyAddComponent implements OnInit {
   get proceeds() {
     return this.AddForm.get('proceeds') as FormControl;
   }
-  get floor(){
+  get floor() {
     return this.AddForm.get('floor');
   }
-  get buildingAge(){
+  get buildingAge() {
     return this.AddForm.get('buildingAge');
+  }
+  get Category() {
+    return this.AddForm.get('CategoryId');
   }
   //#endregion
 }
