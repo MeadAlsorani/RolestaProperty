@@ -62,7 +62,7 @@ export class PropertyAddComponent implements OnInit {
     heating: null,
     proceeds: null,
     type: null,
-    CategoryId: null,
+    categoryId: null,
     category: null,
     subCategoryId: null,
     subCategory: null,

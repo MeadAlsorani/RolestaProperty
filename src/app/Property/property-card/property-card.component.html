@@ -1,11 +1,18 @@
-<div class="card">
-    <div class="image-wrapper">
-        <img *ngIf="!property.image" class="card-image card-img-top" src="assets/house.png" alt="" />
-        <carousel [isAnimated]="true" *ngIf="property.image" class="card-image card-img-top">
-            <slide *ngFor="let item of property.image">
-                <img [src]="[baseUrl+imageUrl+item]" class="card-image" alt="first slide" style="display: block; width: 100%;">
-            </slide>
-        </carousel>
+<div class="card text-right" dir="rtl">
+    <div class="card-image-section">
+        <div class="property-card-type">
+            <h5>
+                {{subCategory.subCategoryName}}
+            </h5>
+        </div>
+        <div class="image-wrapper">
+            <img *ngIf="!property.image" class="card-image card-img-top" src="assets/house.png" alt="" />
+            <carousel [isAnimated]="true" *ngIf="property.image" class="card-image card-img-top">
+                <slide *ngFor="let item of property.image">
+                    <img [src]="[baseUrl+imageUrl+item]" class="card-image" alt="first slide" style="display: block; width: 100%;">
+                </slide>
+            </carousel>
+        </div>
     </div>
     <div class="car-body p-4">
         <h3>{{ property.name }} <span class="subTitle">{{ type.typeName }} /
@@ -18,7 +25,7 @@
         <span *ngIf="property.city">{{ property.city }}-</span>{{ property.street }}
         </span>
         <br />
-        <div *ngIf="ifPreview">
+        <div *ngIf="ifPreview" class="mt-1">
             <a routerLink="property-detail/{{ property.id }}" class="btn btn-primary">
         details</a
       >

@@ -27,5 +27,6 @@ namespace Back_End.Data
     public DbSet<category> categories { get; set; }
     public DbSet<subCategory> SubCategories { get; set; }
     public DbSet<SecondSubCategory> SecondSubCategories { get; set; }
+    public DbSet<BasicCategory> BasicCategories { get; set; }
   }
 }

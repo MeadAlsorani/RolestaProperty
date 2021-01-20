@@ -4,6 +4,8 @@ import { IProperty } from '../../Interfaces/IProperty.interface';
 import { ICarousel } from '../../Interfaces/ICarousel';
 import {CarouselService} from '../../Services/carousel.service';
 import * as myGlobals from '../../../assets/global';
+import {CategoryService} from '../../Services/category.service';
+import { ICategory, ISubCategory, ISecondSubCategory } from '../../Interfaces/ICategory';
 @Component({
   selector: 'app-property-list',
   templateUrl: './property-list.component.html',
@@ -12,20 +14,70 @@ import * as myGlobals from '../../../assets/global';
 export class PropertyListComponent implements OnInit {
   properties :Array<IProperty>;
   imageUrl:string=myGlobals.baseUrl+"Resources/carousel/";
+  filterInfo={
+    categoryId:0,
+    subCategoryId:0,
+    secondSubCategoryId:0,
+    city:''
+  }
+  categories:Array<ICategory>;
+  subCategories:Array<ISubCategory>;
+  secondSubCategories:Array<ISecondSubCategory>;
   constructor(
     private housnigService:HousingService,
-    private CarouselService:CarouselService
+    private CarouselService:CarouselService,
+    private categoryService:CategoryService
     ) { }
   carousels:Array<ICarousel>;
   ngOnInit() {
     this.CarouselService.getCaousels().subscribe(data=>{
       this.carousels=data;
     })
+    this.getProperties();
+    this.getCategories();
+  }
+  getProperties(){
     this.housnigService.getAllProperties().subscribe(
       data=>{
         this.properties=data;
         console.log(data);
       }
-    )
+    );
+  }
+  getCategories(){
+    this.categoryService.getCategoris().subscribe(cat=>{
+      this.categories=cat;
+    })
+  }
+  getSubCategories(CategoryId) {
+    if (CategoryId.value) {
+      this.categoryService.getSubCategories().subscribe((data) => {
+        this.subCategories = data.filter(x=>x.categoryId==CategoryId.value);
+      });
+    }
+  }
+  getSecondSubCategory(CategoryId){
+    this.categoryService.getSecondSubCategories().subscribe((data) => {
+      this.secondSubCategories = data.filter(x=>x.subCategoryId==CategoryId.value);
+    });
+  }
+
+  filterSubmit(event){
+    this.properties=this.properties.filter(function(item){
+      console.log(item);
+
+      for(var key in event){
+        if(item[key]=== undefined || item[key]!= event[key]){
+          return false;
+        }
+        return true;
+      }
+    })
+    console.log(event);
+
+  }
+  clearFilter(){
+    this.getProperties();
+    this.filterInfo;
   }
 }

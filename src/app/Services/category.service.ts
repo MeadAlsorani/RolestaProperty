@@ -23,4 +23,14 @@ constructor(
   getSecondSubCategories():Observable<ISecondSubCategory[]>{
     return this.http.get<ISecondSubCategory[]>(this.secondSubCategoryApiUrl);
   }
+
+  getCategoryById(id:number):Observable<ICategory>{
+    return this.http.get<ICategory>(this.categoryApiUrl+id);
+  }
+  getSubCategoryById(id:number):Observable<ISubCategory>{
+    return this.http.get<ISubCategory>(this.subCategoryApiUrl+id);
+  }
+  getSecondSubCategoryById(id:number):Observable<ISecondSubCategory>{
+    return this.http.get<ISecondSubCategory>(this.secondSubCategoryApiUrl+id);
+  }
 }
