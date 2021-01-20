@@ -4,14 +4,16 @@ using Back_End.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Back_End.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210120185238_delete-basicCategory-table")]
+    partial class deletebasicCategorytable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,66 +135,6 @@ namespace Back_End.Migrations
                     b.ToTable("SecondSubCategories");
                 });
 
-            modelBuilder.Entity("Back_End.Models.car", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("carCompanyId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("isAuto")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("isHeavy")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("isRent")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("lostAmount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("modelName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("modelYear")
-                        .HasColumnType("int");
-
-                    b.Property<string>("pictures")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("price")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("carCompanyId");
-
-                    b.ToTable("cars");
-                });
-
-            modelBuilder.Entity("Back_End.Models.carCompany", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("companyName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("carCompany");
-                });
-
             modelBuilder.Entity("Back_End.Models.carousel", b =>
                 {
                     b.Property<int>("id")
@@ -286,9 +228,6 @@ namespace Back_End.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<bool>("isAdmin")
-                        .HasColumnType("bit");
-
                     b.Property<string>("password")
                         .HasColumnType("nvarchar(max)");
 
@@ -351,17 +290,6 @@ namespace Back_End.Migrations
                     b.Navigation("subCategory");
                 });
 
-            modelBuilder.Entity("Back_End.Models.car", b =>
-                {
-                    b.HasOne("Back_End.Models.carCompany", "carCompany")
-                        .WithMany("cars")
-                        .HasForeignKey("carCompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("carCompany");
-                });
-
             modelBuilder.Entity("Back_End.Models.subCategory", b =>
                 {
                     b.HasOne("Back_End.Models.category", "category")
@@ -376,11 +304,6 @@ namespace Back_End.Migrations
             modelBuilder.Entity("Back_End.Models.SecondSubCategory", b =>
                 {
                     b.Navigation("Property");
-                });
-
-            modelBuilder.Entity("Back_End.Models.carCompany", b =>
-                {
-                    b.Navigation("cars");
                 });
 
             modelBuilder.Entity("Back_End.Models.category", b =>

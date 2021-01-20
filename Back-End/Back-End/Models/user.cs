@@ -15,5 +15,7 @@ namespace Back_End.Models
     
     public string password { get; set; }
 
+    public bool isAdmin { get; set; }
+
   }
 }
