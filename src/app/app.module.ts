@@ -32,6 +32,14 @@ import {CarouselControlComponent} from './control-panel/carousel-control/carouse
 import {CarouselAddComponent} from './control-panel/carousel-control/carousel-add/carousel-add.component';
 import {CarouselCardComponent} from './control-panel/carousel-control/carousel-card/carousel-card.component';
 import {CarouselEditComponent} from './control-panel/carousel-control/carousel-edit/carousel-edit.component';
+import {CarAddComponent} from './control-panel/car-control/car-add/car-add.component';
+import {CarEditComponent} from './control-panel/car-control/car-edit/car-edit.component';
+import {CarListComponent} from './control-panel/car-control/car-list/car-list.component';
+import {CarService} from './Services/car.service';
+import { AlertService } from './Services/Alert.service';
+import { CarouselService } from './Services/carousel.service';
+import { HousingService } from './Services/Housing.service';
+import {UplaodCarImageComponent} from './control-panel/car-control/car-add/uplaodImage/uplaodImage.component';
 const appRoutes:Routes=[
   {path:'',component:PropertyListComponent},
   {path:'property-list',component:PropertyListComponent},
@@ -40,7 +48,10 @@ const appRoutes:Routes=[
   {path:'control-list',component:ControlListComponent},
   {path:'edit-property/:id',component:EditPropertyComponent},
   {path:'control-panel',component:ControlPanelComponent},
-  {path:'carousel-control',component:CarouselControlComponent}
+  {path:'carousel-control',component:CarouselControlComponent},
+  {path:'car-control',component:CarListComponent},
+  {path:'car-add',component:CarAddComponent},
+  {path:'car-edit',component:CarEditComponent}
 ]
 
 
@@ -59,7 +70,11 @@ const appRoutes:Routes=[
       CarouselControlComponent,
       CarouselAddComponent,
       CarouselCardComponent,
-      CarouselEditComponent
+      CarouselEditComponent,
+      CarAddComponent,
+      CarEditComponent,
+      CarListComponent,
+      UplaodCarImageComponent
    ],
   imports: [
     BrowserModule,
@@ -86,7 +101,7 @@ const appRoutes:Routes=[
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [CarService,AlertService,CarouselService,HousingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

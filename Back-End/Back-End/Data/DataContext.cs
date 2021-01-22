@@ -32,5 +32,6 @@ namespace Back_End.Data
     public DbSet<category> categories { get; set; }
     public DbSet<subCategory> SubCategories { get; set; }
     public DbSet<SecondSubCategory> SecondSubCategories { get; set; }    
+    public DbSet<Back_End.Models.carCompany> carCompany { get; set; }
   }
 }

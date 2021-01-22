@@ -24,6 +24,7 @@
   <ItemGroup>
     <Folder Include="Resources\Images\" />
     <Folder Include="Resources\carousel\" />
+    <Folder Include="Resources\cars\" />
   </ItemGroup>
 
 

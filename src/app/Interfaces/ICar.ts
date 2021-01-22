@@ -10,9 +10,9 @@ export interface ICar {
   price:number,
   pictures:string[],
   carCompanyId:number,
-  carCompany:carCompany
+  carCompany:ICarCompany
 }
-export interface carCompany{
+export interface ICarCompany{
   id:number,
   companyName:string
 }
