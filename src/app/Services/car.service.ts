@@ -34,6 +34,23 @@ export class CarService {
   editCar(id: number, property: ICar): Observable<ICar> {
     return this.http.put<ICar>(this.url + id, property);
   }
+
+  isAuto(value){
+    if (value) {
+      return "اوتوماتيك";
+    }
+    else{
+      return "عادي";
+    }
+  }
+  isRent(value){
+    if (value) {
+      return "ايجار";
+    }
+    else{
+      return "مبيع";
+    }
+  }
 //#endregion
 
 //#region carCompany api callers

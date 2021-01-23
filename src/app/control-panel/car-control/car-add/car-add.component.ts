@@ -46,6 +46,7 @@ export class CarAddComponent implements OnInit {
       isHeavy: new FormControl(null),
       description: new FormControl(null, Validators.required),
       isRent: new FormControl(null, Validators.required),
+      price:new FormControl(null,Validators.required),
       pictures: new FormControl(null, Validators.required),
       carCompanyId: new FormControl(null, Validators.required),
     });
@@ -56,6 +57,9 @@ export class CarAddComponent implements OnInit {
   }
   get modelName(){
     return this.AddCar.get('modelName') as FormControl;
+  }
+  get price(){
+    return this.AddCar.get('price') as FormControl;
   }
   get isAuto(){
     return this.AddCar.get('isAuto') as FormControl;
