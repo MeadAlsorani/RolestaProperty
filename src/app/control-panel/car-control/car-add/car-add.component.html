@@ -37,7 +37,7 @@
                                 <mat-button-toggle [value]="false" class="select-form">مبيع </mat-button-toggle>
                             </mat-button-toggle-group>
                         </div>
-                        <div class="form-group col-12" *ngIf="isRent.touched">
+                        <div class="form-group col-12" *ngIf="isRent.touched|| isRent.value">
                             <label for="price" *ngIf="isRent.value">سعر التأجير</label>
                             <label for="price" *ngIf="!isRent.value">سعر المبيع</label>
                             <input type="number" class="form-control" name="price" formControlName="price" />

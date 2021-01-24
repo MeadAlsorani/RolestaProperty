@@ -1,0 +1,25 @@
+.photo-control {
+    min-height: 300px;
+    text-align: center;
+    border: 1px blue dashed;
+    margin: 5px;
+}
+
+.select-form {
+    width: 100%;
+    text-align: center;
+}
+
+.mat-button-toggle-checked {
+    background-color: rgb(68, 106, 212);
+    color: white;
+}
+
+.form-validation {
+    width: 100%;
+    text-align: center;
+}
+
+tab {
+    padding: 1rem;
+}

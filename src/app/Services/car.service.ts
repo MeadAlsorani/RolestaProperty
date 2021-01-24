@@ -7,8 +7,8 @@ import * as myGlobals from '../../assets/global';
   providedIn: 'root',
 })
 export class CarService {
-  url: string = myGlobals.apiUrl + 'cars';
-  carCompanyUrl:string=myGlobals.apiUrl+'carCompanies';
+  url: string = myGlobals.apiUrl + 'cars/';
+  carCompanyUrl:string=myGlobals.apiUrl+'carCompanies/';
   constructor(private http: HttpClient) {}
 //#region  car api callers
   getAllCars(): Observable<ICar[]> {
@@ -35,22 +35,6 @@ export class CarService {
     return this.http.put<ICar>(this.url + id, property);
   }
 
-  isAuto(value){
-    if (value) {
-      return "اوتوماتيك";
-    }
-    else{
-      return "عادي";
-    }
-  }
-  isRent(value){
-    if (value) {
-      return "ايجار";
-    }
-    else{
-      return "مبيع";
-    }
-  }
 //#endregion
 
 //#region carCompany api callers

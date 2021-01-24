@@ -15,6 +15,7 @@ export class CarListComponent implements OnInit {
   carList:Array<ICar>;
   carCompanies:Array<ICarCompany>;
   carId:number;
+
   displayedColumns: string[] = [ 'modelYear', 'modelName', 'isAuto','isRent','price','companyId','id'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -39,8 +40,8 @@ export class CarListComponent implements OnInit {
         for (let car = 0; car < data.length; car++) {
           data[car].carCompany=this.carCompanies.find(x=>x.id===data[car].carCompanyId);
         }
-
         this.dataSource.data=data;
+        console.log(data);
       }
     );
   }
@@ -51,13 +52,21 @@ export class CarListComponent implements OnInit {
       }
     )
   }
-  getAuto(auto){
-    this.carService.isAuto(auto);
+  isRent(value){
+    if (value) {
+      return "ايجار";
+    }
+    else{
+      return "مبيع";
+    }
   }
-  getRent(rent){
-    this.carService.isRent(rent);
-    console.log(this.carService.isRent(rent));
-
+  isAuto(value){
+    if (value) {
+      return "اوتوماتيك";
+    }
+    else{
+      return "عادي";
+    }
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
