@@ -26,7 +26,7 @@ export class PropertyListComponent implements OnInit {
   constructor(
     private housnigService:HousingService,
     private CarouselService:CarouselService,
-    private categoryService:CategoryService
+    private categoryService:CategoryService,
     ) { }
   carousels:Array<ICarousel>;
   ngOnInit() {
@@ -77,7 +77,9 @@ export class PropertyListComponent implements OnInit {
 
   }
   clearFilter(){
+    this.filterInfo.categoryId=0;
+    this.filterInfo.subCategoryId=0;
+    this.filterInfo.secondSubCategoryId=0;
     this.getProperties();
-    this.filterInfo;
   }
 }

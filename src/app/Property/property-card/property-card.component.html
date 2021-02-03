@@ -21,13 +21,13 @@
             <span class="subPrice">{{ property.price }}</span>
         </h3>
         <span style="color: grey">
-      <span *ngIf="property.provience">{{ property.provience }}-</span>
-        <span *ngIf="property.city">{{ property.city }}-</span>{{ property.street }}
+      <span *ngIf="property.provience">{{ property.provience }} - </span>
+        <span *ngIf="property.city">{{ property.city }} - </span>{{ property.street }}
         </span>
         <br />
         <div *ngIf="ifPreview" class="mt-1">
-            <a routerLink="property-detail/{{ property.id }}" class="btn btn-primary">
-        details</a
+            <a routerLink="/property-detail/{{ property.id }}" class="btn btn-outline-primary">
+        تفاصيل</a
       >
     </div>
   </div>

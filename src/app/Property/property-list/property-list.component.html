@@ -2,41 +2,46 @@
     <slide *ngFor="let carousel of carousels">
         <img [src]="imageUrl+carousel.picture" alt="first slide" class="carousel-image" style="display: block; width: 100%;">
     </slide>
+    <div class="filter-form">
+        <div class="card text-center filter">
+            <div class="card-header filter-header"></div>
+            <div class="card-body filter-body">
+                <form (ngSubmit)="filterSubmit(Form.value)" #Form="ngForm">
+                    <mat-form-field appearance="fill" class="select-form">
+                        <mat-label>نوع العقار</mat-label>
+                        <mat-select #CategorySelect name="categoryId" [(ngModel)]="+filterInfo.categoryId" (selectionChange)="getSubCategories($event)">
+                            <mat-option *ngFor="let Category of categories" [(value)]="Category.id">
+                                {{ Category.category_Name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="select-form">
+                        <mat-label>بيع او ايجار</mat-label>
+                        <mat-select #subCategorySelect name="subCategoryId" [(ngModel)]="+filterInfo.subCategoryId" (selectionChange)="getSecondSubCategory($event)">
+                            <mat-option *ngFor="let subCategory of subCategories" [(value)]="subCategory.id">
+                                {{ subCategory.subCategoryName }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="select-form">
+                        <mat-label>خصائص العقار</mat-label>
+                        <mat-select name="secondSubCategoryId" [(ngModel)]="+filterInfo.secondSubCategoryId">
+                            <mat-option *ngFor="let subCategory of secondSubCategories" [(value)]="subCategory.id">
+                                {{ subCategory.subCategoryName }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="filter-buttons">
+                        <button type="submit" class="btn btn-primary">فلترة</button> |
+                        <button type="button" class="btn btn-outline-info" (click)="clearFilter()">الغاء الفلترة</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </carousel>
 <div class="container">
     <div class="row">
-        <div class="filter-form col-md-12">
-            <form (ngSubmit)="filterSubmit(Form.value)" #Form="ngForm">
-                <mat-form-field appearance="fill" class="select-form">
-                    <mat-label>Category</mat-label>
-                    <mat-select #CategorySelect name="categoryId" [(ngModel)]="+filterInfo.categoryId" (selectionChange)="getSubCategories($event)">
-                        <mat-option *ngFor="let Category of categories" [(value)]="Category.id">
-                            {{ Category.category_Name }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field appearance="fill" class="select-form">
-                    <mat-label>Sub Category</mat-label>
-                    <mat-select #subCategorySelect name="subCategoryId" [(ngModel)]="+filterInfo.subCategoryId" (selectionChange)="getSecondSubCategory($event)">
-                        <mat-option *ngFor="let subCategory of subCategories" [(value)]="subCategory.id">
-                            {{ subCategory.subCategoryName }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field appearance="fill" class="select-form">
-                    <mat-label>Second Sub Category</mat-label>
-                    <mat-select name="secondSubCategoryId" [(ngModel)]="+filterInfo.secondSubCategoryId">
-                        <mat-option *ngFor="let subCategory of secondSubCategories" [(value)]="subCategory.id">
-                            {{ subCategory.subCategoryName }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <input type="text" name="secondSubCategoryId" [(ngModel)]="+filterInfo.secondSubCategoryId">
-                <input type="text" name="city" [(ngModel)]="filterInfo.city">
-                <button type="submit">log</button>
-                <button type="button" (click)="clearFilter()">reset</button>
-            </form>
-        </div>
         <div *ngFor="let PCArd of properties" class="card-list col-sm-4">
             <app-property-card [property]="PCArd" [ifPreview]="true"></app-property-card>
         </div>

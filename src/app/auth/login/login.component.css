@@ -1,0 +1,74 @@
+.loginPage {
+    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/slider-2.jpg");
+    background-size: cover;
+    height: 90.5vh;
+}
+
+.card {
+    width: 350px;
+    background-color: transparent;
+    padding: 2rem;
+    border-radius: 10%;
+    box-shadow: 1px 1px 3px 1px #111111;
+}
+
+label {
+    font-weight: 600;
+}
+
+.login-group {
+    position: relative;
+    border-bottom: 1px solid #f1f1f170;
+    transition: 300ms all ease;
+}
+
+.login-group:hover {
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.login-icon {
+    position: absolute;
+    left: 0;
+    top: 20%;
+    font-size: 1.5rem;
+    color: #f1f1f170;
+    transition: 300ms all ease;
+}
+
+.login-input {
+    background-color: transparent;
+    border: none;
+    padding-left: 1.8rem;
+    color: white;
+}
+
+.login-input:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.login-group:hover .login-icon {
+    color: #f1f1f1;
+}
+
+.login-btn {
+    color: #4b4a4a;
+    font-weight: 550;
+}
+
+.loginContainer {
+    background: linear-gradient( to bottom, rgba(146, 135, 187, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
+    position: absolute;
+    left: 35%;
+    top: 17%;
+    border-radius: 10%;
+}
+
+.login-logo {
+    height: 200px;
+}
+
+.register {
+    color: #f1f1f180;
+}

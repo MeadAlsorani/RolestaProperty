@@ -1,22 +1,23 @@
+<br>
 <div class="container">
     <div class="row">
         <div class="col-8">
             <div class="card">
-                <div class="card-header">Add Property</div>
+                <div class="card-header text-center">اضافة عقار جديد</div>
                 <div class="card-body">
                     <form (ngSubmit)="onSubmit(AddForm.value)" [formGroup]="AddForm" enctype="multipart/form-data">
                         <div>
                             <tabset #FormTabs>
-                                <tab heading="Basic info" id="tab1">
+                                <tab heading="المعلومات الاساسية" id="tab1">
                                     <div class="form-group col-12">
-                                        <label for="Name">Name</label>
+                                        <label for="Name">الاسم</label>
                                         <input type="text" class="form-control" name="name" formControlName="name" />
                                         <div *ngIf="!Name.valid && Name.touched" class="form-validation text-danger">
                                             هذا الحقل مطلوب
                                         </div>
                                     </div>
                                     <div class="form-group col-12">
-                                        <label for="floor">Floor</label>
+                                        <label for="floor">الطابق</label>
                                         <input type="number" class="form-control" name="floor" formControlName="floor" />
                                         <div *ngIf="!floor.valid && floor.touched" class="form-validation text-danger">
                                             هذا الحقل مطلوب
@@ -24,7 +25,7 @@
                                     </div>
                                     <div class="form-group col-12">
                                         <mat-form-field appearance="fill" class="select-form">
-                                            <mat-label>Type</mat-label>
+                                            <mat-label>النوع</mat-label>
                                             <mat-select name="typeId" formControlName="typeId">
                                                 <mat-option *ngFor="let type of types" [value]="type.id">
                                                     {{ type.typeName }}
@@ -34,7 +35,7 @@
                                     </div>
                                     <div class="form-group col-12">
                                         <mat-form-field appearance="fill" class="select-form">
-                                            <mat-label>Heating system</mat-label>
+                                            <mat-label>نظام التدفئة</mat-label>
                                             <mat-select name="heatingId" formControlName="heatingId">
                                                 <mat-option *ngFor="let heating of heatings" [value]="heating.id">
                                                     {{ heating.heatingName }}
@@ -43,106 +44,106 @@
                                         </mat-form-field>
                                     </div>
                                     <button type="button" class="btn btn-primary btn-md" (click)="selectTab(1)">
-                                      Next
+                                      التالي
                                     </button>
                                 </tab>
-                                <tab heading="Building Info">
+                                <tab heading="معلومات البناء">
                                     <div class="form-group col-12">
-                                        <label for="buildingAge">building Age</label>
+                                        <label for="buildingAge">عمر البناء</label>
                                         <input type="number" class="form-control" name="buildingAge" formControlName="buildingAge" />
                                         <div *ngIf="!buildingAge.valid && buildingAge.touched" class="form-validation text-danger">
                                             هذا الحقل مطلوب
                                         </div>
                                     </div>
                                     <div class="form-group col-12">
-                                        <label for="buildingFloors">building Floors</label>
+                                        <label for="buildingFloors">عدد طوابق البناء</label>
                                         <input type="number" class="form-control" name="buildingFloors" formControlName="buildingFloors" />
                                         <div *ngIf="!buildingFloors.valid && buildingFloors.touched" class="form-validation text-danger">
                                             هذا الحقل مطلوب
                                         </div>
                                     </div>
                                     <div class="form-group col-12">
-                                        <label for="buildingFloors">proceeds</label>
+                                        <label for="buildingFloors">العائدات</label>
                                         <input type="number" class="form-control" name="proceeds" formControlName="proceeds" />
                                         <div *ngIf="!proceeds.valid && proceeds.touched" class="form-validation text-danger">
                                             هذا الحقل مطلوب
                                         </div>
                                     </div>
                                     <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(0)">
-                  Back
-                </button>
+                                      السابق
+                                    </button>
                                     <button type="button" class="btn btn-primary btn-md" (click)="selectTab(2)">
-                  Next
-                </button>
+                                       التالي
+                                    </button>
                                 </tab>
-                                <tab heading="Pricing and area">
+                                <tab heading="المساحة والسعر">
                                     <div class="form-group col-12">
-                                        <label for="Price">Price</label>
+                                        <label for="Price">السعر</label>
                                         <input type="number" class="form-control" name="price" formControlName="price" />
                                         <div *ngIf="!price.valid && price.touched" class="form-validation text-danger">
                                             هذا الحقل مطلوب
                                         </div>
                                     </div>
                                     <div class="form-group col-12">
-                                        <label for="area">Area</label>
+                                        <label for="area">المساحة</label>
                                         <input type="number" class="form-control" name="area" formControlName="area" />
                                         <div *ngIf="!area.valid && area.touched" class="form-validation text-danger">
                                             هذا الحقل مطلوب
                                         </div>
                                     </div>
                                     <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(1)">
-                  Back
-                </button>
+                                      السابق
+                                    </button>
                                     <button type="button" class="btn btn-primary btn-md" (click)="selectTab(3)">
-                  Next
-                </button>
+                                     التالي
+                                   </button>
                                 </tab>
-                                <tab heading="Address">
+                                <tab heading="العنوان">
                                     <div class="form-group col-12">
-                                        <label for="Provience">Provience</label>
+                                        <label for="Provience">المدينة</label>
                                         <input type="text" class="form-control" name="provience" formControlName="provience" />
                                         <div *ngIf="!provience.valid && provience.touched" class="form-validation text-danger">
                                             هذا الحقل مطلوب
                                         </div>
                                     </div>
                                     <div class="form-group col-12">
-                                        <label for="City">City</label>
+                                        <label for="City">البلدية</label>
                                         <input type="text" class="form-control" name="city" formControlName="city" />
                                         <div *ngIf="!city.valid && city.touched" class="form-validation text-danger">
                                             هذا الحقل مطلوب
                                         </div>
                                     </div>
                                     <div class="form-group col-12">
-                                        <label for="Street">Street</label>
+                                        <label for="Street">الشارع</label>
                                         <input type="text" class="form-control" name="street" formControlName="street" />
                                         <div *ngIf="!street.valid && street.touched" class="form-validation text-danger">
                                             هذا الحقل مطلوب
                                         </div>
                                     </div>
                                     <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(2)">
-                                     Back
+                                     السابق
                                     </button>
                                     <button type="button" class="btn btn-primary btn-md" (click)="selectTab(4)">
-                                     Next
+                                     التالي
                                  </button>
                                 </tab>
-                                <tab heading="Other Details">
+                                <tab heading="معلومات اخرى">
                                     <div class="form-group col-12">
-                                        <label for="NoOfRooms">Number of rooms</label>
+                                        <label for="NoOfRooms">عدد الغرف</label>
                                         <input type="number" class="form-control" name="noOfRooms" formControlName="noOfRooms" />
                                         <div *ngIf="!noOfRooms.valid && noOfRooms.touched" class="form-validation text-danger">
                                             هذا الحقل مطلوب
                                         </div>
                                     </div>
                                     <div class="form-group col-12">
-                                        <label for="Description">Description</label>
+                                        <label for="Description">الشرح</label>
                                         <textarea type="text" class="form-control" name="description" formControlName="description"></textarea>
                                         <div *ngIf="!description.valid && description.touched" class="form-validation text-danger">
                                             هذا الحقل مطلوب
                                         </div>
                                     </div>
                                     <div class="form-group col-12">
-                                        <label for="adOwner">advertisment Owner</label>
+                                        <label for="adOwner">صاحب الاعلان</label>
                                         <input type="text" class="form-control" name="adOwner" formControlName="adOwner">
                                         <div *ngIf="!adOwner.valid && adOwner.touched" class="form-validation text-danger">
                                             هذا الحقل مطلوب
@@ -150,27 +151,27 @@
                                     </div>
                                     <div class="col-md-12 form-group">
                                         <mat-button-toggle-group formControlName="isFurnished" name="isFurnished" aria-label="is Furnished?" value="true" class="select-form">
-                                            <mat-button-toggle value="true" class="select-form">Furnished</mat-button-toggle>
-                                            <mat-button-toggle value="false" class="select-form">Not Furnished</mat-button-toggle>
+                                            <mat-button-toggle value="true" class="select-form">مفروشة</mat-button-toggle>
+                                            <mat-button-toggle value="false" class="select-form">غير مفروش</mat-button-toggle>
                                         </mat-button-toggle-group>
                                     </div>
                                     <div class="col-md-12 form-group">
                                         <mat-button-toggle-group formControlName="inSite" name="inSite" aria-label="in Site?" value="true" class="select-form">
-                                            <mat-button-toggle value="true" class="select-form">in Site</mat-button-toggle>
-                                            <mat-button-toggle value="false" class="select-form">Not inSite</mat-button-toggle>
+                                            <mat-button-toggle value="true" class="select-form">ضمن مجمع سكني</mat-button-toggle>
+                                            <mat-button-toggle value="false" class="select-form">ليس ضمن مجمع سكني</mat-button-toggle>
                                         </mat-button-toggle-group>
                                     </div>
                                     <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(3)">
-                                       Back
+                                       السابق
                                      </button>
                                     <button type="button" class="btn btn-primary btn-md" (click)="selectTab(5)">
-                                       Next
+                                       التالي
                                     </button>
                                 </tab>
-                                <tab heading="Category">
+                                <tab heading="التصنيف">
                                     <div class="form-group col-12">
                                         <mat-form-field appearance="fill" class="select-form">
-                                            <mat-label>Category</mat-label>
+                                            <mat-label>النوع</mat-label>
                                             <mat-select #CategorySelect name="CategoryId" formControlName="CategoryId" (selectionChange)="getSubCategories($event)">
                                                 <mat-option *ngFor="let Category of categories" [(value)]="Category.id">
                                                     {{ Category.category_Name }}
@@ -180,7 +181,7 @@
                                     </div>
                                     <div class="form-group col-12">
                                         <mat-form-field appearance="fill" class="select-form">
-                                            <mat-label>Sub Category</mat-label>
+                                            <mat-label>ايجار ام مبيع</mat-label>
                                             <mat-select #subCategorySelect name="subCategoryId" formControlName="subCategoryId" (selectionChange)="getSecondSubCategory($event)">
                                                 <mat-option *ngFor="let subCategory of subCategories" [(value)]="subCategory.id">
                                                     {{ subCategory.subCategoryName }}
@@ -190,7 +191,7 @@
                                     </div>
                                     <div class="form-group col-12">
                                         <mat-form-field appearance="fill" class="select-form">
-                                            <mat-label>Second Sub Category</mat-label>
+                                            <mat-label>نوع العقار</mat-label>
                                             <mat-select name="secondSubCategoryId" formControlName="secondSubCategoryId">
                                                 <mat-option *ngFor="let subCategory of secondSubCategories" [(value)]="subCategory.id">
                                                     {{ subCategory.subCategoryName }}
@@ -199,26 +200,26 @@
                                         </mat-form-field>
                                     </div>
                                     <button type="button" class="btn btn-default btn-md mr-1" (click)="selectTab(4)">
-                                     Back
+                                     السابق
                                    </button>
                                     <button type="button" class="btn btn-primary btn-md" (click)="selectTab(6)">
-                                     Next
+                                     التالي
                                   </button>
                                 </tab>
-                                <tab heading="Photos">
+                                <tab heading="الصور">
                                     <div class="col-sm-12 form-group">
                                         <div class="photo-control">
                                             <app-uplaodImage (onUploadFinished)="uploadFinished($event)"></app-uplaodImage>
                                         </div>
                                     </div>
                                     <button [disabled]="!AddForm.valid" type="submit" class="btn btn-success btn-md mr-1">
-                                 Save
+                                 حفظ
                                 </button>
                                     <button type="reset" (click)="onReset()" class="btn btn-warning btn-md mr-1">
-                                 Reset
+                                 الغاء
                                 </button>
                                     <button type="button" class="btn btn-primary btn-md" (click)="selectTab(5)">
-                                  Back
+                                  السابق
                                 </button>
                                 </tab>
                             </tabset>

@@ -12,11 +12,13 @@ import { CarAddComponent } from './control-panel/car-control/car-add/car-add.com
 import { CarEditComponent } from './control-panel/car-control/car-edit/car-edit.component';
 import { PageNotFoundComponent } from './pageNotFound/page-not-found.component';
 import { AuthGuard } from './auth/auth.guard';
+import { LoginComponent } from './auth/login/login.component';
 
 const appRoutes: Routes = [
   {
     path: '',
-    component: PropertyListComponent,
+    redirectTo:'/property-list',
+    pathMatch:'full'
   },
   { path: 'property-list', component: PropertyListComponent },
   { path: 'property-detail/:id', component: PropertyDetailComponent },
@@ -25,13 +27,14 @@ const appRoutes: Routes = [
     component: PropertyAddComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'control-list', component: ControlListComponent },
-  { path: 'edit-property/:id', component: EditPropertyComponent },
-  { path: 'control-panel', component: ControlPanelComponent },
-  { path: 'carousel-control', component: CarouselControlComponent },
-  { path: 'car-control', component: CarListComponent },
-  { path: 'car-add', component: CarAddComponent },
-  { path: 'car-edit/:id', component: CarEditComponent },
+  { path: 'control-list', component: ControlListComponent,canActivate:[AuthGuard] },
+  { path: 'edit-property/:id', component: EditPropertyComponent,canActivate:[AuthGuard] },
+  { path: 'control-panel', component: ControlPanelComponent,canActivate:[AuthGuard] },
+  { path: 'carousel-control', component: CarouselControlComponent,canActivate:[AuthGuard] },
+  { path: 'car-control', component: CarListComponent,canActivate:[AuthGuard] },
+  { path: 'car-add', component: CarAddComponent,canActivate:[AuthGuard] },
+  { path: 'car-edit/:id', component: CarEditComponent,canActivate:[AuthGuard] },
+  {path:'login',component:LoginComponent},
   { path: '**', component: PageNotFoundComponent },
 ];
 

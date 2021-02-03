@@ -41,7 +41,7 @@ viewProperty:IProperty;
     this.hs.getHeatingById(this.property.heatingId).subscribe(heat=>{
       this.viewProperty.heating=heat;
     });
-    this.categoryService.getSubCategoryById(this.property.id).subscribe(data=>{
+    this.categoryService.getSubCategoryById(this.property.subCategoryId).subscribe(data=>{
       this.subCategory=data;
     })
   }

@@ -1,3 +1,32 @@
-<p>
-  login works!
-</p>
+<div class="loginPage">
+    <div class="container">
+        <div class="row">
+            <div class="loginContainer">
+                <div class="card text-center">
+                    <div class="card-head">
+                        <img src="../../../assets/78609333_103911697755510_5088721894190874624_o.png" alt="logo" class="login-logo  image-wrapper">
+                    </div>
+                    <div class="card-body">
+                        <form #LoginForm="ngForm" (ngSubmit)="onLogin(LoginForm)">
+                            <div class=" form-group login-group">
+                                <i class="fa fa-envelope login-icon"></i>
+                                <input type="text " name="userEmail" ngModel class="form-control login-input">
+                            </div>
+                            <div class="form-group login-group">
+                                <i class="fa fa-lock login-icon"></i>
+                                <input type="text" name="password" ngModel class="form-control login-input">
+                            </div>
+                            <button mat-flat-button color="accent" class="login-btn">تسجيل الدخول</button>
+                        </form>
+                        <div class="text-center mt-2">
+                            <span class="register">
+                            هل تريد الاشتراك في الموقع ؟
+                            <a href="">اشترك معنا</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

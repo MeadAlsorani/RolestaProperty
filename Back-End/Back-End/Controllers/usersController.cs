@@ -42,13 +42,26 @@ namespace Back_End.Controllers
       return user;
     }
 
+    [HttpGet("getUser/{email}")]
+    public async Task<ActionResult<user>> GetUserByEmail(string email)
+    {
+      var user = await _context.users.FirstOrDefaultAsync(x => x.userEmail == email);
+
+      if (user == null)
+      {
+        return NotFound();
+      }
+
+      return user;
+    }
+
     [HttpPost("login")]
     public ActionResult<user> Login([FromBody] user user)
     {
-      var userCheck =  _context.users.Where(x => x.userEmail == user.userEmail && x.password == user.password);
-      if (user!=null)
+      var userCheck =  _context.users.FirstOrDefault(x => x.userEmail == user.userEmail && x.password == user.password);
+      if (userCheck!=null)
       {
-        return Ok(user);
+        return Ok(userCheck);
       }
       else
       {

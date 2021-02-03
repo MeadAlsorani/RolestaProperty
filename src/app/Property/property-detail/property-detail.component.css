@@ -1,0 +1,42 @@
+.card-image {
+    height: 500px;
+    transform: scale(1, 1);
+    transition: all .5s ease;
+}
+
+.infoSection {
+    position: absolute;
+    right: 0;
+    top: 1%;
+    width: 25%;
+    text-align: right;
+    direction: rtl;
+    padding: 20px;
+    background-color: rgba(15, 15, 15, 0.4);
+    color: #f1f1f1f1;
+    height: 100%;
+}
+
+.infoSection span {
+    font-size: larger;
+    font-weight: 550;
+    font-family: 'Almarai', sans-serif;
+}
+
+hr {
+    margin-top: .7rem;
+    margin-bottom: .7rem;
+}
+
+.price-section {
+    position: absolute;
+    left: 0;
+    bottom: 10%;
+    padding: 1rem;
+    background-color: rgb(250, 100, 100);
+}
+
+.price-section span {
+    color: #ffffff;
+    font-size: 24px;
+}

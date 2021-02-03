@@ -1,38 +1,63 @@
+<div class="col-sm-12 p-0">
+    <div class="image-wrapper">
+        <img *ngIf="!property.image" class="card-image card-img-top" src="assets/house.png" alt="" />
+        <carousel [isAnimated]="true" *ngIf="property.image" class="card-image card-img-top">
+            <slide *ngFor="let item of property.image">
+                <img [src]="[baseUrl+imageUrl+item]" class="card-image" alt="first slide" style="display: block; width: 100%;">
+            </slide>
+            <div class="infoSection">
+                <span class="detail-info">
+                  الاسم : {{property.name}}
+                </span>
+                <hr>
+                <span class="detail-info">
+                  العنوان : {{property.provience}} - {{property.city}} - {{property.street}}
+                </span>
+                <hr>
+                <span class="detail-info">
+                  المساحة : {{property.area}}
+                </span>
+                <hr>
+                <span class="detail-info">
+                  الطابق : {{property.floor}} <br>
+                  عدد طواق البناء : {{property.buildingFloors}}
+                </span>
+                <hr>
+                <span class="detail-info">
+                  عمر البناء : {{property.buildingAge}}
+                </span>
+                <hr>
+                <span class="detail-info">
+                  عدد الغرف: {{property.noOfRooms}}
+                </span>
+                <hr>
+                <span class="detail-info">
+                  نوع التدفئة : {{property.name}}
+                </span>
+                <hr>
+                <span class="detail-info">
+                  تاريخ الاعلان: {{property.date |date:'dd/mm/yyyy'}}
+                </span>
+                <hr>
+            </div>
+
+            <div class="price-section">
+                <span>{{property.price}} TL</span>
+            </div>
+        </carousel>
+    </div>
+</div>
+<br>
 <div class="container">
     <div class="row shadow">
-        <div class="col-sm-4 p-0">
-            <app-property-card [property]="property"></app-property-card>
-        </div>
-        <div class="col-sm-8 p-0">
+        <div class="col-sm-12 p-0">
             <div class="tab-panel p-3">
-                <tabset class="member-tabset">
-                    <tab heading="Overview">
-                        <h1>Overview</h1>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="heading">
-                                    <strong>Project Name</strong>
-                                    <p>{{property.name}}</p>
-                                </div>
-
-                                <div class="heading">
-                                    <strong>Number of rooms</strong>
-                                    <p>{{property.noOfRooms}}</p>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="heading">
-                                    <strong>About Property</strong>
-                                    <p>{{property.description}}</p>
-                                </div>
-                            </div>
-                        </div>
+                <tabset class="member-tabset" style="text-align: right; direction: rtl;">
+                    <tab heading="الوصف">
+                        <h3>وصف العقار</h3>
+                        <p>{{property.description}}</p>
                     </tab>
-                    <tab heading="Contact">
+                    <tab heading="معلومات التواصل">
                         <h1>Contact Detail</h1>
                         This should be restricted area and only registered user should be able to see seller contact details
                     </tab>
