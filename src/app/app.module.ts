@@ -18,6 +18,7 @@ import { PropertModModule } from './control-panel/propert-mod.module';
 import { PageNotFoundComponent } from './pageNotFound/page-not-found.component';
 import { AuthService } from './Services/auth.service';
 import {AuthModule} from './auth/auth.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import {AuthModule} from './auth/auth.module';
     PropertModModule,
     AuthModule,
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+
   ],
   // exports: [MatFormFieldModule, MatInputModule],
   providers: [CarService, AlertService, CarouselService, HousingService,AuthService],

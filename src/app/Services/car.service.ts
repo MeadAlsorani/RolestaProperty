@@ -15,6 +15,12 @@ export class CarService {
     return this.http.get<ICar[]>(this.url);
   }
 
+  getRentCars(): Observable<ICar[]> {
+    return this.http.get<ICar[]>(this.url+"rent");
+  }
+  getBuyCars(): Observable<ICar[]> {
+    return this.http.get<ICar[]>(this.url+"buy");
+  }
   getCarById(id: number): Observable<ICar> {
     return this.http.get<ICar>(this.url + id);
   }

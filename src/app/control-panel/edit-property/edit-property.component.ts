@@ -199,6 +199,7 @@ export class EditPropertyComponent implements OnInit {
     } else {
       propertyPreview.image = this.propertyPreview.image;
     }
+    propertyPreview.date=this.propertyPreview.date;
     propertyPreview.id = this.propertyId;
     this.hs.editProperty(this.propertyId, propertyPreview).subscribe(
       (data) => {

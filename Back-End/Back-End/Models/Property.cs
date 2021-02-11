@@ -1,7 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace Back_End.Models
 {
   public class Property
   {
+    [Key]
     public int id { get; set; }
 
     public string Name { get; set; }
@@ -26,7 +31,8 @@ namespace Back_End.Models
 
     public string adOwner { get; set; }
 
-    public string date { get; set; }
+    [DataType(DataType.Date)]
+    public DateTime date { get; set; }
 
     public bool isFurnished { get; set; }
 
@@ -42,7 +48,7 @@ namespace Back_End.Models
 
     public int heatingId { get; set; }
     public heating heating { get; set; }
-
+    
     public int? categoryId { get; set; }
     public category category { get; set; }
 

@@ -4,14 +4,16 @@ using Back_End.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Back_End.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210210171822_change-category-unique")]
+    partial class changecategoryunique
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,8 +61,8 @@ namespace Back_End.Migrations
                     b.Property<string>("city")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("date")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("date")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("floor")
                         .HasColumnType("int");
@@ -98,9 +100,13 @@ namespace Back_End.Migrations
 
                     b.HasIndex("heatingId");
 
-                    b.HasIndex("secondSubCategoryId");
+                    b.HasIndex("secondSubCategoryId")
+                        .IsUnique()
+                        .HasFilter("[secondSubCategoryId] IS NOT NULL");
 
-                    b.HasIndex("subCategoryId");
+                    b.HasIndex("subCategoryId")
+                        .IsUnique()
+                        .HasFilter("[subCategoryId] IS NOT NULL");
 
                     b.HasIndex("typeId");
 

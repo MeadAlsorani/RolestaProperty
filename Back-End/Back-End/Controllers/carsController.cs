@@ -47,6 +47,20 @@ namespace Back_End.Controllers
       return car;
     }
 
+    [HttpGet("rent")]
+    public async Task<ActionResult<car>> GetRentCars()
+    {
+      var rents = await _context.cars.Where(x=>x.isRent==true).ToListAsync();
+      return Ok(rents);
+    }
+
+    [HttpGet("buy")]
+    public async Task<ActionResult<car>> GetBuyCars()
+    {
+      var buys = await _context.cars.Where(x => x.isRent == false).ToListAsync();
+      return Ok(buys);
+    }
+
     // PUT: api/cars/5
     // To protect from overposting attacks, enable the specific properties you want to bind to, for
     // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

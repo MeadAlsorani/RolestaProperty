@@ -3,8 +3,14 @@
         <img *ngIf="!property.image" class="card-image card-img-top" src="assets/house.png" alt="" />
         <carousel [isAnimated]="true" *ngIf="property.image" class="card-image card-img-top">
             <slide *ngFor="let item of property.image">
-                <img [src]="[baseUrl+imageUrl+item]" class="card-image" alt="first slide" style="display: block; width: 100%;">
+                <a (click)="openModal(template,item)" class="image-pop">
+                    <img [src]="[baseUrl+imageUrl+item]" class="card-image" alt="first slide" style="display: block; width: 100%;">
+                </a>
             </slide>
+
+            <ng-template #template>
+                <img [src]="[baseUrl+imageUrl+pic]" class="card-image" alt="first slide" style="display: block; width: 100%;">
+            </ng-template>
             <div class="infoSection">
                 <span class="detail-info">
                   الاسم : {{property.name}}
@@ -32,17 +38,17 @@
                 </span>
                 <hr>
                 <span class="detail-info">
-                  نوع التدفئة : {{property.name}}
+                  نوع التدفئة : {{heat.heatingName}}
                 </span>
                 <hr>
                 <span class="detail-info">
-                  تاريخ الاعلان: {{property.date |date:'dd/mm/yyyy'}}
+                  تاريخ الاعلان: {{property.date |date: 'yyyy-MM-dd'}}
                 </span>
                 <hr>
             </div>
 
             <div class="price-section">
-                <span>{{property.price}} TL</span>
+                <span>{{property.price |number}} TL</span>
             </div>
         </carousel>
     </div>

@@ -37,7 +37,8 @@ export class PropertyAddComponent implements OnInit {
     private hs: HousingService,
     private router: Router,
     private alert: AlertService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private datePipe:DatePipe
   ) {}
   propertyPreview: IProperty = {
     id: null,
@@ -129,7 +130,9 @@ export class PropertyAddComponent implements OnInit {
 
   onSubmit(propertyPreview): void {
     propertyPreview.image = this.response;
-    propertyPreview.date = this.myDate;
+    let dateTest=new Date();
+    console.log(this.datePipe.transform(dateTest,'yyyy-MM-dd'));
+    propertyPreview.date=this.datePipe.transform(dateTest,'yyyy-MM-dd');
     this.hs.addProperty(propertyPreview).subscribe(
       (data) => {
         console.log(data);

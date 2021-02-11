@@ -33,6 +33,21 @@ namespace Back_End.Controllers
       return Ok(properties);
     }
 
+    [HttpGet("rent")]
+    public IActionResult getRentProperties()
+    {
+      var rents = db.properties.Where(x => x.subCategoryId == 11 || x.subCategoryId == 12 || x.subCategoryId == 14 || x.subCategoryId == 16 || x.subCategoryId == 18).ToList();
+      return Ok(rents);
+    }
+
+    [HttpGet("buy")]
+    public IActionResult getBuyProperties()
+    {
+      var rents = db.properties.Where(x => x.subCategoryId == 10 || x.subCategoryId == 13 || x.subCategoryId == 15 || x.subCategoryId == 16 || x.subCategoryId == 17).ToList();
+      return Ok(rents);
+    }    
+
+
     [HttpGet("{id}")]
     public IActionResult getPropertyById(int id)
     {

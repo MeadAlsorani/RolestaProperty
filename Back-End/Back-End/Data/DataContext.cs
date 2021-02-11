@@ -22,6 +22,12 @@ namespace Back_End.Data
            .HasConversion(
                v => string.Join(',', v),
                v => v.Split(',', StringSplitOptions.RemoveEmptyEntries));
+      modelBuilder.Entity<Property>()
+        .HasIndex(e => e.categoryId).IsUnique(false);
+      modelBuilder.Entity<Property>()
+        .HasIndex(e => e.secondSubCategoryId).IsUnique(false);
+      modelBuilder.Entity<Property>()
+        .HasIndex(e => e.subCategoryId).IsUnique(false);
     }
     public DbSet<Property> properties { get; set; }
     public DbSet<user> users { get; set; }

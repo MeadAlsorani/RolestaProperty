@@ -40,3 +40,7 @@ hr {
     color: #ffffff;
     font-size: 24px;
 }
+
+.image-pop {
+    cursor: ne-resize;
+}

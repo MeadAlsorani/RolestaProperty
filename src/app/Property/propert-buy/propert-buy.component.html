@@ -1,0 +1,8 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="property col-md-4" *ngFor="let property of properties">
+            <app-property-card [property]="property" [ifPreview]="true"></app-property-card>
+        </div>
+    </div>
+</div>

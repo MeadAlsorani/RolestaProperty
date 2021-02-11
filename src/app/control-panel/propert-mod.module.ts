@@ -11,6 +11,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { SharedModule } from '../shared/shared.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import {PropertyRentComponent} from '../Property/property-rent/property-rent.component';
+import {PropertBuyComponent} from '../Property/propert-buy/propert-buy.component';
 @NgModule({
   declarations: [
     PropertyCardComponent,
@@ -20,6 +22,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     UplaodImageComponent,
     ControlListComponent,
     EditPropertyComponent,
+    PropertBuyComponent,
+    PropertyRentComponent
   ],
   imports: [
     CommonModule,

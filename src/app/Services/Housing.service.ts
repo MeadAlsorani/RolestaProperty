@@ -35,6 +35,13 @@ export class HousingService {
   editProperty(id:number,property:IProperty):Observable<IProperty>{
     return this.http.put<IProperty>(this.url+id,property);
   }
+
+  getRentProperties():Observable<IProperty[]>{
+    return this.http.get<IProperty[]>(this.url+"rent");
+  }
+  getBuyProperties():Observable<IProperty[]>{
+    return this.http.get<IProperty[]>(this.url+"buy");
+  }
   //#endregion
 
   getHeatings():Observable<IHeating[]>{

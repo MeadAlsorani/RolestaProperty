@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IProperty } from '../../Interfaces/IProperty.interface';
+import { IProperty, IHeating } from '../../Interfaces/IProperty.interface';
 import { HousingService } from '../../Services/Housing.service';
 import * as myGlobals from '../../../assets/global';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-property-detail',
   templateUrl: './property-detail.component.html',
@@ -12,6 +13,7 @@ export class PropertyDetailComponent implements OnInit {
   propertyId:number;
   imageUrl:string="Resources/Images/";
   baseUrl=myGlobals.baseUrl;
+  modalRef: BsModalRef;
   property:IProperty={
     SecondSubCategory:null,
     adOwner:null,
@@ -41,23 +43,35 @@ export class PropertyDetailComponent implements OnInit {
     subCategoryId:null,
     type:null,
     typeId:null
+
   };
+  heat:IHeating={
+    heatingName:null,
+    id:null
+  }
   constructor(
-    private route:ActivatedRoute
-    ,private router:Router
-    ,private hs:HousingService) { }
+    private route:ActivatedRoute,
+    private router:Router,
+    private hs:HousingService,
+    private modalService: BsModalService
+    ) { }
   ngOnInit(): void {
     this.propertyId=+this.route.snapshot.params['id'];
     this.hs.getPropertyById(this.propertyId).subscribe(
       data=>{
         this.property=data;
+        this.hs.getHeatingById(this.property.heatingId).subscribe(
+          heatDate=>{
+            this.heat=heatDate;
+          }
+        )
       }
     )
   }
-
-  onNext(){
-    this.propertyId +=1;
-    this.router.navigate(['property-detail',this.propertyId]);
+  pic;
+  openModal(template: TemplateRef<any>,item) {
+     this.pic=item;
+    this.modalRef = this.modalService.show(template,Object.assign({},{class:'modal-lg'}));
   }
 
 }
