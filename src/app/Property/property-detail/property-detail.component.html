@@ -13,37 +13,37 @@
             </ng-template>
             <div class="infoSection">
                 <span class="detail-info">
-                  الاسم : {{property.name}}
-                </span>
+                      الاسم : {{property.name}}
+                    </span>
                 <hr>
                 <span class="detail-info">
-                  العنوان : {{property.provience}} - {{property.city}} - {{property.street}}
-                </span>
+                      العنوان : {{property.provience}} - {{property.city}} - {{property.street}}
+                    </span>
                 <hr>
                 <span class="detail-info">
-                  المساحة : {{property.area}}
-                </span>
+                      المساحة : {{property.area}}
+                    </span>
                 <hr>
                 <span class="detail-info">
-                  الطابق : {{property.floor}} <br>
-                  عدد طواق البناء : {{property.buildingFloors}}
-                </span>
+                      الطابق : {{property.floor}} <br>
+                      عدد طواق البناء : {{property.buildingFloors}}
+                    </span>
                 <hr>
                 <span class="detail-info">
-                  عمر البناء : {{property.buildingAge}}
-                </span>
+                      عمر البناء : {{property.buildingAge}}
+                    </span>
                 <hr>
                 <span class="detail-info">
-                  عدد الغرف: {{property.noOfRooms}}
-                </span>
+                      عدد الغرف: {{property.noOfRooms}}
+                    </span>
                 <hr>
                 <span class="detail-info">
-                  نوع التدفئة : {{heat.heatingName}}
-                </span>
+                      نوع التدفئة : {{heat.heatingName}}
+                    </span>
                 <hr>
                 <span class="detail-info">
-                  تاريخ الاعلان: {{property.date |date: 'yyyy-MM-dd'}}
-                </span>
+                      تاريخ الاعلان: {{property.date |date: 'yyyy-MM-dd'}}
+                    </span>
                 <hr>
             </div>
 
@@ -64,12 +64,29 @@
                         <p>{{property.description}}</p>
                     </tab>
                     <tab heading="معلومات التواصل">
-                        <h1>Contact Detail</h1>
-                        This should be restricted area and only registered user should be able to see seller contact details
+                        <h1>معلومات التواصل</h1>
+                        <div class="container">
+                            <div class="row">
+                                <h4>{{property.phoneNumber}}</h4>
+                            </div>
+                        </div>
                     </tab>
                 </tabset>
             </div>
 
+        </div>
+    </div>
+</div>
+<hr>
+<div class="similerProperties" dir="rtl">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 m-3 text-right">
+                <h2>عقارات مماثلة</h2>
+            </div>
+            <div class="col-md-4" *ngFor="let property of similerProperties">
+                <app-property-card [property]="property" [ifPreview]="true"></app-property-card>
+            </div>
         </div>
     </div>
 </div>

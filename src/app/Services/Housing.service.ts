@@ -42,6 +42,10 @@ export class HousingService {
   getBuyProperties():Observable<IProperty[]>{
     return this.http.get<IProperty[]>(this.url+"buy");
   }
+
+  getSimilerProperties(id):Observable<IProperty[]>{
+    return this.http.get<IProperty[]>(this.url+"similer/"+id);
+  }
   //#endregion
 
   getHeatings():Observable<IHeating[]>{

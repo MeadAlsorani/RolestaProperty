@@ -15,10 +15,9 @@
         </div>
     </div>
     <div class="car-body p-4">
-        <h3>{{ property.name }} <span class="subTitle">{{ type.typeName }} /
-          <span *ngIf="property.noOfRooms"> {{ property.noOfRooms }}+1 </span>
-            </span>
-            <span class="subPrice">{{ property.price }}</span>
+        <h3>{{ type.typeName }}
+            <span *ngIf="property.noOfRooms"> {{ property.noOfRooms }}+1 </span>
+            <span class="subPrice" style="font-size: 18px;">{{ property.price |number}}</span>
         </h3>
         <span style="color: grey">
       <span *ngIf="property.provience">{{ property.provience }} - </span>

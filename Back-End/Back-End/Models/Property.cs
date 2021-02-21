@@ -48,7 +48,9 @@ namespace Back_End.Models
 
     public int heatingId { get; set; }
     public heating heating { get; set; }
-    
+
+    public string phoneNumber { get; set; }
+
     public int? categoryId { get; set; }
     public category category { get; set; }
 

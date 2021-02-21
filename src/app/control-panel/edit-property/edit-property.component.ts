@@ -2,7 +2,6 @@ import {
   Component,
   OnInit,
   ViewChild,
-  ɵɵNgOnChangesFeature,
 } from '@angular/core';
 import { TabsetComponent } from 'ngx-bootstrap/tabs/public_api';
 import {
@@ -81,6 +80,7 @@ export class EditPropertyComponent implements OnInit {
     subCategory: null,
     secondSubCategoryId: null,
     SecondSubCategory: null,
+    phoneNumber:null
   };
 
   ngOnInit() {
@@ -133,6 +133,7 @@ export class EditPropertyComponent implements OnInit {
       categoryId: new FormControl(null, Validators.required),
       subCategoryId: new FormControl(null),
       secondSubCategoryId: new FormControl(null),
+      phoneNumber:new FormControl(null,Validators.required)
     });
   }
   getCategories() {
@@ -182,6 +183,7 @@ export class EditPropertyComponent implements OnInit {
       this.secondSubCategoryId.setValue(
         this.propertyPreview.secondSubCategoryId
       );
+      this.phoneNumber.setValue(this.propertyPreview.phoneNumber);
     });
   }
   selectTab(tabId: number) {
@@ -284,6 +286,9 @@ export class EditPropertyComponent implements OnInit {
   }
   get secondSubCategoryId() {
     return this.EditForm.get('secondSubCategoryId');
+  }
+  get phoneNumber(){
+    return this.EditForm.get('phoneNumber');
   }
   //#endregion
 }

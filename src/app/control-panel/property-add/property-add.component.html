@@ -149,6 +149,13 @@
                                             هذا الحقل مطلوب
                                         </div>
                                     </div>
+                                    <div class="form-group col-12">
+                                        <label for="phoneNumber">معلومات التواصل</label>
+                                        <textarea type="text" class="form-control" name="phoneNumber" formControlName="phoneNumber"></textarea>
+                                        <div *ngIf="!phoneNumber.valid && phoneNumber.touched" class="form-validation text-danger">
+                                            هذا الحقل مطلوب
+                                        </div>
+                                    </div>
                                     <div class="col-md-12 form-group">
                                         <mat-button-toggle-group formControlName="isFurnished" name="isFurnished" aria-label="is Furnished?" value="true" class="select-form">
                                             <mat-button-toggle value="true" class="select-form">مفروشة</mat-button-toggle>

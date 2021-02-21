@@ -14,6 +14,7 @@ export class PropertyDetailComponent implements OnInit {
   imageUrl:string="Resources/Images/";
   baseUrl=myGlobals.baseUrl;
   modalRef: BsModalRef;
+  similerProperties:IProperty[];
   property:IProperty={
     SecondSubCategory:null,
     adOwner:null,
@@ -42,8 +43,8 @@ export class PropertyDetailComponent implements OnInit {
     subCategory:null,
     subCategoryId:null,
     type:null,
-    typeId:null
-
+    typeId:null,
+    phoneNumber:null
   };
   heat:IHeating={
     heatingName:null,
@@ -63,6 +64,11 @@ export class PropertyDetailComponent implements OnInit {
         this.hs.getHeatingById(this.property.heatingId).subscribe(
           heatDate=>{
             this.heat=heatDate;
+          }
+        )
+        this.hs.getSimilerProperties(data.secondSubCategoryId).subscribe(
+          similer=>{
+            this.similerProperties=similer;
           }
         )
       }

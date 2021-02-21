@@ -55,6 +55,13 @@ namespace Back_End.Controllers
       return Ok(property);
     }
 
+    [HttpGet("similer/{secondSubCategoryId}")]
+    public IActionResult getSimilerProperty(int secondSubCategoryId)
+    {
+      var property = db.properties.Where(x => x.secondSubCategoryId == secondSubCategoryId).Take(4);
+      return Ok(property);
+    }
+
     [HttpPost("add-property")]
     public async Task<IActionResult> AddProperty(Property property)
     {

@@ -18,6 +18,7 @@ export interface IProperty {
   date:Date,
   isFurnished:boolean,
   inSite:boolean,
+  phoneNumber:number,
   proceeds:number,
   typeId:number,
   type:IType,

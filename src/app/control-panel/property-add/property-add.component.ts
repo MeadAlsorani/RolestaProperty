@@ -69,6 +69,7 @@ export class PropertyAddComponent implements OnInit {
     subCategory: null,
     secondSubCategoryId: null,
     SecondSubCategory: null,
+    phoneNumber:null
   };
   ngOnInit() {
     this.AddForm = new FormGroup({
@@ -93,6 +94,7 @@ export class PropertyAddComponent implements OnInit {
       CategoryId: new FormControl(null, Validators.required),
       subCategoryId: new FormControl(null, Validators.required),
       secondSubCategoryId: new FormControl(null),
+      phoneNumber:new FormControl(null,Validators.required)
     });
     this.hs.getTypes().subscribe((data) => {
       this.types = data;
@@ -201,13 +203,16 @@ export class PropertyAddComponent implements OnInit {
     return this.AddForm.get('proceeds') as FormControl;
   }
   get floor() {
-    return this.AddForm.get('floor');
+    return this.AddForm.get('floor') as FormControl;
   }
   get buildingAge() {
-    return this.AddForm.get('buildingAge');
+    return this.AddForm.get('buildingAge') as FormControl;
   }
   get Category() {
-    return this.AddForm.get('CategoryId');
+    return this.AddForm.get('CategoryId') as FormControl;
+  }
+  get phoneNumber(){
+    return this.AddForm.get('phoneNumber') as FormControl;
   }
   //#endregion
 }
