@@ -6,20 +6,21 @@ import {CarouselService} from '../../Services/carousel.service';
 import * as myGlobals from '../../../assets/global';
 import {CategoryService} from '../../Services/category.service';
 import { ICategory, ISubCategory, ISecondSubCategory } from '../../Interfaces/ICategory';
+import {FilterParameters, FilterPipe} from '../../Pipes/filter.pipe';
 @Component({
   selector: 'app-property-list',
   templateUrl: './property-list.component.html',
-  styleUrls: ['./property-list.component.css']
+  styleUrls: ['./property-list.component.css'],
+  providers:[FilterPipe]
 })
 export class PropertyListComponent implements OnInit {
   properties :Array<IProperty>;
   imageUrl:string=myGlobals.baseUrl+"Resources/carousel/";
-  filterInfo={
+  filterInfo:FilterParameters={
     categoryId:0,
-    subCategoryId:0,
     secondSubCategoryId:0,
-    city:''
-  }
+    subCategoryId:0
+  };
   categories:Array<ICategory>;
   subCategories:Array<ISubCategory>;
   secondSubCategories:Array<ISecondSubCategory>;
@@ -73,7 +74,6 @@ export class PropertyListComponent implements OnInit {
         return true;
       }
     })
-    console.log(event);
 
   }
   clearFilter(){
@@ -81,5 +81,15 @@ export class PropertyListComponent implements OnInit {
     this.filterInfo.subCategoryId=0;
     this.filterInfo.secondSubCategoryId=0;
     this.getProperties();
+  }
+
+  log(){
+    console.log(this.properties);
+    console.log(this.filterInfo);
+    this.filterInfo={
+      categoryId:this.filterInfo.categoryId,
+      secondSubCategoryId:this.filterInfo.secondSubCategoryId,
+      subCategoryId:this.filterInfo.subCategoryId
+    };
   }
 }

@@ -15,6 +15,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { PropertyRentComponent } from './Property/property-rent/property-rent.component';
 import { PropertBuyComponent } from './Property/propert-buy/propert-buy.component';
+import { CarsComponent } from './Property/cars/cars.component';
 const appRoutes: Routes = [
   {
     path: '',
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'rent-property', component: PropertyRentComponent },
   { path: 'buy-property', component: PropertBuyComponent },
+  { path: 'car-list', component: CarsComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 

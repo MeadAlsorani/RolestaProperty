@@ -13,6 +13,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import {PropertyRentComponent} from '../Property/property-rent/property-rent.component';
 import {PropertBuyComponent} from '../Property/propert-buy/propert-buy.component';
+import {FilterPipe} from '../Pipes/filter.pipe';
 @NgModule({
   declarations: [
     PropertyCardComponent,
@@ -23,7 +24,8 @@ import {PropertBuyComponent} from '../Property/propert-buy/propert-buy.component
     ControlListComponent,
     EditPropertyComponent,
     PropertBuyComponent,
-    PropertyRentComponent
+    PropertyRentComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,
