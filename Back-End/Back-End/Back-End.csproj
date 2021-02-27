@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Back_End</RootNamespace>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>    
+    <Nullable></Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,9 +24,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Images\" />
-    <Folder Include="Resources\carousel\" />
-    <Folder Include="Resources\cars\" />
+    <!--<Folder Include="Resources\Images\" />-->
+    <Content Include="Resources\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <!--<Folder Include="Resources\carousel\" />
+    <Folder Include="Resources\cars\" />-->
   </ItemGroup>
 
 

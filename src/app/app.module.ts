@@ -18,14 +18,16 @@ import { PropertModModule } from './control-panel/propert-mod.module';
 import { PageNotFoundComponent } from './pageNotFound/page-not-found.component';
 import { AuthService } from './Services/auth.service';
 import {AuthModule} from './auth/auth.module';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     NavBarComponent,
     ControlPanelComponent,
     PageNotFoundComponent,
-  ],
+      AboutComponent
+   ],
   imports: [
     BrowserModule,
     HttpClientModule,

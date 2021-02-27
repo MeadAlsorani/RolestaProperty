@@ -1,7 +1,6 @@
-<app-nav-bar></app-nav-bar>
-<!-- <div class="container" *ngIf="dis" style="margin-top: 5%;"> -->
-<router-outlet (ifContainer)="dis"></router-outlet>
-<!-- </div> -->
-<div *ngIf="!dis">
-    <router-outlet (ifContainer)="dis"></router-outlet>
-</div>
+<header>
+    <app-nav-bar></app-nav-bar>
+</header>
+<section>
+    <router-outlet></router-outlet>
+</section>
