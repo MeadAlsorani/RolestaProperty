@@ -13,21 +13,23 @@ import { HousingService } from './Services/Housing.service';
 import { CarService } from './Services/car.service';
 import { AppRoutingModule } from './app-routing.module';
 import { CarModule } from './control-panel/car-control/car.module';
-import {AppCarouselModule} from './control-panel/carousel-control/carousel.module';
+import { AppCarouselModule } from './control-panel/carousel-control/carousel.module';
 import { PropertModModule } from './control-panel/propert-mod.module';
 import { PageNotFoundComponent } from './pageNotFound/page-not-found.component';
 import { AuthService } from './Services/auth.service';
-import {AuthModule} from './auth/auth.module';
+import { AuthModule } from './auth/auth.module';
 import { AboutComponent } from './about/about.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     NavBarComponent,
     ControlPanelComponent,
     PageNotFoundComponent,
-      AboutComponent
-   ],
+    AboutComponent,
+    FooterComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -38,10 +40,15 @@ import { AboutComponent } from './about/about.component';
     AuthModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
-
   ],
   // exports: [MatFormFieldModule, MatInputModule],
-  providers: [CarService, AlertService, CarouselService, HousingService,AuthService],
-  bootstrap: [AppComponent]
+  providers: [
+    CarService,
+    AlertService,
+    CarouselService,
+    HousingService,
+    AuthService,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,0 +1,73 @@
+::ng-deep body {
+    background-color: #f8f8f8 !important;
+}
+
+.card {
+    margin-bottom: 1rem;
+    border: none;
+    outline: #6d6d6d 10px 10px !important;
+}
+
+.contactIcon {
+    position: relative;
+    height: 100%;
+}
+
+i {
+    position: absolute;
+    top: 20%;
+    background-color: #fef6f4;
+    color: #eb4d1f;
+    padding-right: .5rem !important;
+    padding: .5rem;
+    border-radius: 50%;
+    font-size: 24px;
+    padding-right: 1rem;
+}
+
+span {
+    font-size: 20px;
+    color: #6d6d6d;
+}
+
+.contact-info {
+    line-height: 30px;
+}
+
+.color {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    background-color: rgba(30, 15, 99, 0.5);
+    /* z-index: 10; */
+}
+
+.contact-header-text {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    z-index: 10;
+}
+
+.contact-header-text h1 {
+    font-weight: 600;
+    color: white;
+}
+
+.contact-header-text h5 {
+    color: rgb(228, 227, 227);
+}
+
+.contactUs-Image {
+    position: relative;
+}
+
+.contactBtn {
+    background-color: goldenrod;
+    color: whitesmoke;
+    font-weight: 550;
+}
+
+.contactCard {
+    padding: 1rem
+}

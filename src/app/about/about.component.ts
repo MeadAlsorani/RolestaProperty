@@ -12,4 +12,7 @@ export class AboutComponent implements OnInit {
   ngOnInit() {
   }
 
+  scroll(element:HTMLElement){
+    element.scrollIntoView();
+  }
 }

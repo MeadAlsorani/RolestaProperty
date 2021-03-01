@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+.footerContainer {
+    background-color: #011e4a;
+    padding: 1.5rem;
+}
+
+.footerContainer * {
+    font-family: 'Amiri', serif;
+}
+
+#dec {
+    color: #dddddd
+}
+
+.copyRight {
+    color: #bbbbbb;
+}
