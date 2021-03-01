@@ -9,7 +9,7 @@
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>True</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
-    <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
+    <ActiveDebugProfile>Back_End</ActiveDebugProfile>
     <ShowAllFiles>false</ShowAllFiles>
     <WebStackScaffolding_DbContextTypeFullName>Back_End.Data.DataContext</WebStackScaffolding_DbContextTypeFullName>
     <NameOfLastUsedPublishProfile>FolderProfile</NameOfLastUsedPublishProfile>
