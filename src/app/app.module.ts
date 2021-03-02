@@ -20,7 +20,7 @@ import { AuthService } from './Services/auth.service';
 import { AuthModule } from './auth/auth.module';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
-
+import {NavbarColorDirective} from './shared/navbarColor.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +28,8 @@ import { FooterComponent } from './footer/footer.component';
     ControlPanelComponent,
     PageNotFoundComponent,
     AboutComponent,
-    FooterComponent
+    FooterComponent,
+    NavbarColorDirective
   ],
   imports: [
     BrowserModule,

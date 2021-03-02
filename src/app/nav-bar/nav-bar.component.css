@@ -1,5 +1,14 @@
+.navbar {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(0, 0, 0, .5), rgba(0, 0, 0, 0));
+}
+
 .nav-link {
     font-family: 'Almarai', sans-serif;
+    color: whitesmoke
+}
+
+.nav-link a {
+    color: whitesmoke
 }
 
 .login-btn {
@@ -14,10 +23,23 @@
     cursor: default;
 }
 
-.navbar-dark .navbar-nav .active>.nav-link,
-.navbar-dark .navbar-nav .nav-link.active,
-.navbar-dark .navbar-nav .nav-link.show,
-.navbar-dark .navbar-nav .show>.nav-link {
-    color: goldenrod;
+.navbar-nav .active>.nav-link,
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show,
+.navbar-nav .show>.nav-link {
+    color: rgb(252, 208, 98);
+    font-weight: 700;
     font-size: 600;
+}
+
+.navbar-brand {
+    color: goldenrod;
+    font-size: 30px;
+    text-shadow: #101010 1px 1px 2px 10px;
+    font-family: 'Amiri', serif;
+}
+
+.navbar-brand img {
+    width: 50px;
+    height: 50px;
 }
