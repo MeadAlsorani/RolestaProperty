@@ -28,7 +28,7 @@ import { FooterComponent } from './footer/footer.component';
     ControlPanelComponent,
     PageNotFoundComponent,
     AboutComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +41,6 @@ import { FooterComponent } from './footer/footer.component';
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
   ],
-  // exports: [MatFormFieldModule, MatInputModule],
   providers: [
     CarService,
     AlertService,

@@ -8,6 +8,7 @@ import { IProperty } from '../../Interfaces/IProperty.interface';
 })
 export class PropertyRentComponent implements OnInit {
   properties:IProperty[];
+  isLoading:boolean=true;
   constructor(
     private proService:HousingService
   ) { }
@@ -20,6 +21,11 @@ export class PropertyRentComponent implements OnInit {
     this.proService.getRentProperties().subscribe(
       data=>{
         this.properties=data;
+      },error=>{
+        console.log(error);
+      },
+      ()=>{
+        this.isLoading=false;
       }
     )
   }

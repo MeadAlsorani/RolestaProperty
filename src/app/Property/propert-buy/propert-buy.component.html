@@ -1,8 +1,23 @@
-<br>
-<div class="container">
-    <div class="row">
-        <div class="property col-md-4" *ngFor="let property of properties">
-            <app-property-card [property]="property" [ifPreview]="true"></app-property-card>
+<div class="spinner" *ngIf="isloading">
+    <div class="spinner">
+        <img src="../../assets/RolestaLogo.png" alt="logo">
+    </div>
+</div>
+<div *ngIf="!isloading">
+    <div class="head">
+        <div class="blackLayout">
+            <h4 class="title">
+                الصفحة الرئيسية - شقق للبيع
+            </h4>
         </div>
     </div>
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="property col-md-3" *ngFor="let property of properties">
+                <app-property-card [property]="property" [ifPreview]="true"></app-property-card>
+            </div>
+        </div>
+    </div>
+    <br>
 </div>

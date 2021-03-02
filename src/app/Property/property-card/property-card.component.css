@@ -79,8 +79,8 @@
 
 .property-card-price {
     position: absolute;
-    left: .5rem;
-    bottom: 4rem;
+    left: .2rem;
+    bottom: 6rem;
     background-color: rgba(238, 36, 36, 0.9);
     z-index: 10;
     padding: 3px 5px !important;

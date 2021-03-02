@@ -8,19 +8,22 @@ import { HousingService } from '../../Services/Housing.service';
 })
 export class PropertBuyComponent implements OnInit {
   properties: IProperty[];
-  constructor(
-    private proService:HousingService
-  ) {}
+  isloading: boolean = true;
+  constructor(private proService: HousingService) {}
 
   ngOnInit() {
     this.getBuyProperties();
   }
 
-  getBuyProperties(){
+  getBuyProperties() {
     this.proService.getBuyProperties().subscribe(
-      data=>{
-        this.properties=data;
+      (data) => {
+        this.properties = data;
+      },
+      null,
+      () => {
+        this.isloading = false;
       }
-    )
+    );
   }
 }

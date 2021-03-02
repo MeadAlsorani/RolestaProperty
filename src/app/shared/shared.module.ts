@@ -15,7 +15,6 @@ import { CommonModule } from '@angular/common';
 import {RouterModule} from '@angular/router';
 @NgModule({
   declarations: [
-
   ],
   imports: [
 
@@ -35,7 +34,7 @@ import {RouterModule} from '@angular/router';
     MatSelectModule,
     MatButtonToggleModule,
     MatDialogModule,
-    RouterModule
+    RouterModule,
   ]
 })
 export class SharedModule { }
