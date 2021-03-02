@@ -39,7 +39,7 @@
 </carousel>
 <div class="container ">
     <div class="row ">
-        <div *ngFor="let PCArd of (properties|filter:filterInfo) " class="card-list col-sm-4 ">
+        <div *ngFor="let PCArd of (properties|filter:filterInfo) " class="card-list col-sm-3 ">
             <app-property-card [property]="PCArd " [ifPreview]="true "></app-property-card>
         </div>
     </div>

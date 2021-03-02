@@ -1,33 +1,39 @@
-<div class="card text-right" dir="rtl">
-    <div class="card-image-section">
-        <div class="property-card-type">
-            <h5>
-                {{subCategory.subCategoryName}}
-            </h5>
-        </div>
-        <div class="image-wrapper">
-            <img *ngIf="!property.image" class="card-image card-img-top" src="assets/house.png" alt="" />
-            <carousel [isAnimated]="true" *ngIf="property.image" class="card-image card-img-top">
-                <slide *ngFor="let item of property.image">
-                    <img [src]="[baseUrl+imageUrl+item]" class="card-image" alt="first slide" style="display: block; width: 100%;">
-                </slide>
-            </carousel>
-        </div>
+<div class="propertyCard text-right" dir="rtl">
+    <div *ngIf="ifPreview" class="mt-1">
+        <a routerLink="/property-detail/{{ property.id }}">
+            <div class="card-image-section">
+                <div class="property-card-type">
+                    <h5>
+                        {{ subCategory.subCategoryName }}
+                    </h5>
+                </div>
+                <div class="card-bottom">
+                    <div class="property-card-typeName">
+                        <h5>
+                            {{ type.typeName }}
+                        </h5>
+                    </div>
+                    <div class="property-card-address">
+                        <span style="color: grey">
+              <span *ngIf="property.provience"
+                >{{ property.provience }} -
+              </span>
+                        <span *ngIf="property.city">{{ property.city }} - </span>
+                        <span>{{ property.street }}</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="property-card-price">
+                    <span class="subPrice">{{ property.price | number }}</span>
+                </div>
+                <div class="property-card-noOfRooms">
+                    <span *ngIf="property.noOfRooms"> {{ property.noOfRooms }}+1 </span>
+                </div>
+                <div class="image-wrapper">
+                    <img *ngIf="!property.image" class="card-image card-img-top" src="assets/house.png" alt="" />
+                    <img [src]="[baseUrl + imageUrl + property.image[0]]" class="card-image" alt="first slide" style="display: block; width: 100%" />
+                </div>
+            </div>
+        </a>
     </div>
-    <div class="car-body p-4">
-        <h3>{{ type.typeName }}
-            <span *ngIf="property.noOfRooms"> {{ property.noOfRooms }}+1 </span>
-            <span class="subPrice" style="font-size: 18px;">{{ property.price |number}}</span>
-        </h3>
-        <span style="color: grey">
-      <span *ngIf="property.provience">{{ property.provience }} - </span>
-        <span *ngIf="property.city">{{ property.city }} - </span>{{ property.street }}
-        </span>
-        <br />
-        <div *ngIf="ifPreview" class="mt-1">
-            <a routerLink="/property-detail/{{ property.id }}" class="btn btn-outline-primary">
-        تفاصيل</a
-      >
-    </div>
-  </div>
 </div>

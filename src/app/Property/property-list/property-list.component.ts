@@ -21,6 +21,7 @@ export class PropertyListComponent implements OnInit {
     secondSubCategoryId:0,
     subCategoryId:0
   };
+  isloading:boolean=true;
   categories:Array<ICategory>;
   subCategories:Array<ISubCategory>;
   secondSubCategories:Array<ISecondSubCategory>;

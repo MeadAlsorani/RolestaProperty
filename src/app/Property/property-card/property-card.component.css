@@ -1,4 +1,4 @@
-.card {
+.propertyCard {
     box-shadow: 1px 2px 10px 2px rgba(20, 20, 20, 0.541);
     border-radius: 0 0 10px 10px;
 }
@@ -9,7 +9,7 @@
     transition: all .5s ease;
 }
 
-.card:hover .card-image {
+.propertyCard:hover .card-image {
     transform: scale(1.2, 1.2);
     transition: all .5s ease;
     opacity: 70%;
@@ -39,12 +39,65 @@
     left: 0;
     z-index: 10;
     background-color: rgba(238, 36, 36, 0.9);
-    width: 25%;
+    padding: .5rem 1rem !important;
+    text-align: center;
+    color: white;
+    opacity: .8;
+}
+
+.property-card-address {
+    width: 100%;
+    z-index: 10;
     text-align: center;
     color: white;
 }
 
+.property-card-address * {
+    color: white;
+    font-weight: 300;
+}
+
+.card-bottom {
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(to top, black, rgba(0, 0, 0, 0));
+    z-index: 10;
+    width: 100%;
+}
+
+.property-card-typeName {
+    text-align: left;
+    padding-left: 1rem;
+    font-weight: 700;
+    color: white;
+}
+
 .property-card-type h5 {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 500;
+}
+
+.property-card-price {
+    position: absolute;
+    left: .5rem;
+    bottom: 4rem;
+    background-color: rgba(238, 36, 36, 0.9);
+    z-index: 10;
+    padding: 3px 5px !important;
+}
+
+.property-card-price span {
+    color: white;
+    font-size: 12px;
+}
+
+.property-card-noOfRooms {
+    position: absolute;
+    right: .3rem;
+    bottom: 3rem;
+    z-index: 10;
+}
+
+.property-card-noOfRooms span {
+    color: white;
 }
