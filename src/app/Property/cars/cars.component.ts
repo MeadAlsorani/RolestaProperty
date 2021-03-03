@@ -8,6 +8,7 @@ import {CarService} from '../../Services/car.service';
 })
 export class CarsComponent implements OnInit {
   cars:ICar[];
+  isloading:boolean=true;
   constructor(
     private carService:CarService
   ) {}
@@ -15,6 +16,9 @@ export class CarsComponent implements OnInit {
   ngOnInit() {
     this.carService.getAllCars().subscribe(car=>{
       this.cars=car;
+    },null,
+    ()=>{
+      this.isloading=false;
     })
   }
 

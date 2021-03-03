@@ -43,3 +43,8 @@
     width: 50px;
     height: 50px;
 }
+
+.dropdown-item {
+    color: black !important;
+    font-family: 'Almarai', sans-serif;
+}

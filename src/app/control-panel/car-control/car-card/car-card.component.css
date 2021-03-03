@@ -1,3 +1,26 @@
 .card-image {
     max-height: 200px;
+    position: relative;
+}
+
+.car-card:hover .card-image {
+    transform: scale(1.2, 1.2);
+    transition: all .5s ease;
+    opacity: 70%;
+}
+
+.image-wrapper {
+    overflow: hidden;
+}
+
+.card-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(to top, rgba(50, 50, 50, .8), rgba(50, 50, 50, .0));
+}
+
+.card-bottom span {
+    color: white;
 }

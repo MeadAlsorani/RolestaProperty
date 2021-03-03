@@ -1,22 +1,12 @@
 <div class="car-card">
-    <div class="card">
-        <div class="card-image">
-            <carousel [isAnimated]="true" class="card-image card-img-top">
-                <slide *ngFor="let item of car.pictures">
-                    <img [src]="[carImageUrl+item]" class="card-image" alt="first slide" style="display: block; width: 100%;">
-                </slide>
-            </carousel>
-        </div>
-        <div class="card-body text-right" dir="rtl">
-            <span>
-            <span style="font-size: 24px;">{{carCompany.companyName}} {{car.modelName}}</span> - <span>{{car.modelYear}}</span>
-            </span>
-            <div dir="rtl" style="color: rgba(50,50,50);">
-                <span>نوع الفيتيس :</span> <span *ngIf="car.isAuto"> Auto </span><span *ngIf="!car.isAuto">Manual</span>
+    <a routerLink="/car-details">
+        <div class="card">
+            <div class="image-wrapper">
+                <img [src]="[carImageUrl+car.pictures[0]]" class="card-image" alt="first slide" style="display: block; width: 100%;">
             </div>
-            <div class="car-details mt-2">
-                <button class="btn btn-outline-primary">تفاصيل</button>
+            <div class="card-bottom">
+                <span style="font-size: 24px;">{{carCompany.companyName}} {{car.modelName}} - {{car.modelYear}}</span>
             </div>
         </div>
-    </div>
+    </a>
 </div>

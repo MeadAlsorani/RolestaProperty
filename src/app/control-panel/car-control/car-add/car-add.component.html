@@ -1,120 +1,122 @@
-<div class="container">
-    <div class="row">
-        <div class="card col-md-12 p-3 mt-2">
-            <div class="card-header text-center">
-                <h4>اضافة سيارة</h4>
-            </div>
-            <form [formGroup]="AddCar" (ngSubmit)="AddNewCar(AddCar.value)" class="text-right">
-                <tabset #FormTabs>
-                    <tab heading="مواصفات السيارة" id="tab1">
-                        <div class="form-group col-12">
-                            <label for="modelName">اسم الموديل</label>
-                            <input type="text" class="form-control" name="modelName" formControlName="modelName" />
-                            <div *ngIf="!modelName.valid && modelName.touched" class="form-validation text-danger">
-                                هذا الحقل مطلوب
+<div class="control-section">
+    <div class="container">
+        <div class="row">
+            <div class="card col-md-12 p-3 mt-2">
+                <div class="card-header text-center">
+                    <h4>اضافة سيارة</h4>
+                </div>
+                <form [formGroup]="AddCar" (ngSubmit)="AddNewCar(AddCar.value)" class="text-right">
+                    <tabset #FormTabs>
+                        <tab heading="مواصفات السيارة" id="tab1">
+                            <div class="form-group col-12">
+                                <label for="modelName">اسم الموديل</label>
+                                <input type="text" class="form-control" name="modelName" formControlName="modelName" />
+                                <div *ngIf="!modelName.valid && modelName.touched" class="form-validation text-danger">
+                                    هذا الحقل مطلوب
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group col-12">
-                            <label for="modelYear">سنة الموديل</label>
-                            <input type="number" class="form-control" name="modelYear" formControlName="modelYear" />
-                            <div *ngIf="!modelYear.valid && modelYear.touched" class="form-validation text-danger">
-                                هذا الحقل مطلوب
+                            <div class="form-group col-12">
+                                <label for="modelYear">سنة الموديل</label>
+                                <input type="number" class="form-control" name="modelYear" formControlName="modelYear" />
+                                <div *ngIf="!modelYear.valid && modelYear.touched" class="form-validation text-danger">
+                                    هذا الحقل مطلوب
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group col-12">
-                            <mat-form-field appearance="fill" class="select-form">
-                                <mat-label>الشركة المصنعة</mat-label>
-                                <mat-select name="carCompanyId" formControlName="carCompanyId">
-                                    <mat-option *ngFor="let company of carCompanies" [value]="company.id">
-                                        {{ company.companyName }}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <mat-button-toggle-group formControlName="isRent" name="isRent" aria-label="isRent?" [value]="true" class="select-form">
-                                <mat-button-toggle [value]="true" class="select-form">تأجير</mat-button-toggle>
-                                <mat-button-toggle [value]="false" class="select-form">مبيع </mat-button-toggle>
-                            </mat-button-toggle-group>
-                        </div>
-                        <div class="form-group col-12" *ngIf="isRent.touched|| isRent.value">
-                            <label for="price" *ngIf="isRent.value">سعر التأجير</label>
-                            <label for="price" *ngIf="!isRent.value">سعر المبيع</label>
-                            <input type="number" class="form-control" name="price" formControlName="price" />
-                            <div *ngIf="!price.valid && price.touched" class="form-validation text-danger">
-                                هذا الحقل مطلوب
+                            <div class="form-group col-12">
+                                <mat-form-field appearance="fill" class="select-form">
+                                    <mat-label>الشركة المصنعة</mat-label>
+                                    <mat-select name="carCompanyId" formControlName="carCompanyId">
+                                        <mat-option *ngFor="let company of carCompanies" [value]="company.id">
+                                            {{ company.companyName }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
                             </div>
-                        </div>
-                        <button type="button" class="btn btn-info btn-md mr-2" routerLink="/car-control">
+                            <div class="col-md-12 form-group">
+                                <mat-button-toggle-group formControlName="isRent" name="isRent" aria-label="isRent?" [value]="true" class="select-form">
+                                    <mat-button-toggle [value]="true" class="select-form">تأجير</mat-button-toggle>
+                                    <mat-button-toggle [value]="false" class="select-form">مبيع </mat-button-toggle>
+                                </mat-button-toggle-group>
+                            </div>
+                            <div class="form-group col-12" *ngIf="isRent.touched|| isRent.value">
+                                <label for="price" *ngIf="isRent.value">سعر التأجير</label>
+                                <label for="price" *ngIf="!isRent.value">سعر المبيع</label>
+                                <input type="number" class="form-control" name="price" formControlName="price" />
+                                <div *ngIf="!price.valid && price.touched" class="form-validation text-danger">
+                                    هذا الحقل مطلوب
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-info btn-md mr-2" routerLink="/car-control">
+                        العودة الى قائمة السيارات
+                      </button>
+                            <button type="button" class="btn btn-primary btn-md" (click)="selectTab(1)">
+                        التالي
+                     </button>
+                        </tab>
+
+                        <tab heading="المواصفات الفنية">
+                            <div class="col-md-12 form-group">
+                                <mat-button-toggle-group formControlName="isAuto" name="isAuto" aria-label="isAuto?" [value]="true" class="select-form">
+                                    <mat-button-toggle [value]="true" class="select-form">اوتوماتيك</mat-button-toggle>
+                                    <mat-button-toggle [value]="false" class="select-form">عادي</mat-button-toggle>
+                                </mat-button-toggle-group>
+                            </div>
+                            <div class="form-group col-12" *ngIf="!isRent.value">
+                                <label for="lostAmount">مقدار خسارة القيد </label>
+                                <input type="number" class="form-control" name="lostAmount" formControlName="lostAmount" />
+                                <div *ngIf="!lostAmount.valid && lostAmount.touched" class="form-validation text-danger">
+                                    هذا الحقل مطلوب
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group" *ngIf="!isRent.value">
+                                <mat-button-toggle-group formControlName="isHeavy" name="isHeavy" aria-label="isHeavy?" [value]="true" class="select-form">
+                                    <mat-button-toggle [value]="true" class="select-form">أغر</mat-button-toggle>
+                                    <mat-button-toggle [value]="false" class="select-form">ليس أغر</mat-button-toggle>
+                                </mat-button-toggle-group>
+                            </div>
+                            <button type="button" class="btn btn-default btn-md mr-2" (click)="selectTab(0)">
+                        رجوع
+                      </button>
+                            <button type="button" class="btn btn-primary btn-md" (click)="selectTab(2)">
+                        التالي
+                     </button>
+                        </tab>
+
+                        <tab heading="الشرح">
+                            <div class="form-group col-12">
+                                <label for="description">الشرح</label>
+                                <textarea type="text" class="form-control" name="description" formControlName="description"></textarea>
+                                <div *ngIf="!description.valid && description.touched" class="form-validation text-danger">
+                                    هذا الحقل مطلوب
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-default btn-md mr-2" (click)="selectTab(1)">
+                        رجوع
+                      </button>
+                            <button type="button" class="btn btn-primary btn-md" (click)="selectTab(3)">
+                        التالي
+                     </button>
+                        </tab>
+                        <tab heading="الصور">
+                            <div class="photo-control">
+                                <app-uplaodCarImage (onUploadFinished)="uploadFinished($event)"></app-uplaodCarImage>
+                            </div>
+                            <button type="button" class="btn btn-outline-default btn-md mr-2" (click)="selectTab(2)">
+                        رجوع
+                      </button>
+                            <button type="submit" class="btn btn-success btn-md mr-2">
+                        اضافة
+                     </button>
+                            <button type="reset" class="btn btn-outline-warning btn-md mr-2" (click)="onReset()">
+                      الغاء
+                      </button>
+                            <button type="button" class="btn btn-outline-info btn-md " routerLink="/car-control">
                       العودة الى قائمة السيارات
                     </button>
-                        <button type="button" class="btn btn-primary btn-md" (click)="selectTab(1)">
-                      التالي
-                   </button>
-                    </tab>
-
-                    <tab heading="المواصفات الفنية">
-                        <div class="col-md-12 form-group">
-                            <mat-button-toggle-group formControlName="isAuto" name="isAuto" aria-label="isAuto?" [value]="true" class="select-form">
-                                <mat-button-toggle [value]="true" class="select-form">اوتوماتيك</mat-button-toggle>
-                                <mat-button-toggle [value]="false" class="select-form">عادي</mat-button-toggle>
-                            </mat-button-toggle-group>
-                        </div>
-                        <div class="form-group col-12" *ngIf="!isRent.value">
-                            <label for="lostAmount">مقدار خسارة القيد </label>
-                            <input type="number" class="form-control" name="lostAmount" formControlName="lostAmount" />
-                            <div *ngIf="!lostAmount.valid && lostAmount.touched" class="form-validation text-danger">
-                                هذا الحقل مطلوب
-                            </div>
-                        </div>
-                        <div class="col-md-12 form-group" *ngIf="!isRent.value">
-                            <mat-button-toggle-group formControlName="isHeavy" name="isHeavy" aria-label="isHeavy?" [value]="true" class="select-form">
-                                <mat-button-toggle [value]="true" class="select-form">أغر</mat-button-toggle>
-                                <mat-button-toggle [value]="false" class="select-form">ليس أغر</mat-button-toggle>
-                            </mat-button-toggle-group>
-                        </div>
-                        <button type="button" class="btn btn-default btn-md mr-2" (click)="selectTab(0)">
-                      رجوع
-                    </button>
-                        <button type="button" class="btn btn-primary btn-md" (click)="selectTab(2)">
-                      التالي
-                   </button>
-                    </tab>
-
-                    <tab heading="الشرح">
-                        <div class="form-group col-12">
-                            <label for="description">الشرح</label>
-                            <textarea type="text" class="form-control" name="description" formControlName="description"></textarea>
-                            <div *ngIf="!description.valid && description.touched" class="form-validation text-danger">
-                                هذا الحقل مطلوب
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-default btn-md mr-2" (click)="selectTab(1)">
-                      رجوع
-                    </button>
-                        <button type="button" class="btn btn-primary btn-md" (click)="selectTab(3)">
-                      التالي
-                   </button>
-                    </tab>
-                    <tab heading="الصور">
-                        <div class="photo-control">
-                            <app-uplaodCarImage (onUploadFinished)="uploadFinished($event)"></app-uplaodCarImage>
-                        </div>
-                        <button type="button" class="btn btn-outline-default btn-md mr-2" (click)="selectTab(2)">
-                      رجوع
-                    </button>
-                        <button type="submit" class="btn btn-success btn-md mr-2">
-                      اضافة
-                   </button>
-                        <button type="reset" class="btn btn-outline-warning btn-md mr-2" (click)="onReset()">
-                    الغاء
-                    </button>
-                        <button type="button" class="btn btn-outline-info btn-md " routerLink="/car-control">
-                    العودة الى قائمة السيارات
-                  </button>
-                    </tab>
-                </tabset>
-            </form>
+                        </tab>
+                    </tabset>
+                </form>
+            </div>
         </div>
     </div>
 </div>

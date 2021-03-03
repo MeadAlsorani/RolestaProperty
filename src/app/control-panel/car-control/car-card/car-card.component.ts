@@ -10,7 +10,10 @@ import { CarService } from 'src/app/Services/car.service';
 export class CarCardComponent implements OnInit {
   @Input() car:ICar
   carImageUrl:string=myGlobals.baseUrl+"Resources/cars/";
-  carCompany:ICarCompany
+  carCompany:ICarCompany={
+    companyName:null,
+    id:null
+  }
   constructor(
     private carService:CarService
   ) { }

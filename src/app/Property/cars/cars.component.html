@@ -1,10 +1,23 @@
-<br>
-<div class="container">
-    <div class="row">
-        <div class="carContainer">
-            <div class="car col-4" *ngFor="let car of cars">
+<div class="spinner" *ngIf="isloading">
+    <div class="spinner">
+        <img src="../../assets/RolestaLogo.png" alt="logo">
+    </div>
+</div>
+<div *ngIf="!isloading">
+    <div class="head">
+        <div class="blackLayout">
+            <h4 class="title">
+                الصفحة الرئيسية - سيارات
+            </h4>
+        </div>
+    </div>
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-md-3" *ngFor="let car of cars">
                 <app-car-card [car]="car"></app-car-card>
             </div>
         </div>
     </div>
+    <br>
 </div>
