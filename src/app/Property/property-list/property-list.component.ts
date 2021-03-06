@@ -95,13 +95,5 @@ export class PropertyListComponent implements OnInit {
     this.getProperties();
   }
 
-  log() {
-    console.log(this.properties);
-    console.log(this.filterInfo);
-    this.filterInfo = {
-      categoryId: this.filterInfo.categoryId,
-      secondSubCategoryId: this.filterInfo.secondSubCategoryId,
-      subCategoryId: this.filterInfo.subCategoryId,
-    };
-  }
+
 }

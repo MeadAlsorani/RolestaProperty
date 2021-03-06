@@ -12,6 +12,7 @@ import {UplaodCarImageComponent} from './car-add/uplaodImage/uplaodImage.compone
 import {CarCardComponent} from './car-card/car-card.component'
 import {CarsComponent} from '../../Property/cars/cars.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import {CarsFilterPipe} from '../../Pipes/carsFilter.pipe';
 @NgModule({
   imports: [
     CommonModule,
@@ -27,6 +28,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
       UplaodCarImageComponent,
       CarCardComponent,
       CarsComponent
-  ]
+  ],
+  providers:[CarsFilterPipe]
 })
 export class CarModule { }

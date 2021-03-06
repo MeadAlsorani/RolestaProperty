@@ -194,3 +194,4 @@ E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\Resources\
 E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\Resources\Images\d19a80ee-b234-4e8c-a953-36ca853b9066.jpeg
 E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\Resources\Images\d6825f75-84c4-4f09-a4a8-7b9d40186874.jpeg
 E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\Resources\Images\edc052db-fdbf-4a38-b4b1-ee1ff3ffd023.jpeg
+E:\Projects\RolestaProperty\Back-End\Back-End\bin\Debug\netcoreapp3.1\Resources\carousel\1015c558-abce-4840-924b-38986dbfbfba.jpg

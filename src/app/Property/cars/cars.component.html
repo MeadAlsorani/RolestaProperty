@@ -12,10 +12,83 @@
         </div>
     </div>
     <div class="container">
-        <br>
-        <div class="row">
-            <div class="col-md-3" *ngFor="let car of cars">
-                <app-car-card [car]="car"></app-car-card>
+        <div class="row pt-3">
+            <div class="filterSection card col-md-3 p-3">
+                <aside>
+                    <h4 class="text-center">تصفية النتائج</h4>
+                    <mat-form-field class="text-center">
+                        <mat-label>معرف الاعلان</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <mat-form-field class="filter-field">
+                                <mat-label>نوع العقار</mat-label>
+                                <mat-select>
+                                    <mat-option [value]="'food'">
+                                        test
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field class="filter-field">
+                                <mat-label>مبيع - ايجار</mat-label>
+                                <mat-select>
+                                    <mat-option [value]="'food'">
+                                        test
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <mat-form-field class="filter-field">
+                        <mat-label>تصنيف العقار</mat-label>
+                        <mat-select>
+                            <mat-option [value]="'food'">
+                                test
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="row">
+                        <span class="text-center w-100">السعر</span>
+                        <mat-form-field class="text-center col-6">
+                            <mat-label>من</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                        <mat-form-field class="text-center col-6">
+                            <mat-label>الى</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <span class="text-center w-100">المساحة</span>
+                        <mat-form-field class="text-center col-6">
+                            <mat-label>من</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                        <mat-form-field class="text-center col-6">
+                            <mat-label>الى</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field class="text-center col-12">
+                            <input matInput placeholder="عدد الغرف">
+                        </mat-form-field>
+                    </div>
+                    <div class="w-100 text-center">
+                        <button class="btn btn-warning">تصفية</button>
+                    </div>
+                </aside>
+            </div>
+            <div class="cardsSection col-md-9">
+                <article>
+                    <div class="col-md-4" *ngFor="let car of cars">
+                        <app-car-card [car]="car"></app-car-card>
+                    </div>
+                </article>
             </div>
         </div>
     </div>
