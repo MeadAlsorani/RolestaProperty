@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -21,6 +22,7 @@ import { AuthModule } from './auth/auth.module';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import {NavbarColorDirective} from './shared/navbarColor.directive';
+import {PropertyListComponent} from './Property/property-list/property-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,8 @@ import {NavbarColorDirective} from './shared/navbarColor.directive';
     PageNotFoundComponent,
     AboutComponent,
     FooterComponent,
-    NavbarColorDirective
+    NavbarColorDirective,
+    PropertyListComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import {NavbarColorDirective} from './shared/navbarColor.directive';
     AuthModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
+    CarouselModule.forRoot()
   ],
   providers: [
     CarService,

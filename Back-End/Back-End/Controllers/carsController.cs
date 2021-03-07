@@ -46,7 +46,12 @@ namespace Back_End.Controllers
 
       return car;
     }
-
+    [HttpGet("last/{lastAmount}")]
+    public IActionResult getLastCars(int lastAmount)
+    {
+      var cars = _context.cars.OrderByDescending(x => x.id).Take(lastAmount);
+      return Ok(cars);
+    }
     [HttpGet("rent")]
     public async Task<ActionResult<car>> GetRentCars()
     {

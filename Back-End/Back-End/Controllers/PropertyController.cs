@@ -55,6 +55,14 @@ namespace Back_End.Controllers
       return Ok(property);
     }
 
+
+    [HttpGet("last/{lastAmount}")]
+    public IActionResult getLastProperties(int lastAmount)
+    {
+      var property = db.properties.OrderByDescending(x => x.id).Take(lastAmount);
+      return Ok(property);
+    }
+
     [HttpGet("similer/{secondSubCategoryId}")]
     public IActionResult getSimilerProperty(int secondSubCategoryId)
     {

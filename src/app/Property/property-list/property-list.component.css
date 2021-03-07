@@ -84,3 +84,134 @@
         transform: scale(1, 1);
     }
 }
+
+.aboutUs-section {
+    height: 400px;
+    position: relative;
+    text-align: center;
+}
+
+.section-image {
+    background: url(../../../assets/mainpage.jpg) center no-repeat fixed;
+    filter: blur(2px);
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+}
+
+.color-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(32, 14, 97, 0.5);
+}
+
+.aboutUs-card {
+    position: absolute;
+    top: 35%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 2px 10px 20px #111111;
+    max-width: 500px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.card p {
+    font-size: 20px;
+}
+
+.ourServices {
+    background: url(../../../assets/sectionBack.jpg) no-repeat center;
+    background-size: cover;
+    padding-bottom: 1rem;
+}
+
+.ServicesTitle h2,
+.ServicesTitle p {
+    color: #ffffdd;
+}
+
+.service-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(0, 0, 0, .3);
+    box-shadow: none;
+    outline: 0px solid #035cd1;
+    transition: all ease 300ms;
+    height: 350px;
+    position: relative;
+}
+
+.service-card p {
+    font-size: 16px;
+    color: #e4e4e4;
+}
+
+.service-card i {
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+}
+
+.service-card h3,
+.service-card i {
+    color: #b5e6ee;
+}
+
+.service-card:hover {
+    border: 2px solid #b5e6ee;
+    outline: 1px solid #b5e6ee;
+    box-shadow: 1px 5px 10px #b5e6ee50;
+    transform: scale(1.05, 1.05);
+}
+
+.serviceLink {
+    color: #b5e6ee;
+    font-weight: 600;
+    position: absolute;
+    bottom: 2rem;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.green-card h3,
+.green-card i,
+.green-card button {
+    color: #25c49c
+}
+
+.green-card:hover {
+    border: 2px solid #25c49c;
+    outline: 1px solid #25c49c;
+    box-shadow: 1px 5px 10px #25c49c50;
+}
+
+.pink-card h3,
+.pink-card i,
+.pink-card button {
+    color: #c93ebd
+}
+
+.pink-card:hover {
+    border: 2px solid #c93ebd;
+    outline: 1px solid #c93ebd;
+    box-shadow: 1px 5px 10px #c93ebd50;
+}
+
+.purple-card h3,
+.purple-card i,
+.purple-card button {
+    color: #9842d1
+}
+
+.purple-card:hover {
+    border: 2px solid #9842d1;
+    outline: 1px solid #9842d1;
+    box-shadow: 1px 5px 10px #9842d150;
+}

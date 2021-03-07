@@ -29,6 +29,7 @@ import {CarsFilterPipe} from '../../Pipes/carsFilter.pipe';
       CarCardComponent,
       CarsComponent
   ],
-  providers:[CarsFilterPipe]
+  providers:[CarsFilterPipe],
+  exports:[CarCardComponent]
 })
 export class CarModule { }

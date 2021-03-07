@@ -41,6 +41,9 @@ export class CarService {
     return this.http.put<ICar>(this.url + id, property);
   }
 
+  getLastCars(lastAmount:number):Observable<ICar[]>{
+    return this.http.get<ICar[]>(this.url+"last/"+lastAmount);
+  }
 //#endregion
 
 //#region carCompany api callers

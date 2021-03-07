@@ -8,46 +8,105 @@
         <slide *ngFor="let carousel of carousels">
             <img [src]="imageUrl+carousel.picture" alt="first slide" class="carousel-image" style="display: block; width: 100%;">
         </slide>
-        <!-- <div class="filter-form">
-            <div class="card text-center filter">
-                <div class="card-header filter-header"></div>
-                <div class="card-body filter-body">
-                    <mat-form-field appearance="fill" class="select-form">
-                        <mat-label>نوع العقار</mat-label>
-                        <mat-select #CategorySelect name="categoryId" [(ngModel)]="filterInfo.categoryId" (selectionChange)="getSubCategories($event)">
-                            <mat-option *ngFor="let Category of categories" [(value)]="Category.id">
-                                {{ Category.category_Name }}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field appearance="fill" class="select-form">
-                        <mat-label>بيع او ايجار</mat-label>
-                        <mat-select #subCategorySelect [disabled]="!filterInfo.categoryId" name="subCategoryId" [(ngModel)]="filterInfo.subCategoryId" (selectionChange)="getSecondSubCategory($event)">
-                            <mat-option *ngFor="let subCategory of subCategories" [(value)]="subCategory.id">
-                                {{ subCategory.subCategoryName }}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field appearance="fill" class="select-form">
-                        <mat-label>خصائص العقار</mat-label>
-                        <mat-select name="secondSubCategoryId" [disabled]="!filterInfo.subCategoryId " [(ngModel)]="filterInfo.secondSubCategoryId">
-                            <mat-option *ngFor="let subCategory of secondSubCategories" [(value)]="subCategory.id">
-                                {{ subCategory.subCategoryName }}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <br>
-                    <button class="btn btn-lg btn-warning" style="color: white;" (click)="log()">فلترة</button> |
-                    <button class="btn btn-lg btn-light" (click)="clearFilter() ">الغاء الفلاتر</button>
+    </carousel>
+    <div class="aboutUs-section">
+        <div class="section-image"></div>
+        <div class="color-layer"></div>
+        <div class="aboutUs-card">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">من نحن</h2>
+                    <p class="card-text">شركة روليستادان العقارية هي احد افرع شركة روليستا المتخصصة في مجال الاستشارات القانونية والخدمات بمختلف انواعها العقارية والتقنية بالاضافة الى تجارة السيارات والشحن الداخلي والخارجي</p>
                 </div>
             </div>
-        </div> -->
-    </carousel>
+        </div>
+    </div>
     <div class="container ">
-        <div class="row ">
+        <div class="row pt-4">
+            <div class="sectionTitle col-12 text-center">
+                <h3>أحدث العقارات</h3>
+            </div>
             <div *ngFor="let PCArd of (properties) " class="card-list col-sm-3 ">
                 <app-property-card [property]="PCArd " [ifPreview]="true "></app-property-card>
             </div>
         </div>
     </div>
+    <div class="ourServices">
+        <div class="container">
+            <div class="row pt-4">
+                <div class="ServicesTitle col-12 text-center">
+                    <h2>خدماتنا</h2>
+                    <p>نوفر لكم مجموعة مميزة من الخدمات المميزة المقدمة من افضل الخبراء في مجال الاستشارات العقارية ومجال السيارات بمحتلف انواعها</p>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card  service-card">
+                        <div class="card-body text-center">
+                            <i class="fa fa-users"></i>
+                            <h3 class="card-title">
+                                استشارات مجانية
+                            </h3>
+                            <p class="card-text">
+                                استشارات مجانية طيلة ايام الاسبوع يوفرها لكم مجموعة من الخبراء والمختصين ، كل ماعليكم فعله هو التواصل معنا ومعرفة كل ماتحتاجونه
+                            </p>
+                            <button routerLink="/contactUs" class="btn btn-default serviceLink">تواصل معنا ></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card  service-card green-card">
+                        <div class="card-body text-center">
+                            <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                            <h3 class="card-title">
+                                متابعة قانونية
+                            </h3>
+                            <p class="card-text">
+                                متابعة كافة الامور القانونية المتعلقة بالعقارات والمركبات من فراغة وآجار وأمور الطابو والكشف العقاري والتنظيم
+                            </p>
+                            <button routerLink="/contactUs" class="btn btn-default serviceLink">تواصل معنا ></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card  service-card pink-card">
+                        <div class="card-body text-center">
+                            <i class="fa fa-building-o" aria-hidden="true"></i>
+                            <h3 class="card-title">
+                                استثمار وجنسية
+                            </h3>
+                            <p class="card-text">
+                                نوفر لكم خيارات عقارية مميزة ومتنوعة يمكن الحصول على الجنسية التركية عن طريقها وبنفس الوقت تعد فرصة استثمارية ممتازة
+                            </p>
+                            <button routerLink="/contactUs" class="btn btn-default serviceLink">تواصل معنا ></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card  service-card purple-card">
+                        <div class="card-body text-center">
+                            <i class="fa fa-plane" aria-hidden="true"></i>
+                            <h3 class="card-title">
+                                من المطار الى العقار
+                            </h3>
+                            <p class="card-text">
+                                نوفر لكم خدماتنا السياحية والعقارية بنفس الوقت حيث نقوم باستقبالكم من بوابة المطار ونرافقكم في مدينة مرسين السياحية لايجاد العقار المناسب لكم
+                            </p>
+                            <button routerLink="/contactUs" class="btn btn-default serviceLink">تواصل معنا ></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section>
+        <div class="container">
+            <div class="row pt-4 mb-3">
+                <h2 class="w-100 text-center">
+                    أحدث السيارات
+                </h2>
+                <div class="col-md-3" *ngFor="let car of cars">
+                    <app-car-card [car]="car"></app-car-card>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>

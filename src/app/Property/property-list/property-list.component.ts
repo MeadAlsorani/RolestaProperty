@@ -4,13 +4,10 @@ import { IProperty } from '../../Interfaces/IProperty.interface';
 import { ICarousel } from '../../Interfaces/ICarousel';
 import { CarouselService } from '../../Services/carousel.service';
 import * as myGlobals from '../../../assets/global';
-import { CategoryService } from '../../Services/category.service';
-import {
-  ICategory,
-  ISubCategory,
-  ISecondSubCategory,
-} from '../../Interfaces/ICategory';
-import { FilterParameters, FilterPipe } from '../../Pipes/filter.pipe';
+
+import { FilterPipe } from '../../Pipes/filter.pipe';
+import { ICar } from 'src/app/Interfaces/ICar';
+import { CarService } from 'src/app/Services/car.service';
 @Component({
   selector: 'app-property-list',
   templateUrl: './property-list.component.html',
@@ -20,19 +17,12 @@ import { FilterParameters, FilterPipe } from '../../Pipes/filter.pipe';
 export class PropertyListComponent implements OnInit {
   properties: Array<IProperty>;
   imageUrl: string = myGlobals.baseUrl + 'Resources/carousel/';
-  filterInfo: FilterParameters = {
-    categoryId: 0,
-    secondSubCategoryId: 0,
-    subCategoryId: 0,
-  };
   isloading: boolean = true;
-  categories: Array<ICategory>;
-  subCategories: Array<ISubCategory>;
-  secondSubCategories: Array<ISecondSubCategory>;
+  cars: Array<ICar>;
   constructor(
     private housnigService: HousingService,
     private CarouselService: CarouselService,
-    private categoryService: CategoryService
+    private carService: CarService
   ) {}
   carousels: Array<ICarousel>;
   ngOnInit() {
@@ -40,60 +30,17 @@ export class PropertyListComponent implements OnInit {
       this.carousels = data;
     });
     this.getProperties();
-    this.getCategories();
+    this.getCars();
   }
   getProperties() {
-    this.housnigService.getAllProperties().subscribe((data) => {
+    this.housnigService.getLastProperties(8).subscribe((data) => {
       this.properties = data;
-      console.log(data);
+      this.isloading = false;
     });
   }
-  getCategories() {
-    this.categoryService.getCategoris().subscribe(
-      (cat) => {
-        this.categories = cat;
-      },
-      null,
-      () => {
-        this.isloading = false;
-      }
-    );
-  }
-  getSubCategories(CategoryId) {
-    if (CategoryId.value) {
-      this.categoryService.getSubCategories().subscribe((data) => {
-        this.subCategories = data.filter(
-          (x) => x.categoryId == CategoryId.value
-        );
-      });
-    }
-  }
-  getSecondSubCategory(CategoryId) {
-    this.categoryService.getSecondSubCategories().subscribe((data) => {
-      this.secondSubCategories = data.filter(
-        (x) => x.subCategoryId == CategoryId.value
-      );
+  getCars() {
+    this.carService.getLastCars(8).subscribe((car) => {
+      this.cars = car;
     });
   }
-
-  filterSubmit(event) {
-    this.properties = this.properties.filter(function (item) {
-      console.log(item);
-
-      for (var key in event) {
-        if (item[key] === undefined || item[key] != event[key]) {
-          return false;
-        }
-        return true;
-      }
-    });
-  }
-  clearFilter() {
-    this.filterInfo.categoryId = 0;
-    this.filterInfo.subCategoryId = 0;
-    this.filterInfo.secondSubCategoryId = 0;
-    this.getProperties();
-  }
-
-
 }
