@@ -1,0 +1,18 @@
+.card-body {}
+
+.card-image {
+    height: 400px;
+}
+
+.car-icon {
+    height: 30px;
+    width: 30px;
+    font-size: 26px;
+    color: #c29c1f;
+    margin: 1rem 0 1rem 0;
+}
+
+.icon-text {
+    font-size: 18px;
+    font-weight: 500;
+}

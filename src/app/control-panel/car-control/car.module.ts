@@ -13,6 +13,7 @@ import {CarCardComponent} from './car-card/car-card.component'
 import {CarsComponent} from '../../Property/cars/cars.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import {CarsFilterPipe} from '../../Pipes/carsFilter.pipe';
+import {CarDatailsComponent} from '../../Property/cars/car-datails/car-datails.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -27,7 +28,8 @@ import {CarsFilterPipe} from '../../Pipes/carsFilter.pipe';
       CarListComponent,
       UplaodCarImageComponent,
       CarCardComponent,
-      CarsComponent
+      CarsComponent,
+      CarDatailsComponent
   ],
   providers:[CarsFilterPipe],
   exports:[CarCardComponent]

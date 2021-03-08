@@ -29,7 +29,7 @@ namespace Back_End.Controllers
     [HttpGet]
     public IActionResult getAllProperties()
     {
-      var properties = db.properties.ToList();
+      var properties = db.properties.OrderByDescending(x => x.id).ToList();
       return Ok(properties);
     }
 

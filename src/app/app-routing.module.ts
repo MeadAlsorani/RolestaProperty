@@ -17,6 +17,7 @@ import { PropertyRentComponent } from './Property/property-rent/property-rent.co
 import { PropertBuyComponent } from './Property/propert-buy/propert-buy.component';
 import { CarsComponent } from './Property/cars/cars.component';
 import { AboutComponent } from './about/about.component';
+import {CarDatailsComponent} from './Property/cars/car-datails/car-datails.component';
 const appRoutes: Routes = [
   {
     path: '',
@@ -66,6 +67,7 @@ const appRoutes: Routes = [
   { path: 'buy-property', component: PropertBuyComponent },
   { path: 'car-list', component: CarsComponent },
   {path:'contactUs',component:AboutComponent},
+  {path:'carDetails/:id',component:CarDatailsComponent},
   { path: '**', component: PageNotFoundComponent },
 ];
 

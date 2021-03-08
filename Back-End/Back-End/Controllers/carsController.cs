@@ -30,7 +30,7 @@ namespace Back_End.Controllers
     [HttpGet]
     public async Task<ActionResult<IEnumerable<car>>> Getcars()
     {
-      return await _context.cars.ToListAsync();
+      return await _context.cars.OrderByDescending(x=>x.id).ToListAsync();
     }
 
     // GET: api/cars/5
