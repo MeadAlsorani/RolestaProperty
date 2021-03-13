@@ -29,7 +29,13 @@ export class NavBarComponent implements OnInit {
 
     }
   }
-  test(){
+  ArLang(){
+    this.translate.use('ar');
+  }
+  TrLang(){
+    this.translate.use('tr');
+  }
+  EnLang(){
     this.translate.use('en');
   }
   isloggedIn() {

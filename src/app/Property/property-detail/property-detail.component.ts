@@ -4,6 +4,7 @@ import { IProperty, IHeating } from '../../Interfaces/IProperty.interface';
 import { HousingService } from '../../Services/Housing.service';
 import * as myGlobals from '../../../assets/global';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-property-detail',
   templateUrl: './property-detail.component.html',
@@ -15,6 +16,7 @@ export class PropertyDetailComponent implements OnInit {
   baseUrl=myGlobals.baseUrl;
   modalRef: BsModalRef;
   similerProperties:IProperty[];
+  currentLang:string;
   property:IProperty={
     SecondSubCategory:null,
     adOwner:null,
@@ -44,7 +46,9 @@ export class PropertyDetailComponent implements OnInit {
     subCategoryId:null,
     type:null,
     typeId:null,
-    phoneNumber:null
+    phoneNumber:null,
+    descriptionEn:null,
+    descriptionTr:null
   };
   heat:IHeating={
     heatingName:null,
@@ -52,11 +56,13 @@ export class PropertyDetailComponent implements OnInit {
   }
   constructor(
     private route:ActivatedRoute,
-    private router:Router,
+    private translate:TranslateService,
     private hs:HousingService,
     private modalService: BsModalService
     ) { }
   ngOnInit(): void {
+    this.currentLang=this.translate.currentLang;
+
     this.propertyId=+this.route.snapshot.params['id'];
     this.hs.getPropertyById(this.propertyId).subscribe(
       data=>{

@@ -30,7 +30,15 @@
                             <img src="../../../../assets/Accident-02-512.png" alt="transmission icon" class="car-icon mr-2 ml-2" style="width: 40px;height: 40px;"> <span class="icon-text"> {{car.lostAmount}} &#8378;</span>
                         </div>
                         <div class="col-12 text-center">
+                            <span *ngIf="currentLang=='ar'">
                             {{car.description}}
+                          </span>
+                            <span *ngIf="currentLang=='en'">
+                            {{car.descriptionEn}}
+                          </span>
+                            <span *ngIf="currentLang=='en'">
+                            {{car.descriptionTr}}
+                          </span>
                         </div>
                     </div>
                 </div>

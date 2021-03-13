@@ -63,7 +63,9 @@
                 <tabset class="member-tabset" style="text-align: right; direction: rtl;">
                     <tab [heading]="'propertyFields.description'|translate">
                         <h3 translate>propertyFields.description</h3>
-                        <p>{{property.description}}</p>
+                        <p *ngIf="currentLang=='ar'">{{property.description}}</p>
+                        <p *ngIf="currentLang=='en'">{{property.descriptionEn}}</p>
+                        <p *ngIf="currentLang=='tr'">{{property.descriptionTr}}</p>
                     </tab>
                     <tab [heading]="'propertyFields.comunicationDetails'|translate">
                         <h1 translate>propertyFields.comunicationDetails</h1>

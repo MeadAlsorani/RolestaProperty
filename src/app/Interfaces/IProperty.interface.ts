@@ -9,6 +9,8 @@ export interface IProperty {
   street:string,
   noOfRooms:number,
   description:string,
+  descriptionTr:string,
+  descriptionEn:string,
   image:string[],
   area:number,
   buildingAge:number,

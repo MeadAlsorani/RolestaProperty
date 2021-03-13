@@ -41,6 +41,8 @@ namespace Back_End.Models
     public int proceeds { get; set; }
     public string Description { get; set; }
 
+    public string DescriptionTr { get; set; }
+    public string DescriptionEn { get; set; }
     public string[] Image { get; set; }
 
     public int typeId { get; set; }

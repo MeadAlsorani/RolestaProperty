@@ -75,7 +75,10 @@
             "lostAmount": "خسارة القيد",
             "heavy": "أغر",
             "notHeavy": "غير أغر",
-            "filter": "تصفية"
+            "filter": "تصفية",
+            "companyOption": {
+                "Toyota": "تويوتا"
+            }
         }
     },
     "navbar": {

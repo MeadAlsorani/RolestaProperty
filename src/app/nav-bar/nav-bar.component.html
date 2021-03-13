@@ -39,7 +39,15 @@
                     </li>
                 </ul>
             </div>
-            <button (click)="test()">test</button>
+            <a class="m-2 LangLink" (click)="ArLang()">
+                <img src="../../assets/arabic.png" class="LangIcon">
+            </a>
+            <a class="m-2 LangLink" (click)="EnLang()">
+                <img src="../../assets/english.png" class="LangIcon">
+            </a>
+            <a class="m-2 LangLink" (click)="TrLang()">
+                <img src="../../assets/turkey.png" class="LangIcon">
+            </a>
             <a routerLink="/login" *ngIf="!isloggedIn()" class="nav-link login-btn" translate>navbar.login</a>
         </div>
     </div>

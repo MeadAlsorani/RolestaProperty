@@ -24,7 +24,8 @@ namespace Back_End.Models
     public bool isHeavy { get; set; }
 
     public string description { get; set; }
-
+    public string descriptionTr { get; set; }
+    public string descriptionEn { get; set; }
     [Required]
     public bool isRent { get; set; }
 

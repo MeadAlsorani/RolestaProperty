@@ -6,6 +6,8 @@ export interface ICar {
   lostAmount:number,
   isHeavy:boolean,
   description:string,
+  descriptionTr:string,
+  descriptionEn:string,
   isRent:boolean,
   price:number,
   pictures:string[],

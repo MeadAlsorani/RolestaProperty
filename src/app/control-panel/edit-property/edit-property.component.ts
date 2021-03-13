@@ -1,8 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TabsetComponent } from 'ngx-bootstrap/tabs/public_api';
 import {
   FormGroup,
@@ -80,7 +76,9 @@ export class EditPropertyComponent implements OnInit {
     subCategory: null,
     secondSubCategoryId: null,
     SecondSubCategory: null,
-    phoneNumber:null
+    phoneNumber: null,
+    descriptionEn: null,
+    descriptionTr: null,
   };
 
   ngOnInit() {
@@ -133,7 +131,9 @@ export class EditPropertyComponent implements OnInit {
       categoryId: new FormControl(null, Validators.required),
       subCategoryId: new FormControl(null),
       secondSubCategoryId: new FormControl(null),
-      phoneNumber:new FormControl(null,Validators.required)
+      phoneNumber: new FormControl(null),
+      descritpionTr: new FormControl(null),
+      descriptionEn: new FormControl(null),
     });
   }
   getCategories() {
@@ -184,6 +184,8 @@ export class EditPropertyComponent implements OnInit {
         this.propertyPreview.secondSubCategoryId
       );
       this.phoneNumber.setValue(this.propertyPreview.phoneNumber);
+      this.descriptionEn.setValue(this.propertyPreview.descriptionEn);
+      this.descriptionTr.setValue(this.propertyPreview.descriptionTr);
     });
   }
   selectTab(tabId: number) {
@@ -201,7 +203,7 @@ export class EditPropertyComponent implements OnInit {
     } else {
       propertyPreview.image = this.propertyPreview.image;
     }
-    propertyPreview.date=this.propertyPreview.date;
+    propertyPreview.date = this.propertyPreview.date;
     propertyPreview.id = this.propertyId;
     this.hs.editProperty(this.propertyId, propertyPreview).subscribe(
       (data) => {
@@ -241,6 +243,12 @@ export class EditPropertyComponent implements OnInit {
   }
   get description() {
     return this.EditForm.get('description') as FormControl;
+  }
+  get descriptionTr() {
+    return this.EditForm.get('descriptionTr') as FormControl;
+  }
+  get descriptionEn() {
+    return this.EditForm.get('descriptionEn') as FormControl;
   }
   get area() {
     return this.EditForm.get('area') as FormControl;
@@ -287,7 +295,7 @@ export class EditPropertyComponent implements OnInit {
   get secondSubCategoryId() {
     return this.EditForm.get('secondSubCategoryId');
   }
-  get phoneNumber(){
+  get phoneNumber() {
     return this.EditForm.get('phoneNumber');
   }
   //#endregion

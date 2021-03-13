@@ -48,3 +48,12 @@
     color: black !important;
     font-family: 'Almarai', sans-serif;
 }
+
+.LangIcon {
+    width: 25px;
+    height: 20px;
+}
+
+.LangLink {
+    cursor: pointer;
+}

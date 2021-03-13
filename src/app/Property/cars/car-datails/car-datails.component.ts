@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ICar, ICarCompany } from '../../../Interfaces/ICar';
 import { CarService } from '../../../Services/car.service';
 import * as myGlobals from '../../../../assets/global';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-car-datails',
   templateUrl: './car-datails.component.html',
@@ -10,6 +11,7 @@ import * as myGlobals from '../../../../assets/global';
 })
 export class CarDatailsComponent implements OnInit {
   carId: number;
+  currentLang;
   car: ICar = {
     id: null,
     modelYear: null,
@@ -23,6 +25,8 @@ export class CarDatailsComponent implements OnInit {
     pictures: null,
     carCompanyId: null,
     carCompany: null,
+    descriptionEn:null,
+    descriptionTr:null
   };
   imageUrl: string = 'Resources/cars/';
   baseUrl = myGlobals.baseUrl;
@@ -30,9 +34,14 @@ export class CarDatailsComponent implements OnInit {
     companyName:null,
     id:null
   }
-  constructor(private route: ActivatedRoute, private CarService: CarService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private CarService: CarService,
+    private translate:TranslateService
+    ) {}
 
   ngOnInit() {
+    this.getLanguage();
     this.route.params.subscribe((data) => {
       this.carId = +data['id'];
       this.CarService.getCarById(this.carId).subscribe((data) => {
@@ -45,7 +54,9 @@ export class CarDatailsComponent implements OnInit {
       });
     });
   }
-
+  getLanguage(){
+    this.currentLang=this.translate.currentLang;
+  }
   isRent(value){
     if (value) {
       return "ايجار";

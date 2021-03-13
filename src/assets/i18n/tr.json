@@ -1,0 +1,102 @@
+{
+    "contactUs": "Bize Ulaşın",
+    "whoAreUs": {
+        "title": "Biz Kimiz?",
+        "text": "Rolestadan Emlak Şirketi, araba ticareti ve iç ve dış nakliye hizmetlerinin yanı sıra çeşitli gayrimenkul ve teknoloji türlerinde hukuki danışmanlık ve hizmetler alanında uzmanlaşmış Rolesta şirketinin şubelerinden biridir."
+    },
+    "lastProperties": "Son gayrimenkul",
+    "ourService": {
+        "title": "Hizmetlerimiz",
+        "text": "Gayrimenkul danışmanlığı ve çeşitli türdeki otomobiller alanında en iyi uzmanlar tarafından sağlanan bir dizi seçkin hizmet sunuyoruz."
+    },
+    "Consultservice": {
+        "title": "Ücretsiz danışmanlık",
+        "text": "Hafta boyunca bir grup uzman ve uzman tarafından sağlanan ücretsiz konsültasyonlar, yapmanız gereken tek şey bizimle iletişime geçmek ve ihtiyacınız olan her şeyi bilmek."
+    },
+    "lawservice": {
+        "title": "Yasal takip",
+        "text": "Mülkiyet devri, kira, gayrimenkul denetimi ve düzenleme konuları da dahil olmak üzere gayrimenkul ve araçlarla ilgili tüm hukuki konuların takibi"
+    },
+    "citizinService": {
+        "title": "Yatırım ve vatandaşlık",
+        "text": "Sizlere Türk vatandaşlığının kazanılabileceği farklı ve çeşitli gayrimenkul seçenekleri ve aynı zamanda mükemmel bir yatırım fırsatı sunuyoruz."
+    },
+    "airportService": {
+        "title": "Havaalanından gayrimenkule",
+        "text": "Sizleri havalimanı kapısından alırken aynı zamanda turizm ve gayrimenkul hizmetlerimizi de sağlıyoruz ve sizin için doğru mülkü bulmanız için turistik şehir Mersin'de size eşlik ediyoruz."
+    },
+    "lastCars": "Son arabalar",
+
+
+    "rentPropertyTitle": "Ana Sayfa - Kiralık Daireler",
+    "propertyFilter": {
+        "adId": "Reklam Kimliği",
+        "propertyCategory": "Emlak Tipi",
+        "priceTitle": "Fiyat",
+        "min": "Minimum",
+        "max": "Maximum",
+        "AreaTitle": "Alan",
+        "numberOfRoomsTitle": "Oda sayısı",
+        "filterButton": "filtrele",
+        "filterTitle": "Sonuçları filtrelemek",
+        "ageTitle": "Binanın yaşı"
+    },
+
+    "propertyFields": {
+        "name": "Reklam Kimliği",
+        "address": "Adres",
+        "area": "Alan",
+        "floor": "Kat",
+        "buildingFloors": "Bina katlarının sayısı",
+        "buildingAge": "Binanın yaşı",
+        "noOfRooms": "Oda sayısı",
+        "heating": "Isıtma sistemi",
+        "adDate": "İlan tarihi",
+        "description": "Açıklama",
+        "comunicationDetails": "İletişim ayrıntıları",
+        "similerProperties": "Benzer gayrimenkul"
+    },
+
+    "propertyBuy": {
+        "title": "Anasayfa - Satılık Daireler"
+    },
+
+    "carList": {
+        "title": "Ana sayfa - arabalar",
+        "filterParams": {
+            "title": "Sonuçları filtrelemek",
+            "company": "Üretim şirketi",
+            "rent": "Kira",
+            "buy": "Satış",
+            "modelYear": "Model yılı",
+            "min": "Minimum",
+            "max": "Maximum",
+            "price": "Fiyat",
+            "lostAmount": "Kayıp Tutar",
+            "heavy": "Ağır",
+            "notHeavy": "Ağır değil",
+            "filter": "filtrele"
+        }
+    },
+    "navbar": {
+        "homePage": "AnaSayfa",
+        "realEstate": "Emlak",
+        "rent": "Kira",
+        "sale": "Satış",
+        "cars": "Arabalar",
+        "welecome": "Hoş geldiniz",
+        "controlPanel": "Kontrol Paneli",
+        "logOut": "Çıkış Yap",
+        "login": "Giriş"
+    },
+    "footer": {
+        "desc": "Rolesta hizmet şirketinin hukuki danışmanlık, gayrimenkul hizmetleri ve araçlar konusunda uzmanlaşmış şubelerinden biri",
+        "homePage": "Ana Sayfa",
+        "rent": "Kiralık emlak",
+        "sale": "Satılık mülkler",
+        "cars": "Arabalar",
+        "contactUs": "Bize Ulaşın",
+        "address": "Çiftlikköy, İsmet İnönü Blv. No:690/19, 33160 Yenişehir/Mersin"
+    }
+
+}
