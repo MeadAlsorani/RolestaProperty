@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../Services/auth.service';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -13,7 +14,11 @@ export class NavBarComponent implements OnInit {
     userName:null,
     password:null
   };
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+     private router: Router,
+     private translate:TranslateService
+     ) {}
 
   ngOnInit() {
     if (this.isloggedIn()) {
@@ -24,7 +29,9 @@ export class NavBarComponent implements OnInit {
 
     }
   }
-
+  test(){
+    this.translate.use('en');
+  }
   isloggedIn() {
     return localStorage.getItem('token');
   }

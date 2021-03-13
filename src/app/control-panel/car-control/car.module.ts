@@ -29,7 +29,8 @@ import {CarDatailsComponent} from '../../Property/cars/car-datails/car-datails.c
       UplaodCarImageComponent,
       CarCardComponent,
       CarsComponent,
-      CarDatailsComponent
+      CarDatailsComponent,
+      CarsFilterPipe
   ],
   providers:[CarsFilterPipe],
   exports:[CarCardComponent]

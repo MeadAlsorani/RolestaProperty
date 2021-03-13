@@ -15,37 +15,37 @@
             </ng-template>
             <div class="infoSection">
                 <span class="detail-info">
-                      الاسم : {{property.name}}
-                    </span>
+                 <span translate>propertyFields.name</span> : {{property.name}}
+                </span>
                 <hr>
                 <span class="detail-info">
-                      العنوان : {{property.provience}} - {{property.city}} - {{property.street}}
-                    </span>
+                  <span translate>propertyFields.address</span> : {{property.provience}} - {{property.city}} - {{property.street}}
+                </span>
                 <hr>
                 <span class="detail-info">
-                      المساحة : {{property.area}}
-                    </span>
+                  <span translate>propertyFields.area</span> : {{property.area}}
+                </span>
                 <hr>
                 <span class="detail-info">
-                      الطابق : {{property.floor}} <br>
-                      عدد طواق البناء : {{property.buildingFloors}}
-                    </span>
+                  <span translate>propertyFields.floor</span> : {{property.floor}} <br>
+                <span translate>propertyFields.buildingFloors</span> : {{property.buildingFloors}}
+                </span>
                 <hr>
                 <span class="detail-info">
-                      عمر البناء : {{property.buildingAge}}
-                    </span>
+                  <span translate>propertyFields.buildingAge</span> : {{property.buildingAge}}
+                </span>
                 <hr>
                 <span class="detail-info">
-                      عدد الغرف: {{property.noOfRooms}}
-                    </span>
+                  <span translate>propertyFields.noOfRooms</span> : {{property.noOfRooms}}
+                </span>
                 <hr>
                 <span class="detail-info">
-                      نوع التدفئة : {{heat.heatingName}}
-                    </span>
+                  <span translate>propertyFields.heating</span> : {{heat.heatingName}}
+                </span>
                 <hr>
                 <span class="detail-info">
-                      تاريخ الاعلان: {{property.date |date: 'yyyy-MM-dd'}}
-                    </span>
+                  <span translate>propertyFields.adDate</span> : {{property.date |date: 'yyyy-MM-dd'}}
+                </span>
                 <hr>
             </div>
 
@@ -61,12 +61,12 @@
         <div class="col-sm-12 p-0">
             <div class="tab-panel p-3">
                 <tabset class="member-tabset" style="text-align: right; direction: rtl;">
-                    <tab heading="الوصف">
-                        <h3>وصف العقار</h3>
+                    <tab [heading]="'propertyFields.description'|translate">
+                        <h3 translate>propertyFields.description</h3>
                         <p>{{property.description}}</p>
                     </tab>
-                    <tab heading="معلومات التواصل">
-                        <h1>معلومات التواصل</h1>
+                    <tab [heading]="'propertyFields.comunicationDetails'|translate">
+                        <h1 translate>propertyFields.comunicationDetails</h1>
                         <div class="container">
                             <div class="row">
                                 <h4>{{property.phoneNumber}}</h4>
@@ -84,7 +84,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 m-3 text-right">
-                <h2>عقارات مماثلة</h2>
+                <h2 translate>propertyFields.similerProperties</h2>
             </div>
             <div class="col-md-4" *ngFor="let property of similerProperties">
                 <app-property-card [property]="property" [ifPreview]="true"></app-property-card>

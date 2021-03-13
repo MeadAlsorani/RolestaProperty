@@ -7,36 +7,40 @@
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto mr-auto text-center">
             <li class="nav-item">
-                <a class="nav-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/property-list">الصفحة الرئيسية </a>
+                <a class="nav-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/property-list" translate>navbar.homePage</a>
             </li>
             <li class="nav-item dropdown">
                 <div class="dropdown">
-                    <button class="nav-link btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  عقارات
+                    <button class="nav-link btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" translate>
+                  navbar.realEstate
                 </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/rent-property">آجار</a>
-                        <a class="dropdown-item" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/buy-property">شراء</a>
+                        <a class="dropdown-item" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/rent-property" translate>navbar.rent</a>
+                        <a class="dropdown-item" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/buy-property" translate>navbar.sale</a>
                     </div>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/car-list">سيارات</a>
+                <a class="nav-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/car-list" translate>navbar.cars</a>
             </li>
         </ul>
         <div class="nav-link">
             <div class="btn-group" *ngIf="isloggedIn()" dropdown>
                 <button id="button-basic" dropdownToggle type="button" class="btn btn-default login-dropLink dropdown-toggle" aria-controls="dropdown-basic">
-                 اهلا بك {{user.userName}} <span class="caret"></span>
+                 <span translate>navbar.welecome</span> {{user.userName}} <span class="caret"></span>
                 </button>
                 <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-                    <li role="menuitem"><a class="dropdown-item" routerLink="/control-panel">لوحة التحكم</a></li>
+                    <li role="menuitem">
+                        <a class="dropdown-item" routerLink="/control-panel" translate>navbar.controlPanel</a>
+                    </li>
                     <li class="divider dropdown-divider"></li>
-                    <li role="menuitem"><a class="dropdown-item" (click)="logout()">تسجيل الخروج</a>
+                    <li role="menuitem">
+                        <a class="dropdown-item" (click)="logout()" translate>navbar.logOut</a>
                     </li>
                 </ul>
             </div>
-            <a routerLink="/login" *ngIf="!isloggedIn()" class="nav-link login-btn">تسجيل الدخول</a>
+            <button (click)="test()">test</button>
+            <a routerLink="/login" *ngIf="!isloggedIn()" class="nav-link login-btn" translate>navbar.login</a>
         </div>
     </div>
 </nav>

@@ -13,12 +13,15 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import {RouterModule} from '@angular/router';
+import {TranslateModule} from '@ngx-translate/core';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [
    ],
   imports: [
-
+    TranslateModule.forRoot(),
+    CarouselModule.forRoot()
   ],
   exports:[
     CommonModule,
@@ -36,6 +39,8 @@ import {RouterModule} from '@angular/router';
     MatButtonToggleModule,
     MatDialogModule,
     RouterModule,
+    TranslateModule,
+    CarouselModule
   ]
 })
 export class SharedModule { }

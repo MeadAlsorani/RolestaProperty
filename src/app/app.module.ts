@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
@@ -23,6 +23,11 @@ import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import {NavbarColorDirective} from './shared/navbarColor.directive';
 import {PropertyListComponent} from './Property/property-list/property-list.component';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core'
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +49,15 @@ import {PropertyListComponent} from './Property/property-list/property-list.comp
     AuthModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    TranslateModule.forRoot({
+      loader:{
+        provide: TranslateLoader,
+        useFactory:HttpLoaderFactory,
+        deps:[HttpClient],
+      },
+      defaultLanguage:'ar'
+    })
   ],
   providers: [
     CarService,

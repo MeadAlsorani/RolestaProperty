@@ -1,0 +1,102 @@
+{
+    "contactUs": "Contact us",
+    "whoAreUs": {
+        "title": "Who are we?",
+        "text": "Rolestadan Real Estate Company is one of the branches of the Rolista company specialized in the field of legal advice and services of various types of real estate and technology in addition to the car trade and internal and external shipping"
+    },
+    "lastProperties": "Last properties",
+    "ourService": {
+        "title": "Our services",
+        "text": "We provide you with a set of distinguished services provided by the best experts in the field of real estate consultancy and the field of cars of various kinds"
+    },
+    "Consultservice": {
+        "title": "Free consultations",
+        "text": "Free consultations throughout the week provided by a group of experts and specialists, all you have to do is contact us and know all you need"
+    },
+    "lawservice": {
+        "title": "Legal follow-up",
+        "text": "Follow-up of all legal matters related to real estate and vehicles, including transfer of ownership, rent, real estate inspection and regulation matters"
+    },
+    "citizinService": {
+        "title": "Investment and citizenship",
+        "text": "We provide you with distinctive and varied real estate options through which Turkish citizenship can be obtained and at the same time excellent investment opportunity"
+    },
+    "airportService": {
+        "title": "From the airport to the property",
+        "text": "We provide you with our tourism and real estate services at the same time as we receive you from the airport gate and accompany you in the tourist city of Mersin to find the right property for you."
+    },
+    "lastCars": "Last cars",
+
+
+    "rentPropertyTitle": "Home - apartments for rent",
+    "propertyFilter": {
+        "adId": "Ad Id",
+        "propertyCategory": "Property type",
+        "priceTitle": "Price",
+        "min": "Minimum",
+        "max": "Maximum",
+        "AreaTitle": "Area",
+        "numberOfRoomsTitle": "Number of rooms",
+        "filterButton": "filter",
+        "filterTitle": "Filtering the results",
+        "ageTitle": "Age of the building"
+    },
+
+    "propertyFields": {
+        "name": "Ad Id",
+        "address": "Address",
+        "area": "Area",
+        "floor": "Floor",
+        "buildingFloors": "The number of building floors",
+        "buildingAge": "Building age",
+        "noOfRooms": "Number of rooms",
+        "heating": "Heating system",
+        "adDate": "Ad date",
+        "description": "Description",
+        "comunicationDetails": "Comunication details",
+        "similerProperties": "Similer properties"
+    },
+
+    "propertyBuy": {
+        "title": "Home - apartments for sale"
+    },
+
+    "carList": {
+        "title": "Home - cars",
+        "filterParams": {
+            "title": "Filter your results",
+            "company": "Manufacture company",
+            "rent": "Rent",
+            "buy": "Sale",
+            "modelYear": "Model yeay",
+            "min": "Minimum",
+            "max": "Maximum",
+            "price": "Price",
+            "lostAmount": "Lost Amount",
+            "heavy": "Heavy",
+            "notHeavy": "Not heavy",
+            "filter": "filter"
+        }
+    },
+    "navbar": {
+        "homePage": "Home",
+        "realEstate": "Real estate",
+        "rent": "Rent",
+        "sale": "Sale",
+        "cars": "Cars",
+        "welecome": "Welecome",
+        "controlPanel": "Control Panel",
+        "logOut": "Logout",
+        "login": "Login"
+    },
+    "footer": {
+        "desc": "One of the branches of the service company Rolista specializing in legal advice, real estate services and vehicles",
+        "homePage": "Home Page",
+        "rent": "Properties for rent",
+        "sale": "Properties for Sale",
+        "cars": "Cars",
+        "contactUs": "Contact us",
+        "address": "Çiftlikköy, İsmet İnönü Blv. No:690/19, 33160 Yenişehir/Mersin"
+    }
+
+}

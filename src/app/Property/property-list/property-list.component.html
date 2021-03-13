@@ -15,8 +15,8 @@
         <div class="aboutUs-card">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title">من نحن</h2>
-                    <p class="card-text">شركة روليستادان العقارية هي احد افرع شركة روليستا المتخصصة في مجال الاستشارات القانونية والخدمات بمختلف انواعها العقارية والتقنية بالاضافة الى تجارة السيارات والشحن الداخلي والخارجي</p>
+                    <h2 class="card-title" translate>whoAreUs.title</h2>
+                    <p class="card-text" translate>whoAreUs.text</p>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
     <div class="container ">
         <div class="row pt-4">
             <div class="sectionTitle col-12 text-center">
-                <h3>أحدث العقارات</h3>
+                <h3 translate>lastProperties</h3>
             </div>
             <div *ngFor="let PCArd of (properties) " class="card-list col-sm-3 ">
                 <app-property-card [property]="PCArd " [ifPreview]="true "></app-property-card>
@@ -35,20 +35,20 @@
         <div class="container">
             <div class="row pt-4">
                 <div class="ServicesTitle col-12 text-center">
-                    <h2>خدماتنا</h2>
-                    <p>نوفر لكم مجموعة مميزة من الخدمات المميزة المقدمة من افضل الخبراء في مجال الاستشارات العقارية ومجال السيارات بمحتلف انواعها</p>
+                    <h2 translate>ourService.title</h2>
+                    <p translate>ourService.text</p>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="card  service-card">
                         <div class="card-body text-center">
                             <i class="fa fa-users"></i>
-                            <h3 class="card-title">
-                                استشارات مجانية
+                            <h3 class="card-title" translate>
+                                Consultservice.title
                             </h3>
-                            <p class="card-text">
-                                استشارات مجانية طيلة ايام الاسبوع يوفرها لكم مجموعة من الخبراء والمختصين ، كل ماعليكم فعله هو التواصل معنا ومعرفة كل ماتحتاجونه
+                            <p class="card-text" translate>
+                                Consultservice.text
                             </p>
-                            <button routerLink="/contactUs" class="btn btn-default serviceLink">تواصل معنا ></button>
+                            <button routerLink="/contactUs" class="btn btn-default serviceLink" translate>contactUs</button>
                         </div>
                     </div>
                 </div>
@@ -56,13 +56,13 @@
                     <div class="card  service-card green-card">
                         <div class="card-body text-center">
                             <i class="fa fa-balance-scale" aria-hidden="true"></i>
-                            <h3 class="card-title">
-                                متابعة قانونية
+                            <h3 class="card-title" translate>
+                                lawservice.title
                             </h3>
-                            <p class="card-text">
-                                متابعة كافة الامور القانونية المتعلقة بالعقارات والمركبات من فراغة وآجار وأمور الطابو والكشف العقاري والتنظيم
+                            <p class="card-text" translate>
+                                lawservice.text
                             </p>
-                            <button routerLink="/contactUs" class="btn btn-default serviceLink">تواصل معنا ></button>
+                            <button routerLink="/contactUs" class="btn btn-default serviceLink" translate>contactUs</button>
                         </div>
                     </div>
                 </div>
@@ -70,13 +70,13 @@
                     <div class="card  service-card pink-card">
                         <div class="card-body text-center">
                             <i class="fa fa-building-o" aria-hidden="true"></i>
-                            <h3 class="card-title">
-                                استثمار وجنسية
+                            <h3 class="card-title" translate>
+                                citizinService.title
                             </h3>
-                            <p class="card-text">
-                                نوفر لكم خيارات عقارية مميزة ومتنوعة يمكن الحصول على الجنسية التركية عن طريقها وبنفس الوقت تعد فرصة استثمارية ممتازة
+                            <p class="card-text" translate>
+                                citizinService.text
                             </p>
-                            <button routerLink="/contactUs" class="btn btn-default serviceLink">تواصل معنا ></button>
+                            <button routerLink="/contactUs" class="btn btn-default serviceLink" translate>contactUs</button>
                         </div>
                     </div>
                 </div>
@@ -84,13 +84,13 @@
                     <div class="card  service-card purple-card">
                         <div class="card-body text-center">
                             <i class="fa fa-plane" aria-hidden="true"></i>
-                            <h3 class="card-title">
-                                من المطار الى العقار
+                            <h3 class="card-title" translate>
+                                airportService.title
                             </h3>
-                            <p class="card-text">
-                                نوفر لكم خدماتنا السياحية والعقارية بنفس الوقت حيث نقوم باستقبالكم من بوابة المطار ونرافقكم في مدينة مرسين السياحية لايجاد العقار المناسب لكم
+                            <p class="card-text" translate>
+                                airportService.text
                             </p>
-                            <button routerLink="/contactUs" class="btn btn-default serviceLink">تواصل معنا ></button>
+                            <button routerLink="/contactUs" class="btn btn-default serviceLink" translate>contactUs</button>
                         </div>
                     </div>
                 </div>
@@ -100,8 +100,8 @@
     <section>
         <div class="container">
             <div class="row pt-4 mb-3">
-                <h2 class="w-100 text-center">
-                    أحدث السيارات
+                <h2 class="w-100 text-center" translate>
+                    lastCars
                 </h2>
                 <div class="col-md-3" *ngFor="let car of cars">
                     <app-car-card [car]="car"></app-car-card>
