@@ -32,6 +32,10 @@
     "propertyFilter": {
         "adId": "رقم الاعلان",
         "propertyCategory": "نوع العقار",
+        "Residential": "عقار سكني ",
+        "Workplace": "مكان عمل",
+        "Land": "أرض",
+        "Building": "مبنى",
         "priceTitle": "السعر",
         "min": "ادنى حد",
         "max": "اعلى حد",
@@ -56,7 +60,22 @@
         "comunicationDetails": "معلومات التواصل",
         "similerProperties": "عقارات مماثلة"
     },
-
+    "propertyCard": {
+        "Rent": "آجار",
+        "Sale": "بيع",
+        "DailyRent": "آجار يومي",
+        "Flat": "شقة",
+        "Villa": "فيلا",
+        "Building": "مبنى",
+        "Land": "أرض",
+        "IndependentHouse": "منزل مستقل"
+    },
+    "Heating": {
+        "CentralHeating": "تدفئة مركزية",
+        "Gas": "غاز",
+        "Solar": "طاقة شمسية",
+        "Conditioning": "تكييف"
+    },
     "propertyBuy": {
         "title": "الصفحة الرئيسية - شقق للبيع"
     },
@@ -67,7 +86,7 @@
             "title": "تصفية النتائج",
             "company": "الشركة المصنعة",
             "rent": "آجار",
-            "buy": "شراء",
+            "buy": "بيع",
             "modelYear": "سنة التصنيع",
             "min": "ادنى حد",
             "max": "اعلى حد",
@@ -76,16 +95,20 @@
             "heavy": "أغر",
             "notHeavy": "غير أغر",
             "filter": "تصفية",
-            "companyOption": {
-                "Toyota": "تويوتا"
-            }
+            "Toyota": "تويوتا",
+            "Honda": "هوندا",
+            "Hyundai": "هيونداي",
+            "VolksWagen": "فوكسفاغن",
+            "FIAT": "فيات",
+            "BMW": "بي ام دبليو",
+            "Mercedes": "مرسيدس"
         }
     },
     "navbar": {
         "homePage": "الصفحة الرئيسية",
         "realEstate": "عقارات",
         "rent": "آجار",
-        "sale": "شراء",
+        "sale": "بيع",
         "cars": "سيارات",
         "welecome": "اهلا بك",
         "controlPanel": "لوحة التحكم",

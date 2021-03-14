@@ -26,7 +26,7 @@
                                 </mat-label>
                                 <mat-select [(ngModel)]="filterParams.carCompanyId">
                                     <mat-option *ngFor="let company of carCompanies" [value]="company.id">
-                                        {{company.companyName}}
+                                        <span translate>carList.filterParams.{{company.companyName}}</span>
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>

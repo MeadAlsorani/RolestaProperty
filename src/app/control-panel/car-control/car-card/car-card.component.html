@@ -5,7 +5,8 @@
                 <img [src]="[carImageUrl+car.pictures[0]]" class="card-image" alt="first slide" style="display: block; width: 100%;">
             </div>
             <div class="card-bottom">
-                <span style="font-size: 24px;">{{carCompany.companyName}} {{car.modelName}} - {{car.modelYear}}</span>
+                <span style="font-size: 24px;" translate="carList.filterParams.{{carCompany.companyName}}"> </span>
+                <span style="font-size: 24px;"> {{car.modelName}} - {{car.modelYear}}</span>
             </div>
         </div>
     </a>

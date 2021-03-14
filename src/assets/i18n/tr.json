@@ -32,6 +32,10 @@
     "propertyFilter": {
         "adId": "Reklam Kimliği",
         "propertyCategory": "Emlak Tipi",
+        "Residential": "Konut mülkiyeti",
+        "Workplace": "İş yeri",
+        "Land": "Arsa",
+        "Building": "Bina",
         "priceTitle": "Fiyat",
         "min": "Minimum",
         "max": "Maximum",
@@ -56,7 +60,22 @@
         "comunicationDetails": "İletişim ayrıntıları",
         "similerProperties": "Benzer gayrimenkul"
     },
-
+    "propertyCard": {
+        "Rent": "Kiralık",
+        "Sale": "Satılık",
+        "DailyRent": "Günlük kira",
+        "Flat": "Daire",
+        "Villa": "Villa",
+        "Building": "Bina",
+        "Land": "Arsa",
+        "IndependentHouse": "Müstakil ev"
+    },
+    "Heating": {
+        "CentralHeating": "Merkezi ısıtma",
+        "Gas": "Gas",
+        "Solar": "Güneş",
+        "Conditioning": "Klima"
+    },
     "propertyBuy": {
         "title": "Anasayfa - Satılık Daireler"
     },
@@ -75,7 +94,14 @@
             "lostAmount": "Kayıp Tutar",
             "heavy": "Ağır",
             "notHeavy": "Ağır değil",
-            "filter": "filtrele"
+            "filter": "filtrele",
+            "Toyota": "Toyota",
+            "Honda": "Honda",
+            "Hyundai": "Hyundai",
+            "VolksWagen": "VolksWagen",
+            "FIAT": "FIAT",
+            "BMW": "BMW",
+            "Mercedes": "Mercedes"
         }
     },
     "navbar": {

@@ -32,6 +32,10 @@
     "propertyFilter": {
         "adId": "Ad Id",
         "propertyCategory": "Property type",
+        "Residential": "Residential",
+        "Workplace": "Workplace",
+        "Land": "Land",
+        "Building": "Building",
         "priceTitle": "Price",
         "min": "Minimum",
         "max": "Maximum",
@@ -56,7 +60,22 @@
         "comunicationDetails": "Comunication details",
         "similerProperties": "Similer properties"
     },
-
+    "propertyCard": {
+        "Rent": "Rent",
+        "Sale": "Sale",
+        "DailyRent": "Daily Rent",
+        "Flat": "Flat",
+        "Villa": "Villa",
+        "Building": "Building",
+        "Land": "Land",
+        "IndependentHouse": "Independent House"
+    },
+    "Heating": {
+        "CentralHeating": "Central Heating",
+        "Gas": "Gas",
+        "Solar": "Solar",
+        "Conditioning": "Conditioning"
+    },
     "propertyBuy": {
         "title": "Home - apartments for sale"
     },
@@ -75,7 +94,14 @@
             "lostAmount": "Lost Amount",
             "heavy": "Heavy",
             "notHeavy": "Not heavy",
-            "filter": "filter"
+            "filter": "filter",
+            "Toyota": "Toyota",
+            "Honda": "Honda",
+            "Hyundai": "Hyundai",
+            "VolksWagen": "VolksWagen",
+            "FIAT": "FIAT",
+            "BMW": "BMW",
+            "Mercedes": "Mercedes"
         }
     },
     "navbar": {

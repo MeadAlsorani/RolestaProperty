@@ -29,7 +29,7 @@
                                 <mat-label translate>propertyFilter.propertyCategory</mat-label>
                                 <mat-select [(ngModel)]="filterParams.categoryId">
                                     <mat-option *ngFor="let cat of categories" [value]="cat.id">
-                                        {{cat.category_Name}}
+                                        <span translate>propertyFilter.{{cat.category_Name}}</span>
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>

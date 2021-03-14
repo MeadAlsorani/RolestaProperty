@@ -40,7 +40,7 @@
                 </span>
                 <hr>
                 <span class="detail-info">
-                  <span translate>propertyFields.heating</span> : {{heat.heatingName}}
+                  <span translate>propertyFields.heating</span> : <span translate="Heating.{{heat.heatingName}}"></span>
                 </span>
                 <hr>
                 <span class="detail-info">
@@ -88,9 +88,10 @@
             <div class="col-md-12 m-3 text-right">
                 <h2 translate>propertyFields.similerProperties</h2>
             </div>
-            <div class="col-md-4" *ngFor="let property of similerProperties">
+            <div class="col-md-3" *ngFor="let property of similerProperties">
                 <app-property-card [property]="property" [ifPreview]="true"></app-property-card>
             </div>
         </div>
     </div>
 </div>
+<br>
