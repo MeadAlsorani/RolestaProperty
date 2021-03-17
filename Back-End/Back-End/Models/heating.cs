@@ -11,6 +11,6 @@ namespace Back_End.Models
 
     public string heatingName { get; set; }
 
-    public IList<Property> properties { get; set; }
+    //public IList<Property> properties { get; set; }
   }
 }

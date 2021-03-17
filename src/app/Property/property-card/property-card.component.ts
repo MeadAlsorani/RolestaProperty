@@ -34,15 +34,4 @@ viewProperty:IProperty;
   ngOnInit() {
     this.viewProperty=this.property;
   }
-  ngAfterViewInit(){
-    this.hs.getTypesById(this.property.typeId).subscribe(type=>{
-      this.type=type;
-    });
-    this.hs.getHeatingById(this.property.heatingId).subscribe(heat=>{
-      this.viewProperty.heating=heat;
-    });
-    this.categoryService.getSubCategoryById(this.property.subCategoryId).subscribe(data=>{
-      this.subCategory=data;
-    })
-  }
 }

@@ -14,7 +14,12 @@
             <div class="col-md-5">
                 <div class="card-body">
                     <div class="w-100 text-center">
-                        <h3>{{carCompany.companyName}} {{car.modelName}} {{car.modelYear}}</h3>
+                        <h3><span translate="carList.filterParams.{{car.carCompany.companyName}}"> </span> <span *ngIf="currentLang=='ar'">
+                          {{car.modelName}}
+                         </span>
+                            <span *ngIf="currentLang !='ar'">
+                          {{car.modelNameEn}}
+                         </span> {{car.modelYear}}</h3>
                     </div>
                     <div class="row">
                         <div class="col-6">
@@ -32,12 +37,15 @@
                         <div class="col-12 text-center">
                             <span *ngIf="currentLang=='ar'">
                             {{car.description}}
+                            test ar
                           </span>
                             <span *ngIf="currentLang=='en'">
                             {{car.descriptionEn}}
+                            test en
                           </span>
-                            <span *ngIf="currentLang=='en'">
+                            <span *ngIf="currentLang=='tr'">
                             {{car.descriptionTr}}
+                            test tr
                           </span>
                         </div>
                     </div>

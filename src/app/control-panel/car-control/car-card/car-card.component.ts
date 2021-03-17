@@ -23,6 +23,9 @@ export class CarCardComponent implements OnInit {
 
   ngOnInit() {
     this.currentLang=this.translate.currentLang;
+    this.translate.onLangChange.subscribe((data)=>{
+      this.currentLang=data.lang
+    })
     this.carService.getCarCompanyById(this.car.carCompanyId).subscribe(
       Company=>{
         this.carCompany=Company

@@ -15,6 +15,7 @@ namespace Back_End.Models
 
     [Required]
     public string modelName { get; set; }
+    public string modelNameEn { get; set; }
 
     [Required]
     public bool isAuto { get; set; }

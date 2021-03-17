@@ -1,97 +1,108 @@
-<br>
-<br>
-<div class="col-sm-12 p-0">
-    <div class="image-wrapper">
-        <img *ngIf="!property.image" class="card-image card-img-top" src="assets/house.png" alt="" />
-        <carousel [isAnimated]="true" *ngIf="property.image" class="card-image card-img-top">
-            <slide *ngFor="let item of property.image">
-                <a (click)="openModal(template,item)" class="image-pop">
-                    <img [src]="[baseUrl+imageUrl+item]" class="card-image" alt="first slide" style="display: block; width: 100%;">
-                </a>
-            </slide>
-
-            <ng-template #template>
-                <img [src]="[baseUrl+imageUrl+pic]" class="card-image" alt="first slide" style="display: block; width: 100%;">
-            </ng-template>
-            <div class="infoSection">
-                <span class="detail-info">
-                 <span translate>propertyFields.name</span> : {{property.name}}
-                </span>
-                <hr>
-                <span class="detail-info">
-                  <span translate>propertyFields.address</span> : {{property.provience}} - {{property.city}} - {{property.street}}
-                </span>
-                <hr>
-                <span class="detail-info">
-                  <span translate>propertyFields.area</span> : {{property.area}}
-                </span>
-                <hr>
-                <span class="detail-info">
-                  <span translate>propertyFields.floor</span> : {{property.floor}} <br>
-                <span translate>propertyFields.buildingFloors</span> : {{property.buildingFloors}}
-                </span>
-                <hr>
-                <span class="detail-info">
-                  <span translate>propertyFields.buildingAge</span> : {{property.buildingAge}}
-                </span>
-                <hr>
-                <span class="detail-info">
-                  <span translate>propertyFields.noOfRooms</span> : {{property.noOfRooms}}
-                </span>
-                <hr>
-                <span class="detail-info">
-                  <span translate>propertyFields.heating</span> : <span translate="Heating.{{heat.heatingName}}"></span>
-                </span>
-                <hr>
-                <span class="detail-info">
-                  <span translate>propertyFields.adDate</span> : {{property.date |date: 'yyyy-MM-dd'}}
-                </span>
-                <hr>
-            </div>
-
-            <div class="price-section">
-                <span>{{property.price |number}} &#8378;</span>
-            </div>
-        </carousel>
+<br />
+<br />
+<div class="spinner" *ngIf="isLoading">
+    <div class="spinner">
+        <img src="../../assets/RolestaLogo.png" alt="logo" />
     </div>
 </div>
-<br>
-<div class="container">
-    <div class="row shadow">
-        <div class="col-sm-12 p-0">
-            <div class="tab-panel p-3">
-                <tabset class="member-tabset" style="text-align: right; direction: rtl;">
-                    <tab [heading]="'propertyFields.description'|translate">
-                        <h3 translate>propertyFields.description</h3>
-                        <p *ngIf="currentLang=='ar'">{{property.description}}</p>
-                        <p *ngIf="currentLang=='en'">{{property.descriptionEn}}</p>
-                        <p *ngIf="currentLang=='tr'">{{property.descriptionTr}}</p>
-                    </tab>
-                    <tab [heading]="'propertyFields.comunicationDetails'|translate">
-                        <h1 translate>propertyFields.comunicationDetails</h1>
-                        <div class="container">
-                            <div class="row">
-                                <h4>{{property.phoneNumber}}</h4>
-                            </div>
-                        </div>
-                    </tab>
-                </tabset>
-            </div>
+<div *ngIf="!isLoading">
+    <div class="col-sm-12 p-0">
+        <div class="image-wrapper">
+            <img *ngIf="!property.image" class="card-image card-img-top" src="assets/house.png" alt="" />
+            <carousel [isAnimated]="true" *ngIf="property.image" class="card-image card-img-top">
+                <slide *ngFor="let item of property.image">
+                    <a (click)="openModal(template, item)" class="image-pop">
+                        <img [src]="[baseUrl + imageUrl + item]" class="card-image" alt="first slide" style="display: block; width: 100%" />
+                    </a>
+                </slide>
 
+                <ng-template #template>
+                    <img [src]="[baseUrl + imageUrl + pic]" class="card-image" alt="first slide" style="display: block; width: 100%" />
+                </ng-template>
+
+
+                <div class="price-section">
+                    <span>{{ property.price | number }} &#8378;</span>
+                </div>
+            </carousel>
         </div>
     </div>
-</div>
-<hr>
-<div class="similerProperties" dir="rtl">
+    <br />
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 m-3 text-right">
-                <h2 translate>propertyFields.similerProperties</h2>
+        <div class="row shadow">
+            <div class="col-md-6">
+                <div class="infoSection" [ngClass]="currentLang">
+                    <span class="detail-info">
+            <span translate>propertyFields.name</span> : {{ property.name }}
+                    </span>
+                    <hr />
+                    <span class="detail-info">
+            <span translate>propertyFields.address</span> : {{ property.provience }} - {{ property.city }} - {{ property.street }}
+                    </span>
+                    <hr />
+                    <span class="detail-info">
+            <span translate>propertyFields.area</span> : {{ property.area }}
+                    </span>
+                    <hr />
+                    <span class="detail-info">
+            <span translate>propertyFields.floor</span> : {{ property.floor }}
+                    <br />
+                    <span translate>propertyFields.buildingFloors</span> : {{ property.buildingFloors }}
+                    </span>
+                    <hr />
+                    <span class="detail-info">
+            <span translate>propertyFields.buildingAge</span> : {{ property.buildingAge }}
+                    </span>
+                    <hr />
+                    <span class="detail-info">
+            <span translate>propertyFields.noOfRooms</span> : {{ property.noOfRooms }}
+                    </span>
+                    <hr />
+                    <span class="detail-info">
+            <span translate>propertyFields.heating</span> :
+                    <span translate="Heating.{{ property.heating.heatingName }}"></span>
+                    </span>
+                    <hr />
+                    <span class="detail-info">
+            <span translate>propertyFields.adDate</span> : {{ property.date | date: "yyyy-MM-dd" }}
+                    </span>
+                    <hr />
+                </div>
             </div>
-            <div class="col-md-3" *ngFor="let property of similerProperties">
-                <app-property-card [property]="property" [ifPreview]="true"></app-property-card>
+            <div class="col-md-6 p-0">
+                <div class="tab-panel p-3">
+                    <tabset class="member-tabset" style="text-align: right; direction: rtl">
+                        <tab [heading]="'propertyFields.description' | translate">
+                            <h3 translate>propertyFields.description</h3>
+                            <p *ngIf="currentLang == 'ar'">{{ property.description }}</p>
+                            <p *ngIf="currentLang == 'en'">{{ property.descriptionEn }}</p>
+                            <p *ngIf="currentLang == 'tr'">{{ property.descriptionTr }}</p>
+                        </tab>
+                        <tab [heading]="'propertyFields.comunicationDetails' | translate">
+                            <h1 translate>propertyFields.comunicationDetails</h1>
+                            <div class="container">
+                                <div class="row">
+                                    <h4>{{ property.phoneNumber }}</h4>
+                                </div>
+                            </div>
+                        </tab>
+                    </tabset>
+                </div>
             </div>
         </div>
     </div>
+    <hr />
+    <div class="similerProperties" dir="rtl">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 m-3 text-right">
+                    <h2 translate>propertyFields.similerProperties</h2>
+                </div>
+                <div class="col-md-3" *ngFor="let property of similerProperties">
+                    <app-property-card [property]="property" [ifPreview]="true"></app-property-card>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
 </div>
-<br>

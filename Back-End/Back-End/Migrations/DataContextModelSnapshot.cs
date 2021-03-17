@@ -171,6 +171,9 @@ namespace Back_End.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("modelNameEn")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("modelYear")
                         .HasColumnType("int");
 
@@ -315,25 +318,25 @@ namespace Back_End.Migrations
             modelBuilder.Entity("Back_End.Models.Property", b =>
                 {
                     b.HasOne("Back_End.Models.category", "category")
-                        .WithOne("Property")
-                        .HasForeignKey("Back_End.Models.Property", "categoryId");
+                        .WithMany()
+                        .HasForeignKey("categoryId");
 
                     b.HasOne("Back_End.Models.heating", "heating")
-                        .WithMany("properties")
+                        .WithMany()
                         .HasForeignKey("heatingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Back_End.Models.SecondSubCategory", "SecondSubCategory")
-                        .WithOne("Property")
-                        .HasForeignKey("Back_End.Models.Property", "secondSubCategoryId");
+                        .WithMany()
+                        .HasForeignKey("secondSubCategoryId");
 
                     b.HasOne("Back_End.Models.subCategory", "subCategory")
-                        .WithOne("Property")
-                        .HasForeignKey("Back_End.Models.Property", "subCategoryId");
+                        .WithMany()
+                        .HasForeignKey("subCategoryId");
 
                     b.HasOne("Back_End.Models.type", "type")
-                        .WithMany("properties")
+                        .WithMany()
                         .HasForeignKey("typeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -352,7 +355,7 @@ namespace Back_End.Migrations
             modelBuilder.Entity("Back_End.Models.SecondSubCategory", b =>
                 {
                     b.HasOne("Back_End.Models.subCategory", "subCategory")
-                        .WithMany("secondSubCategories")
+                        .WithMany()
                         .HasForeignKey("subCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -374,7 +377,7 @@ namespace Back_End.Migrations
             modelBuilder.Entity("Back_End.Models.subCategory", b =>
                 {
                     b.HasOne("Back_End.Models.category", "category")
-                        .WithMany("subCategories")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -382,38 +385,9 @@ namespace Back_End.Migrations
                     b.Navigation("category");
                 });
 
-            modelBuilder.Entity("Back_End.Models.SecondSubCategory", b =>
-                {
-                    b.Navigation("Property");
-                });
-
             modelBuilder.Entity("Back_End.Models.carCompany", b =>
                 {
                     b.Navigation("cars");
-                });
-
-            modelBuilder.Entity("Back_End.Models.category", b =>
-                {
-                    b.Navigation("Property");
-
-                    b.Navigation("subCategories");
-                });
-
-            modelBuilder.Entity("Back_End.Models.heating", b =>
-                {
-                    b.Navigation("properties");
-                });
-
-            modelBuilder.Entity("Back_End.Models.subCategory", b =>
-                {
-                    b.Navigation("Property");
-
-                    b.Navigation("secondSubCategories");
-                });
-
-            modelBuilder.Entity("Back_End.Models.type", b =>
-                {
-                    b.Navigation("properties");
                 });
 #pragma warning restore 612, 618
         }

@@ -62,6 +62,7 @@ export class CarEditComponent implements OnInit {
     this.EditCarForm = this.formBuilder.group({
       modelYear: new FormControl(null, Validators.required),
       modelName: new FormControl(null, Validators.required),
+      modelNameEn:new FormControl(null,Validators.required),
       isAuto: new FormControl(null, Validators.required),
       lostAmount: new FormControl(null),
       isHeavy: new FormControl(null),
@@ -87,6 +88,9 @@ export class CarEditComponent implements OnInit {
   }
   get modelName() {
     return this.EditCarForm.get('modelName') as FormControl;
+  }
+  get modelNameEn(){
+    return this.EditCarForm.get('modelNameEn') as FormControl;
   }
   get price() {
     return this.EditCarForm.get('price') as FormControl;

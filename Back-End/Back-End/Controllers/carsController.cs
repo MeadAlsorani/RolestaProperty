@@ -30,14 +30,19 @@ namespace Back_End.Controllers
     [HttpGet]
     public async Task<ActionResult<IEnumerable<car>>> Getcars()
     {
-      return await _context.cars.OrderByDescending(x=>x.id).ToListAsync();
+      return await _context.cars
+        .Include(x=>x.carCompany)
+        .OrderByDescending(x=>x.id)
+        .ToListAsync();
     }
 
     // GET: api/cars/5
     [HttpGet("{id}")]
     public async Task<ActionResult<car>> Getcar(int id)
     {
-      var car = await _context.cars.FindAsync(id);
+      var car = await _context.cars
+        .Include(x=>x.carCompany)
+        .FirstOrDefaultAsync(y=>y.id==id);
 
       if (car == null)
       {

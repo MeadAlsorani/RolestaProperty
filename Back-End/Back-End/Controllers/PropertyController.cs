@@ -29,21 +29,52 @@ namespace Back_End.Controllers
     [HttpGet]
     public IActionResult getAllProperties()
     {
-      var properties = db.properties.OrderByDescending(x => x.id).ToList();
+      var properties = db.properties
+        .Include(x=>x.category)
+        .Include(y=>y.subCategory)
+        .Include(z=>z.SecondSubCategory)
+        .Include(e => e.heating)
+        .Include(e=>e.type)        
+        .OrderByDescending(x => x.id)
+        .ToList();
       return Ok(properties);
     }
 
     [HttpGet("rent")]
     public IActionResult getRentProperties()
     {
-      var rents = db.properties.Where(x => x.subCategoryId == 11 || x.subCategoryId == 12 || x.subCategoryId == 14 || x.subCategoryId == 16 || x.subCategoryId == 18).ToList();
+      var rents = db.properties
+        .Include(x => x.category)
+        .Include(y => y.subCategory)
+        .Include(z => z.SecondSubCategory)
+        .Include(e => e.heating)
+        .Include(e => e.type)
+        .Where(x => x.subCategoryId == 11
+        || x.subCategoryId == 12
+        || x.subCategoryId == 14
+        || x.subCategoryId == 16
+        || x.subCategoryId == 18)
+        .OrderByDescending(x => x.id)
+        .ToList();
       return Ok(rents);
     }
 
     [HttpGet("buy")]
     public IActionResult getBuyProperties()
     {
-      var rents = db.properties.Where(x => x.subCategoryId == 10 || x.subCategoryId == 13 || x.subCategoryId == 15 || x.subCategoryId == 16 || x.subCategoryId == 17).ToList();
+      var rents = db.properties
+        .Include(x => x.category)
+        .Include(y => y.subCategory)
+        .Include(z => z.SecondSubCategory)
+        .Include(e => e.heating)
+        .Include(e => e.type)
+        .Where(x => x.subCategoryId == 10
+        || x.subCategoryId == 13
+        || x.subCategoryId == 15
+        || x.subCategoryId == 16
+        || x.subCategoryId == 17)
+        .OrderByDescending(x => x.id)
+        .ToList();
       return Ok(rents);
     }    
 
@@ -51,7 +82,13 @@ namespace Back_End.Controllers
     [HttpGet("{id}")]
     public IActionResult getPropertyById(int id)
     {
-      var property = db.properties.FirstOrDefault(p => p.id == id);
+      var property = db.properties
+        .Include(x => x.category)
+        .Include(y => y.subCategory)
+        .Include(z => z.SecondSubCategory)
+        .Include(e => e.heating)
+        .Include(e => e.type)
+        .FirstOrDefault(p => p.id == id);
       return Ok(property);
     }
 
@@ -59,14 +96,27 @@ namespace Back_End.Controllers
     [HttpGet("last/{lastAmount}")]
     public IActionResult getLastProperties(int lastAmount)
     {
-      var property = db.properties.OrderByDescending(x => x.id).Take(lastAmount);
+      var property = db.properties
+        .Include(x => x.category)
+        .Include(y => y.subCategory)
+        .Include(z => z.SecondSubCategory)
+        .Include(e => e.heating)
+        .Include(e => e.type)
+        .OrderByDescending(x => x.id).Take(lastAmount);
       return Ok(property);
     }
 
     [HttpGet("similer/{secondSubCategoryId}")]
     public IActionResult getSimilerProperty(int secondSubCategoryId)
     {
-      var property = db.properties.Where(x => x.secondSubCategoryId == secondSubCategoryId).Take(4);
+      var property = db.properties
+        .Where(x => x.secondSubCategoryId == secondSubCategoryId)
+        .Include(x => x.category)
+        .Include(y => y.subCategory)
+        .Include(z => z.SecondSubCategory)
+        .Include(e => e.heating)
+        .Include(e => e.type)
+        .Take(4);
       return Ok(property);
     }
 

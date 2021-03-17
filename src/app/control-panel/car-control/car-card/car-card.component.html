@@ -6,7 +6,13 @@
             </div>
             <div class="card-bottom">
                 <span style="font-size: 24px;" translate="carList.filterParams.{{carCompany.companyName}}"> </span>
-                <span style="font-size: 24px;"> {{car.modelName}} - {{car.modelYear}}</span>
+                <span style="font-size: 24px;">
+                   <span *ngIf="currentLang=='ar'">
+                    {{car.modelName}}
+                   </span>
+                <span *ngIf="currentLang !='ar'">
+                    {{car.modelNameEn}}
+                   </span> - {{car.modelYear}}</span>
             </div>
         </div>
     </a>

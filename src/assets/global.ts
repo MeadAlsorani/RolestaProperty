@@ -1,7 +1,7 @@
-export const apiUrl="http://localhost:5000/api/";
-export const baseUrl="http://localhost:5000/";
-export const heatingApi="http://localhost:5000/api/heating/";
-export const typeApi="http://localhost:5000/api/type/";
+export const apiUrl="property.rolestagroup.com/api/";
+export const baseUrl="property.rolestagroup.com";
+export const heatingApi="property.rolestagroup.com/api/heating/";
+export const typeApi="property.rolestagroup.com/api/type/";
 export declare var ifCon:boolean;
 export function disableContainer(val?:boolean){
   if (val) {

@@ -16,6 +16,7 @@ export class CarDatailsComponent implements OnInit {
     id: null,
     modelYear: null,
     modelName: null,
+    modelNameEn:null,
     isAuto: null,
     lostAmount: null,
     isHeavy: null,
@@ -38,19 +39,25 @@ export class CarDatailsComponent implements OnInit {
     private route: ActivatedRoute,
     private CarService: CarService,
     private translate:TranslateService
-    ) {}
+    ) {
+      this.translate.onLangChange.subscribe(
+        ()=>{
+          this.getLanguage();
+          this.getCar();
+        }
+      )
+    }
 
   ngOnInit() {
     this.getLanguage();
+    this.getCar();
+  }
+
+  getCar(){
     this.route.params.subscribe((data) => {
       this.carId = +data['id'];
       this.CarService.getCarById(this.carId).subscribe((data) => {
         this.car = data;
-        this.CarService.getCarCompanyById(data.carCompanyId).subscribe(
-          company=>{
-            this.carCompany=company
-          }
-        )
       });
     });
   }
@@ -59,18 +66,50 @@ export class CarDatailsComponent implements OnInit {
   }
   isRent(value){
     if (value) {
-      return "ايجار";
+      if (this.currentLang=='ar') {
+        return "ايجار";
+      }
+      if (this.currentLang=='en') {
+        return "Rent";
+      }
+      if (this.currentLang=='tr') {
+        return "Kira";
+      }
     }
     else{
-      return "مبيع";
+      if (this.currentLang=='ar') {
+        return "مبيع";
+      }
+      if (this.currentLang=='en') {
+        return "Sale";
+      }
+      if (this.currentLang=='tr') {
+        return "Satış";
+      }
     }
   }
   isAuto(value){
     if (value) {
-      return "اوتوماتيك";
+      if (this.currentLang=='ar') {
+        return "اوتوماتيك";
+      }
+      if (this.currentLang=='en') {
+        return "Automatic";
+      }
+      if (this.currentLang=='tr') {
+        return "Oto";
+      }
     }
     else{
-      return "عادي";
+      if (this.currentLang=='ar') {
+        return "عادي";
+      }
+      if (this.currentLang=='en') {
+        return "Manual";
+      }
+      if (this.currentLang=='tr') {
+        return "Düz";
+      }
     }
   }
 }

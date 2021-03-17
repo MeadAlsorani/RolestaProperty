@@ -16,7 +16,7 @@ namespace Back_End.Models
     public int CategoryId { get; set; }
     public category category { get; set; }
 
-    public IList<SecondSubCategory> secondSubCategories { get; set; }
-    public Property Property { get; set; }
+    //public IList<SecondSubCategory> secondSubCategories { get; set; }
+    //public Property Property { get; set; }
   }
 }

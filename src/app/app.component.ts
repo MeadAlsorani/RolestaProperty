@@ -9,11 +9,15 @@ import * as myGlobals from '../assets/global';
 export class AppComponent {
   title = 'RolestaProperty';
   dis=myGlobals.disableContainer();
-
+  browserLange;
+  currentLang;
   constructor(
     private translate:TranslateService
   ) {
+    this.browserLange=translate.getBrowserLang();
+
     translate.setDefaultLang('ar');
-    translate.use('ar');
+    translate.use(this.browserLange);
+    translate.onLangChange.subscribe((data)=>this.currentLang=data.lang)
   }
 }

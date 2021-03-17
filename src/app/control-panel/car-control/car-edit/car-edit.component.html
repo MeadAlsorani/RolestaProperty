@@ -16,6 +16,13 @@
                                 </div>
                             </div>
                             <div class="form-group col-12">
+                                <label for="modelNameEn">الاسم الاجنبي للموديل</label>
+                                <input type="text" class="form-control" name="modelNameEn" formControlName="modelNameEn" />
+                                <div *ngIf="!modelNameEn.valid && modelNameEn.touched" class="form-validation text-danger">
+                                    هذا الحقل مطلوب
+                                </div>
+                            </div>
+                            <div class="form-group col-12">
                                 <label for="modelYear">سنة الموديل</label>
                                 <input type="number" class="form-control" name="modelYear" formControlName="modelYear" />
                                 <div *ngIf="!modelYear.valid && modelYear.touched" class="form-validation text-danger">

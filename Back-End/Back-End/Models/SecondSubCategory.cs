@@ -15,6 +15,6 @@ namespace Back_End.Models
     public int subCategoryId { get; set; }
     public subCategory subCategory { get; set; }
 
-    public Property Property { get; set; }
+    //public Property Property { get; set; }
   }
 }
