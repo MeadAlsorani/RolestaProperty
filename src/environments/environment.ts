@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrl:"https://rolestadan.com/BackEnd/",
+  apiUrl:"https://rolestadan.com/BackEnd/api/",
+  heatingApi:"https://rolestadan.com/BackEnd/api/heating/",
+  typeApi:"https://rolestadan.com/BackEnd/type/"
 };
 
 /*

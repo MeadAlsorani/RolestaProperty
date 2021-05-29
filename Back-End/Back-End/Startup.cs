@@ -37,7 +37,7 @@ namespace Back_End
       services.AddCors(options =>
       {
         options.AddPolicy("CorsPolicy",
-            builder => builder.WithOrigins("http://localhost:4200")
+            builder => builder.WithOrigins("http://rolestadan.com","rolestadan.com","https://rolestadan.com")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials());
@@ -67,6 +67,7 @@ namespace Back_End
         FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
         RequestPath = new PathString("/Resources")
       });
+      
       app.UseRouting();
 
       app.UseAuthorization();

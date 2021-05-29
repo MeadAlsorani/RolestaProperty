@@ -14,7 +14,6 @@ import {
   IType,
   IHeating,
 } from '../../Interfaces/IProperty.interface';
-import * as myGlobals from '../../../assets/global';
 import {
   ICategory,
   ISubCategory,

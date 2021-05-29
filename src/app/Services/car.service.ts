@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ICar,ICarCompany } from '../Interfaces/ICar';
-import * as myGlobals from '../../assets/global';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class CarService {
-  url: string = myGlobals.apiUrl + 'cars/';
-  carCompanyUrl:string=myGlobals.apiUrl+'carCompanies/';
+  url: string = environment.apiUrl + 'cars/';
+  carCompanyUrl:string=environment.apiUrl+'carCompanies/';
   constructor(private http: HttpClient) {}
 //#region  car api callers
   getAllCars(): Observable<ICar[]> {

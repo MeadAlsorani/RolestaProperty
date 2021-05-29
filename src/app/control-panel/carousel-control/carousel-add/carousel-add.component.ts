@@ -2,10 +2,10 @@ import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import {HttpClient, HttpEventType } from '@angular/common/http';
-import * as myGlobals from '../../../../assets/global';
 import {Router} from '@angular/router';
 import {CarouselService} from '../../../Services/carousel.service';
 import {AlertService} from '../../../Services/Alert.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-carousel-add',
   templateUrl: './carousel-add.component.html',
@@ -47,7 +47,7 @@ export class CarouselAddComponent implements OnInit {
   }
   onUpload() {
     this.http
-      .post(myGlobals.apiUrl+'carousels/image-upload', this.uploadData, {
+      .post(environment.apiUrl+'carousels/image-upload', this.uploadData, {
         reportProgress: true,
         observe: 'events',
       })

@@ -1,13 +1,5 @@
-export const apiUrl="property.rolestagroup.com/api/";
-export const baseUrl="property.rolestagroup.com";
-export const heatingApi="property.rolestagroup.com/api/heating/";
-export const typeApi="property.rolestagroup.com/api/type/";
-export declare var ifCon:boolean;
-export function disableContainer(val?:boolean){
-  if (val) {
-    return ifCon=val;
-  }
-  else{
-  return this.ifCon=true;
-}
-}
+export const baseUrl="https://rolestadan.com/BackEnd/";
+export const apiUrl= baseUrl+"api/";
+export const heatingApi=apiUrl+"heating/";
+export const typeApi=apiUrl+"type/";
+

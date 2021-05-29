@@ -1,18 +1,18 @@
 import { Component, OnInit, Input, TemplateRef } from '@angular/core';
 import { ICarousel } from '../../../Interfaces/ICarousel';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import * as myGlobals from '../../../../assets/global';
 import { CarouselService } from '../../../Services/carousel.service';
 import { AlertService } from '../../../Services/Alert.service';
 import { MatDialog } from '@angular/material/dialog';
 import {CarouselEditComponent} from '../carousel-edit/carousel-edit.component';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-carousel-card',
   templateUrl: './carousel-card.component.html',
   styleUrls: ['./carousel-card.component.css'],
 })
 export class CarouselCardComponent implements OnInit {
-  pictureUrl: string = myGlobals.baseUrl + 'Resources/carousel/';
+  pictureUrl: string = environment.baseUrl + 'Resources/carousel/';
   @Input() carousel: ICarousel;
 
   modalRef: BsModalRef;

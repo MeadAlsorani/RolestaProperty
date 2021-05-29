@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { ICarousel } from '../Interfaces/ICarousel';
-import * as myGlobals from '../../assets/global';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class CarouselService {
-  carouselUrl = myGlobals.apiUrl + 'carousels/';
+  carouselUrl = environment.apiUrl + 'carousels/';
   constructor(private hs: HttpClient) {}
 
   getCaousels(): Observable<ICarousel[]> {

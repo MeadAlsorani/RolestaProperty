@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ICar, ICarCompany } from '../../../Interfaces/ICar';
 import { CarService } from '../../../Services/car.service';
-import * as myGlobals from '../../../../assets/global';
 import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-car-datails',
   templateUrl: './car-datails.component.html',
@@ -30,7 +30,7 @@ export class CarDatailsComponent implements OnInit {
     descriptionTr:null
   };
   imageUrl: string = 'Resources/cars/';
-  baseUrl = myGlobals.baseUrl;
+  baseUrl = environment.baseUrl;
   carCompany:ICarCompany={
     companyName:null,
     id:null

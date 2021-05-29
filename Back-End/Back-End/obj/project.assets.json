@@ -9043,11 +9043,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projects\\RolestaProperty\\Back-End\\Back-End\\Back-End.csproj",
+      "projectUniqueName": "E:\\test\\RolestaProperty\\Back-End\\Back-End\\Back-End.csproj",
       "projectName": "Back-End",
-      "projectPath": "E:\\Projects\\RolestaProperty\\Back-End\\Back-End\\Back-End.csproj",
+      "projectPath": "E:\\test\\RolestaProperty\\Back-End\\Back-End\\Back-End.csproj",
       "packagesPath": "C:\\Users\\maads\\.nuget\\packages\\",
-      "outputPath": "E:\\Projects\\RolestaProperty\\Back-End\\Back-End\\obj\\",
+      "outputPath": "E:\\test\\RolestaProperty\\Back-End\\Back-End\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\maads\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,10 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IProperty,IHeating,IType } from '../../Interfaces/IProperty.interface';
-import {Router} from '@angular/router';
-import * as myGlobals from '../../../assets/global';
 import {HousingService} from '../../Services/Housing.service';
 import { ISubCategory } from '../../Interfaces/ICategory';
 import {CategoryService} from '../../Services/category.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-property-card',
   templateUrl: './property-card.component.html',
@@ -24,7 +23,7 @@ type:IType={
   typeName:""
 };
 imageUrl:string="Resources/Images/";
-baseUrl=myGlobals.baseUrl;
+baseUrl=environment.baseUrl;
 viewProperty:IProperty;
   constructor(
     private hs:HousingService,

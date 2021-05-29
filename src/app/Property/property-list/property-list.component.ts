@@ -3,11 +3,11 @@ import { HousingService } from '../../Services/Housing.service';
 import { IProperty } from '../../Interfaces/IProperty.interface';
 import { ICarousel } from '../../Interfaces/ICarousel';
 import { CarouselService } from '../../Services/carousel.service';
-import * as myGlobals from '../../../assets/global';
 
 import { FilterPipe } from '../../Pipes/filter.pipe';
 import { ICar } from 'src/app/Interfaces/ICar';
 import { CarService } from 'src/app/Services/car.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-property-list',
   templateUrl: './property-list.component.html',
@@ -16,7 +16,7 @@ import { CarService } from 'src/app/Services/car.service';
 })
 export class PropertyListComponent implements OnInit {
   properties: Array<IProperty>;
-  imageUrl: string = myGlobals.baseUrl + 'Resources/carousel/';
+  imageUrl: string = environment.baseUrl + 'Resources/carousel/';
   isloading: boolean = true;
   cars: Array<ICar>;
   constructor(

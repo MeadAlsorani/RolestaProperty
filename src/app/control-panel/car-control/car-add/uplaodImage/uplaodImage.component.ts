@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import * as myGolbals from '../../../../../assets/global';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-uplaodCarImage',
   templateUrl: './uplaodImage.component.html',
@@ -25,7 +25,7 @@ export class UplaodCarImageComponent implements OnInit {
   }
   onUpload() {
     this.http
-      .post(myGolbals.apiUrl+'cars/fileUpload', this.uploadData, {
+      .post(environment.apiUrl+'cars/fileUpload', this.uploadData, {
         reportProgress: true,
         observe: 'events',
       })

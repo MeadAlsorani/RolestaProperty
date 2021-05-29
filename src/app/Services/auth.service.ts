@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import * as myGlobals from '../../assets/global';
 import { Observable } from 'rxjs';
 import { IUser } from '../Interfaces/IUser';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  url: string = myGlobals.apiUrl + 'users/';
+  url: string = environment.apiUrl + 'users/';
   constructor(private http: HttpClient) {}
 
   getUser(email:string):Observable<any>{

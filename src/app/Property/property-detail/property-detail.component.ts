@@ -2,9 +2,9 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProperty, IHeating } from '../../Interfaces/IProperty.interface';
 import { HousingService } from '../../Services/Housing.service';
-import * as myGlobals from '../../../assets/global';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-property-detail',
   templateUrl: './property-detail.component.html',
@@ -13,7 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class PropertyDetailComponent implements OnInit {
   propertyId: number;
   imageUrl: string = 'Resources/Images/';
-  baseUrl = myGlobals.baseUrl;
+  baseUrl = environment.baseUrl;
   modalRef: BsModalRef;
   similerProperties: IProperty[];
   currentLang: string;

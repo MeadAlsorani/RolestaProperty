@@ -5,71 +5,76 @@
         <img src="../../assets/RolestaLogo.png" alt="logo" />
     </div>
 </div>
+<br>
 <div *ngIf="!isLoading">
-    <div class="col-sm-12 p-0">
-        <div class="image-wrapper">
-            <img *ngIf="!property.image" class="card-image card-img-top" src="assets/house.png" alt="" />
-            <carousel [isAnimated]="true" *ngIf="property.image" class="card-image card-img-top">
-                <slide *ngFor="let item of property.image">
-                    <a (click)="openModal(template, item)" class="image-pop">
-                        <img [src]="[baseUrl + imageUrl + item]" class="card-image" alt="first slide" style="display: block; width: 100%" />
-                    </a>
-                </slide>
-
-                <ng-template #template>
-                    <img [src]="[baseUrl + imageUrl + pic]" class="card-image" alt="first slide" style="display: block; width: 100%" />
-                </ng-template>
-
-
-                <div class="price-section">
-                    <span>{{ property.price | number }} &#8378;</span>
-                </div>
-            </carousel>
-        </div>
-    </div>
-    <br />
     <div class="container">
-        <div class="row shadow">
-            <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="image-wrapper">
+                    <img *ngIf="!property.image" class="card-image card-img-top" src="assets/house.png" alt="" />
+                    <carousel [isAnimated]="true" *ngIf="property.image" class="card-image card-img-top">
+                        <slide *ngFor="let item of property.image">
+                            <a (click)="openModal(template, item)" class="image-pop">
+                                <img [src]="[baseUrl + imageUrl + item]" class="card-image" alt="first slide" style="display: block; width: 100%" />
+                            </a>
+                        </slide>
+
+                        <ng-template #template>
+                            <img [src]="[baseUrl + imageUrl + pic]" class="card-image" alt="first slide" style="display: block; width: 100%" />
+                        </ng-template>
+
+
+                        <div class="price-section">
+                            <span>{{ property.price | number }} &#8378;</span>
+                        </div>
+                    </carousel>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
                 <div class="infoSection" [ngClass]="currentLang">
                     <span class="detail-info">
-            <span translate>propertyFields.name</span> : {{ property.name }}
+                <span translate>propertyFields.name</span> : {{ property.name }}
                     </span>
                     <hr />
                     <span class="detail-info">
-            <span translate>propertyFields.address</span> : {{ property.provience }} - {{ property.city }} - {{ property.street }}
+                 <span translate>propertyFields.address</span> : {{ property.provience }} - {{ property.city }} - {{ property.street }}
                     </span>
                     <hr />
                     <span class="detail-info">
-            <span translate>propertyFields.area</span> : {{ property.area }}
+                 <span translate>propertyFields.area</span> : {{ property.area }}
                     </span>
                     <hr />
                     <span class="detail-info">
-            <span translate>propertyFields.floor</span> : {{ property.floor }}
+                <span translate>propertyFields.floor</span> : {{ property.floor }}
                     <br />
                     <span translate>propertyFields.buildingFloors</span> : {{ property.buildingFloors }}
                     </span>
                     <hr />
                     <span class="detail-info">
-            <span translate>propertyFields.buildingAge</span> : {{ property.buildingAge }}
+                <span translate>propertyFields.buildingAge</span> : {{ property.buildingAge }}
                     </span>
                     <hr />
                     <span class="detail-info">
-            <span translate>propertyFields.noOfRooms</span> : {{ property.noOfRooms }}
+                <span translate>propertyFields.noOfRooms</span> : {{ property.noOfRooms }}
                     </span>
                     <hr />
                     <span class="detail-info">
-            <span translate>propertyFields.heating</span> :
+               <span translate>propertyFields.heating</span> :
                     <span translate="Heating.{{ property.heating.heatingName }}"></span>
                     </span>
                     <hr />
                     <span class="detail-info">
-            <span translate>propertyFields.adDate</span> : {{ property.date | date: "yyyy-MM-dd" }}
+                <span translate>propertyFields.adDate</span> : {{ property.date | date: "yyyy-MM-dd" }}
                     </span>
                     <hr />
                 </div>
             </div>
-            <div class="col-md-6 p-0">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row shadow">
+            <div class="col-md-12 p-0">
                 <div class="tab-panel p-3">
                     <tabset class="member-tabset" style="text-align: right; direction: rtl">
                         <tab [heading]="'propertyFields.description' | translate">
