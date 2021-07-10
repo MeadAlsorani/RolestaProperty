@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {HousingService} from '../../Services/Housing.service';
 import { IProperty } from '../../Interfaces/IProperty.interface';
-import { FilterParameters } from 'src/app/Pipes/filter.pipe';
+import { FilterParameters, filterRoot } from '../../Interfaces/ResponseObject';
 import { CategoryService } from 'src/app/Services/category.service';
 import { ICategory } from 'src/app/Interfaces/ICategory';
+import { FilterService } from 'src/app/Services/filter.service';
 @Component({
   selector: 'app-property-rent',
   templateUrl: './property-rent.component.html',
@@ -28,20 +29,23 @@ export class PropertyRentComponent implements OnInit {
   }
   constructor(
     private proService:HousingService,
-    private catService:CategoryService
+    private catService:CategoryService,
+    private filterService:FilterService
   ) { }
 
   ngOnInit() {
-    this.getProperties();
+    this.getProperties(this.filterService.defaultFilter);
     this.catService.getCategoris().subscribe(data=>{
       this.categories=data;
     });
   }
 
-  getProperties(){
-    this.proService.getRentProperties().subscribe(
+  getProperties(filterParameters:filterRoot){
+    this.proService.getRentProperties(filterParameters).subscribe(
       data=>{
-        this.properties=data;
+        console.log(data);
+
+        this.properties=data.records;
       },error=>{
         console.log(error);
       },

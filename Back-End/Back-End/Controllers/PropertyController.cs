@@ -1,4 +1,5 @@
 using Back_End.Data;
+using Back_End.Extensions;
 using Back_End.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -10,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Back_End.Controllers
@@ -26,23 +28,51 @@ namespace Back_End.Controllers
       _hostEnv = env;
     }
 
-    [HttpGet]
-    public IActionResult getAllProperties()
+    [HttpPost("GetProperties")]
+    public async Task<QueryResult<Property>> getAllProperties(filter filter)
     {
+      QueryResult<Property> queryResult=new QueryResult<Property>();
+      var columnsMap = new Dictionary<string, Expression<Func<Property, object>>>() {
+        ["area"]= a=>a.area,
+        ["Price"]= p=>p.Price,
+        ["NoOfRooms"]=n=>n.NoOfRooms,
+        ["date"]=d=>d.date
+      };
       var properties = db.properties
-        .Include(x=>x.category)
-        .Include(y=>y.subCategory)
-        .Include(z=>z.SecondSubCategory)
+        .Include(x => x.category)
+        .Include(y => y.subCategory)
+        .Include(z => z.SecondSubCategory)
         .Include(e => e.heating)
-        .Include(e=>e.type)        
-        .OrderByDescending(x => x.id)
-        .ToList();
-      return Ok(properties);
+        .Include(e => e.type)
+        .AsQueryable();
+      queryResult.totalRecors =await properties.CountAsync();
+
+      if (filter.filters.Keys.Count>0)
+      {
+        properties= ExtensionMethods.RealStatefiltering(filter.filters, properties);
+      }
+      if (filter.sort.sortBy!=null)
+      {
+          properties = ExtensionMethods.ApplySorting(properties, filter.sort, columnsMap);        
+      }
+      queryResult.filteredRecords = await properties.CountAsync();
+      properties = ExtensionMethods.ApplyPaging(properties, filter.pagination);
+      
+      queryResult.records =await properties.ToListAsync();
+      return  (queryResult);
     }
 
-    [HttpGet("rent")]
-    public IActionResult getRentProperties()
+    [HttpPost("rent")]
+    public async Task<QueryResult<Property>> getRentProperties(filter filter)
     {
+      QueryResult<Property> queryResult = new QueryResult<Property>();
+      var columnsMap = new Dictionary<string, Expression<Func<Property, object>>>()
+      {
+        ["area"] = a => a.area,
+        ["Price"] = p => p.Price,
+        ["NoOfRooms"] = n => n.NoOfRooms,
+        ["date"] = d => d.date
+      };
       var rents = db.properties
         .Include(x => x.category)
         .Include(y => y.subCategory)
@@ -54,15 +84,37 @@ namespace Back_End.Controllers
         || x.subCategoryId == 14
         || x.subCategoryId == 16
         || x.subCategoryId == 18)
-        .OrderByDescending(x => x.id)
-        .ToList();
-      return Ok(rents);
+        .AsQueryable();
+
+      queryResult.totalRecors = await rents.CountAsync();
+
+      if (filter.filters.Keys.Count > 0)
+      {
+        rents = ExtensionMethods.RealStatefiltering(filter.filters, rents);
+      }
+      if (filter.sort.sortBy != null)
+      {
+        rents = ExtensionMethods.ApplySorting(rents, filter.sort, columnsMap);
+      }
+      queryResult.filteredRecords = await rents.CountAsync();
+      rents = ExtensionMethods.ApplyPaging(rents, filter.pagination);
+
+      queryResult.records = await rents.ToListAsync();
+      return (queryResult);
     }
 
-    [HttpGet("buy")]
-    public IActionResult getBuyProperties()
+    [HttpPost("buy")]
+    public async Task<QueryResult<Property>> getBuyProperties([FromBody]filter filter)
     {
-      var rents = db.properties
+      QueryResult<Property> queryResult = new QueryResult<Property>();
+      var columnsMap = new Dictionary<string, Expression<Func<Property, object>>>()
+      {
+        ["area"] = a => a.area,
+        ["Price"] = p => p.Price,
+        ["NoOfRooms"] = n => n.NoOfRooms,
+        ["date"] = d => d.date
+      };
+      var buy = db.properties
         .Include(x => x.category)
         .Include(y => y.subCategory)
         .Include(z => z.SecondSubCategory)
@@ -73,9 +125,22 @@ namespace Back_End.Controllers
         || x.subCategoryId == 15
         || x.subCategoryId == 16
         || x.subCategoryId == 17)
-        .OrderByDescending(x => x.id)
-        .ToList();
-      return Ok(rents);
+        .AsQueryable();
+      queryResult.totalRecors = await buy.CountAsync();
+
+      if (filter.filters.Keys.Count > 0 || filter.filters!=null)
+      {
+        buy = ExtensionMethods.RealStatefiltering(filter.filters, buy);
+      }
+      if (filter.sort.sortBy != null)
+      {
+        buy = ExtensionMethods.ApplySorting(buy, filter.sort, columnsMap);
+      }
+      queryResult.filteredRecords = await buy.CountAsync();
+      buy = ExtensionMethods.ApplyPaging(buy, filter.pagination);
+
+      queryResult.records = await buy.ToListAsync();
+      return queryResult;
     }    
 
 

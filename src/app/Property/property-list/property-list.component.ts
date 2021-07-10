@@ -8,6 +8,7 @@ import { FilterPipe } from '../../Pipes/filter.pipe';
 import { ICar } from 'src/app/Interfaces/ICar';
 import { CarService } from 'src/app/Services/car.service';
 import { environment } from 'src/environments/environment';
+import { formatDate } from '@angular/common';
 @Component({
   selector: 'app-property-list',
   templateUrl: './property-list.component.html',
@@ -19,6 +20,7 @@ export class PropertyListComponent implements OnInit {
   imageUrl: string = environment.baseUrl + 'Resources/carousel/';
   isloading: boolean = true;
   cars: Array<ICar>;
+  price:string;
   constructor(
     private housnigService: HousingService,
     private CarouselService: CarouselService,
@@ -31,6 +33,8 @@ export class PropertyListComponent implements OnInit {
     });
     this.getProperties();
     this.getCars();
+    let test=formatDate(new Date(),'yyyy/MM/dd','en');
+
   }
   getProperties() {
     this.housnigService.getLastProperties(8).subscribe((data) => {
@@ -43,4 +47,5 @@ export class PropertyListComponent implements OnInit {
       this.cars = car;
     });
   }
+
 }

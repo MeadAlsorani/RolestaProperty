@@ -3,12 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IUser } from '../Interfaces/IUser';
 import { environment } from 'src/environments/environment';
+import { DomSanitizer } from '@angular/platform-browser';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   url: string = environment.apiUrl + 'users/';
-  constructor(private http: HttpClient) {}
+
+  constructor(
+    private http: HttpClient,
+    private _sanitizer:DomSanitizer
+    ) {}
 
   getUser(email:string):Observable<any>{
     return this.http.get(this.url+"getUser/"+email);
@@ -28,5 +33,8 @@ export class AuthService {
     else{
       return false;
     }
+  }
+  safeHtml(html) {
+    return this._sanitizer.bypassSecurityTrustHtml(html);
   }
 }

@@ -22,6 +22,7 @@ namespace Back_End.Models
 
     public int lostAmount { get; set; }
 
+    
     public bool isHeavy { get; set; }
 
     public string description { get; set; }

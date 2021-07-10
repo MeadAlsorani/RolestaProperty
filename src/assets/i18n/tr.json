@@ -101,7 +101,14 @@
             "VolksWagen": "VolksWagen",
             "FIAT": "FIAT",
             "BMW": "BMW",
-            "Mercedes": "Mercedes"
+            "Mercedes": "Mercedes",
+            "Renault": "Renault",
+            "Chevrolet": "Chevrolet",
+            "Land Rover": "Land Rover",
+            "Mazda": "Mazda",
+            "Nissan": "Nissan",
+            "Volvo": "Volvo",
+            "KIA": "KIA"
         }
     },
     "navbar": {

@@ -13,6 +13,9 @@
         "packagesPath": "C:\\Users\\maads\\.nuget\\packages\\",
         "outputPath": "E:\\test\\RolestaProperty\\Back-End\\Back-End\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\maads\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"

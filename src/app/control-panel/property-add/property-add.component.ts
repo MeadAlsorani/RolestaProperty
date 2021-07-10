@@ -97,7 +97,7 @@ export class PropertyAddComponent implements OnInit {
       subCategoryId: new FormControl(null, Validators.required),
       secondSubCategoryId: new FormControl(null),
       phoneNumber:new FormControl(null,Validators.required),
-      descritpionTr: new FormControl(null),
+      descriptionTr: new FormControl(null),
       descriptionEn: new FormControl(null),
     });
     this.hs.getTypes().subscribe((data) => {
@@ -134,11 +134,19 @@ export class PropertyAddComponent implements OnInit {
     console.log(this.response);
   }
 
-  onSubmit(propertyPreview): void {
-    propertyPreview.image = this.response;
+  onSubmit(propertyPreview:IProperty): void {
+    let newPhone=propertyPreview.phoneNumber.replace(/\n/gi,'<br>');
+    propertyPreview.phoneNumber=newPhone;
+    var newdesc=propertyPreview.description.replace(/\n/gi,"<br>");
+    propertyPreview.description=newdesc;
+    var newDescTr=propertyPreview.descriptionTr.replace(/\n/gi,"<br>");
+    propertyPreview.descriptionTr=newDescTr;
+    var newDescEn=propertyPreview.descriptionEn.replace(/\n/gi,"<br>");
+    propertyPreview.descriptionEn=newDescEn;
+    propertyPreview.image =Object.assign([],this.response) ;
     let dateTest=new Date();
     console.log(this.datePipe.transform(dateTest,'yyyy-MM-dd'));
-    propertyPreview.date=this.datePipe.transform(dateTest,'yyyy-MM-dd');
+    propertyPreview.date=new Date(this.datePipe.transform(dateTest,'yyyy-MM-dd'));
     this.hs.addProperty(propertyPreview).subscribe(
       (data) => {
         console.log(data);

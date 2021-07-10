@@ -8,8 +8,8 @@ import {
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { CarService } from '../../../Services/car.service';
 import { ICarCompany, ICar } from '../../../Interfaces/ICar';
-import {AlertService} from '../../../Services/Alert.service';
-import {Router} from '@angular/router';
+import { AlertService } from '../../../Services/Alert.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-car-add',
   templateUrl: './car-add.component.html',
@@ -20,16 +20,34 @@ export class CarAddComponent implements OnInit {
   @ViewChild('FormTabs') FormTabs: TabsetComponent;
   response: string;
   carCompanies: ICarCompany[];
+  _car: ICar = {
+    carCompanyId: 0,
+    carCompany: null,
+    description: '',
+    descriptionEn: '',
+    descriptionTr: '',
+    id: 0,
+    isAuto: false,
+    isHeavy: false,
+    isRent: false,
+    lostAmount: 0,
+    modelName: '',
+    modelNameEn: '',
+    modelYear: 0,
+    price: 0,
+    pictures: null,
+  };
   constructor(
     private carService: CarService,
     private formBuilder: FormBuilder,
-    private alert:AlertService,
-    private router:Router
+    private alert: AlertService,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.initForm();
     this.getCarCompanies();
+
   }
 
   getCarCompanies() {
@@ -41,53 +59,60 @@ export class CarAddComponent implements OnInit {
     this.AddCar = this.formBuilder.group({
       modelYear: new FormControl(null, Validators.required),
       modelName: new FormControl(null, Validators.required),
-      modelNameEn:new FormControl(null,Validators.required),
+      modelNameEn: new FormControl(null, Validators.required),
       isAuto: new FormControl(null, Validators.required),
       lostAmount: new FormControl(null),
       isHeavy: new FormControl(null),
       description: new FormControl(null, Validators.required),
+      descriptionTr: new FormControl(null, Validators.required),
+      descriptionEn: new FormControl(null, Validators.required),
       isRent: new FormControl(null, Validators.required),
-      price:new FormControl(null,Validators.required),
+      price: new FormControl(null, Validators.required),
       pictures: new FormControl(null, Validators.required),
       carCompanyId: new FormControl(null, Validators.required),
     });
   }
   //#region  from getters
-  get modelYear(){
+  get modelYear() {
     return this.AddCar.get('modelYear') as FormControl;
   }
-  get modelName(){
+  get modelName() {
     return this.AddCar.get('modelName') as FormControl;
   }
-  get modelNameEn(){
+  get modelNameEn() {
     return this.AddCar.get('modelNameEn') as FormControl;
   }
-  get price(){
+  get price() {
     return this.AddCar.get('price') as FormControl;
   }
-  get isAuto(){
+  get isAuto() {
     return this.AddCar.get('isAuto') as FormControl;
   }
-  get isHeavy(){
+  get isHeavy() {
     return this.AddCar.get('isHeavy') as FormControl;
   }
-  get lostAmount(){
+  get lostAmount() {
     return this.AddCar.get('lostAmount') as FormControl;
   }
-  get description(){
+  get description() {
     return this.AddCar.get('description') as FormControl;
   }
-  get isRent(){
+  get descriptionTr() {
+    return this.AddCar.get('descriptionTr') as FormControl;
+  }
+  get descriptionEn() {
+    return this.AddCar.get('descriptionEn') as FormControl;
+  }
+  get isRent() {
     return this.AddCar.get('isRent') as FormControl;
   }
-  get pictures(){
+  get pictures() {
     return this.AddCar.get('pictures') as FormControl;
   }
-  get carCompanyId(){
+  get carCompanyId() {
     return this.AddCar.get('carCompanyId') as FormControl;
   }
   //#endregion
-
 
   selectTab(tabId: number) {
     this.FormTabs.tabs[tabId].active = true;
@@ -98,18 +123,27 @@ export class CarAddComponent implements OnInit {
     console.log(this.response);
   }
 
-  AddNewCar(car:ICar) {
-    car.pictures=Object.assign([],this.response);
+  AddNewCar(car: ICar) {
+    if(car.isHeavy==null) car.isHeavy=false;
+    if(car.lostAmount==null) car.lostAmount=0;
+    var newdesc=car.description.replace(/\n/gi,"<br>");
+    car.description=newdesc;
+    var newDescTr=car.descriptionTr.replace(/\n/gi,"<br>");
+    car.descriptionTr=newDescTr;
+    var newDescEn=car.descriptionEn.replace(/\n/gi,"<br>");
+    car.descriptionEn=newDescEn;
+
+    car.pictures = Object.assign([], this.response);
     this.carService.addCar(car).subscribe(
-      ()=>{
-        this.alert.success("تم اضافة السيارة بنجاح");
+      () => {
+        this.alert.success('تم اضافة السيارة بنجاح');
         this.router.navigate(['/car-control']);
       },
-      error=>{
+      (error) => {
         console.log(error);
-        this.alert.error("حدث خطأ اثناء اضافة السيارة!!");
+        this.alert.error('حدث خطأ اثناء اضافة السيارة!!');
       }
-    )
+    );
   }
   onReset() {
     if (this.response) {

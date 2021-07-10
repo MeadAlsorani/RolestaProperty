@@ -1,8 +1,9 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import {Observable, Subscription } from 'rxjs';
-import { IProperty, IHeating, IType } from '../Interfaces/IProperty.interface';
+import { IProperty, IHeating, IType, PropertyRoot } from '../Interfaces/IProperty.interface';
 import { environment } from 'src/environments/environment';
+import {filterRoot} from '../Interfaces/ResponseObject';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,8 +13,8 @@ export class HousingService {
   url: string = environment.apiUrl+"Property/";
   constructor(private http: HttpClient) {}
   //#region property methods
-  getAllProperties(): Observable<IProperty[]> {
-    return this.http.get<IProperty[]>(this.url);
+  getAllProperties(filterObject:filterRoot): Observable<PropertyRoot> {
+    return this.http.post<PropertyRoot>(this.url,filterObject);
   }
 
   getPropertyById(id: number): Observable<IProperty> {
@@ -36,11 +37,11 @@ export class HousingService {
     return this.http.put<IProperty>(this.url+id,property);
   }
 
-  getRentProperties():Observable<IProperty[]>{
-    return this.http.get<IProperty[]>(this.url+"rent");
+  getRentProperties(filterObject:filterRoot):Observable<PropertyRoot>{
+    return this.http.post<PropertyRoot>(this.url+"rent",filterObject);
   }
-  getBuyProperties():Observable<IProperty[]>{
-    return this.http.get<IProperty[]>(this.url+"buy");
+  getBuyProperties(filterObject:filterRoot):Observable<PropertyRoot>{
+    return this.http.post<PropertyRoot>(this.url+"buy",filterObject);
   }
 
   getSimilerProperties(id):Observable<IProperty[]>{
@@ -63,5 +64,11 @@ export class HousingService {
   }
   getTypesById(id:number):Observable<IType>{
     return this.http.get<IType>(environment.typeApi+id);
+  }
+
+  getPriceByUsd():Observable<any>{
+    let header=new HttpHeaders();
+    header.append('apikey','d8e79180-c3e6-11eb-82c2-37c8ffce83df');
+    return this.http.get<any>("https://freecurrencyapi.net/api/v1/rates?base_currency=USD",{headers:header});
   }
 }

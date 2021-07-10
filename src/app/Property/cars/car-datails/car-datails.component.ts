@@ -4,6 +4,8 @@ import { ICar, ICarCompany } from '../../../Interfaces/ICar';
 import { CarService } from '../../../Services/car.service';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/app/Services/auth.service';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-car-datails',
   templateUrl: './car-datails.component.html',
@@ -35,10 +37,12 @@ export class CarDatailsComponent implements OnInit {
     companyName:null,
     id:null
   }
+
   constructor(
     private route: ActivatedRoute,
     private CarService: CarService,
-    private translate:TranslateService
+    private translate:TranslateService,
+    private _sanitizer:DomSanitizer
     ) {
       this.translate.onLangChange.subscribe(
         ()=>{
@@ -52,7 +56,9 @@ export class CarDatailsComponent implements OnInit {
     this.getLanguage();
     this.getCar();
   }
-
+  safeHtml(html) {
+    return this._sanitizer.bypassSecurityTrustHtml(html);
+  }
   getCar(){
     this.route.params.subscribe((data) => {
       this.carId = +data['id'];

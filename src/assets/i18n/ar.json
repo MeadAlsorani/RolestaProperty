@@ -101,7 +101,14 @@
             "VolksWagen": "فوكسفاغن",
             "FIAT": "فيات",
             "BMW": "بي ام دبليو",
-            "Mercedes": "مرسيدس"
+            "Mercedes": "مرسيدس",
+            "Renault": "رينو",
+            "Chevrolet": "شيفروليه",
+            "Land Rover": "لاند روفر",
+            "Mazda": "مازدا",
+            "Nissan": "نيسان",
+            "Volvo": "فولفو",
+            "KIA": "كيا"
         }
     },
     "navbar": {

@@ -67,6 +67,8 @@ export class CarEditComponent implements OnInit {
       lostAmount: new FormControl(null),
       isHeavy: new FormControl(null),
       description: new FormControl(null, Validators.required),
+      descriptionTr: new FormControl(null, Validators.required),
+      descriptionEn: new FormControl(null, Validators.required),
       isRent: new FormControl(null, Validators.required),
       price: new FormControl(null, Validators.required),
       pictures: new FormControl(null, Validators.required),
@@ -107,6 +109,12 @@ export class CarEditComponent implements OnInit {
   get description() {
     return this.EditCarForm.get('description') as FormControl;
   }
+  get descriptionTr(){
+    return this.EditCarForm.get('descriptionTr') as FormControl;
+  }
+  get descriptionEn(){
+    return this.EditCarForm.get('descriptionEn') as FormControl;
+  }
   get isRent() {
     return this.EditCarForm.get('isRent') as FormControl;
   }
@@ -129,6 +137,8 @@ export class CarEditComponent implements OnInit {
       this.isRent.setValue(car.isRent);
       this.lostAmount.setValue(car.lostAmount);
       this.description.setValue(car.description);
+      this.descriptionEn.setValue(car.descriptionEn);
+      this.descriptionTr.setValue(car.descriptionTr);
       this.pictures.setValue(car.pictures);
     });
   }

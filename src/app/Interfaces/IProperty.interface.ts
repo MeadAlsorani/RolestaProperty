@@ -20,7 +20,7 @@ export interface IProperty {
   date:Date,
   isFurnished:boolean,
   inSite:boolean,
-  phoneNumber:number,
+  phoneNumber:string,
   proceeds:number,
   typeId:number,
   type:IType,
@@ -42,4 +42,11 @@ export interface IType{
 export interface IHeating{
   id:number,
   heatingName:string
+}
+
+
+export interface PropertyRoot{
+  filteredRecords:number,
+  totalRecords:number,
+  records:IProperty[]
 }

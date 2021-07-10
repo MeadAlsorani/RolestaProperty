@@ -36,16 +36,13 @@
                         </div>
                         <div class="col-12 text-center">
                             <span *ngIf="currentLang=='ar'">
-                            {{car.description}}
-                            test ar
+                            <div [innerHTML]="safeHtml(car.description)"></div>
                           </span>
                             <span *ngIf="currentLang=='en'">
-                            {{car.descriptionEn}}
-                            test en
+                              <div [innerHTML]="safeHtml(car.descriptionEn)"></div>
                           </span>
                             <span *ngIf="currentLang=='tr'">
-                            {{car.descriptionTr}}
-                            test tr
+                              <div [innerHTML]="safeHtml(car.descriptionTr)"></div>
                           </span>
                         </div>
                     </div>

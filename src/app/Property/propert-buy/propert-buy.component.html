@@ -13,71 +13,84 @@
     </div>
     <div class="container">
         <div class="row pt-3">
-            <div class="filterSection card col-md-3 p-3">
-                <aside>
-                    <h4 class="text-center" translate>propertyFilter.filterTitle</h4>
-                    <mat-form-field class="text-center">
-                        <mat-label translate>propertyFilter.adId</mat-label>
-                        <input matInput [(ngModel)]="filterParams.name">
-                    </mat-form-field>
-
+            <div class="col-md-3 col-sm-12">
+                <div class="container">
                     <div class="row">
-                        <div class="col-12">
-                            <mat-form-field class="filter-field">
-                                <mat-label translate>propertyFilter.propertyCategory</mat-label>
-                                <mat-select [(ngModel)]="filterParams.categoryId">
-                                    <mat-option *ngFor="let cat of categories" [value]="cat.id">
-                                        {{cat.category_Name}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
+                        <div class="filterSection card p-3">
+                            <aside>
+                                <h4 class="text-center" translate>propertyFilter.filterTitle</h4>
+                                <mat-form-field class="text-center">
+                                    <mat-label translate>propertyFilter.adId</mat-label>
+                                    <input matInput [(ngModel)]="filterParams.name">
+                                </mat-form-field>
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <mat-form-field class="filter-field">
+                                            <mat-label translate>propertyFilter.propertyCategory</mat-label>
+                                            <mat-select [(ngModel)]="filterParams.categoryId">
+                                                <mat-option *ngFor="let cat of categories" [value]="cat.id">
+                                                    {{cat.category_Name}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <span class="text-center w-100" translate>propertyFilter.priceTitle</span>
+                                    <mat-form-field class="text-center col-6">
+                                        <mat-label translate>propertyFilter.min</mat-label>
+                                        <input matInput [(ngModel)]="filterParams.lowPrice">
+                                    </mat-form-field>
+                                    <mat-form-field class="text-center col-6">
+                                        <mat-label translate>propertyFilter.max</mat-label>
+                                        <input matInput [(ngModel)]="filterParams.highPrice">
+                                    </mat-form-field>
+                                </div>
+                                <div class="row">
+                                    <span class="text-center w-100" translate>propertyFilter.AreaTitle</span>
+                                    <mat-form-field class="text-center col-6">
+                                        <mat-label translate>propertyFilter.min</mat-label>
+                                        <input matInput [(ngModel)]="filterParams.lowArea">
+                                    </mat-form-field>
+                                    <mat-form-field class="text-center col-6">
+                                        <mat-label translate>propertyFilter.max</mat-label>
+                                        <input matInput [(ngModel)]="filterParams.highArea">
+                                    </mat-form-field>
+                                </div>
+                                <div class="row">
+                                    <span class="text-center w-100" translate>propertyFilter.ageTitle</span>
+                                    <mat-form-field class="text-center col-6">
+                                        <mat-label translate>propertyFilter.min</mat-label>
+                                        <input matInput [(ngModel)]="filterParams.buildingAgeLow">
+                                    </mat-form-field>
+                                    <mat-form-field class="text-center col-6">
+                                        <mat-label translate>propertyFilter.max</mat-label>
+                                        <input matInput [(ngModel)]="filterParams.buildingAgeHigh">
+                                    </mat-form-field>
+                                </div>
+                                <div class="row">
+                                    <mat-form-field class="text-center col-12">
+                                        <input matInput placeholder="{{'propertyFilter.numberOfRoomsTitle'|translate }}" [(ngModel)]="filterParams.noOfRooms">
+                                    </mat-form-field>
+                                </div>
+                                <div class="w-100 text-center">
+                                    <button class="btn btn-warning" (click)="onFilter(filterParams)" translate>propertyFilter.filterButton</button>
+                                </div>
+                            </aside>
                         </div>
                     </div>
-                    <div class="row">
-                        <span class="text-center w-100" translate>propertyFilter.priceTitle</span>
-                        <mat-form-field class="text-center col-6">
-                            <mat-label translate>propertyFilter.min</mat-label>
-                            <input matInput [(ngModel)]="filterParams.lowPrice">
-                        </mat-form-field>
-                        <mat-form-field class="text-center col-6">
-                            <mat-label translate>propertyFilter.max</mat-label>
-                            <input matInput [(ngModel)]="filterParams.highPrice">
-                        </mat-form-field>
-                    </div>
-                    <div class="row">
-                        <span class="text-center w-100" translate>propertyFilter.AreaTitle</span>
-                        <mat-form-field class="text-center col-6">
-                            <mat-label translate>propertyFilter.min</mat-label>
-                            <input matInput [(ngModel)]="filterParams.lowArea">
-                        </mat-form-field>
-                        <mat-form-field class="text-center col-6">
-                            <mat-label translate>propertyFilter.max</mat-label>
-                            <input matInput [(ngModel)]="filterParams.highArea">
-                        </mat-form-field>
-                    </div>
-                    <div class="row">
-                        <span class="text-center w-100" translate>propertyFilter.ageTitle</span>
-                        <mat-form-field class="text-center col-6">
-                            <mat-label translate>propertyFilter.min</mat-label>
-                            <input matInput [(ngModel)]="filterParams.buildingAgeLow">
-                        </mat-form-field>
-                        <mat-form-field class="text-center col-6">
-                            <mat-label translate>propertyFilter.max</mat-label>
-                            <input matInput [(ngModel)]="filterParams.buildingAgeHigh">
-                        </mat-form-field>
-                    </div>
-                    <div class="row">
-                        <mat-form-field class="text-center col-12">
-                            <input matInput placeholder="{{'propertyFilter.numberOfRoomsTitle'|translate }}" [(ngModel)]="filterParams.noOfRooms">
-                        </mat-form-field>
-                    </div>
-                    <div class="w-100 text-center">
-                        <button class="btn btn-warning" (click)="onFilter(filterParams)" translate>propertyFilter.filterButton</button>
-                    </div>
-                </aside>
+                </div>
             </div>
-            <div class="property col-md-3" *ngFor="let property of (properties |filter:filterParams)">
-                <app-property-card [property]="property" [ifPreview]="true"></app-property-card>
+            <div class="col-md-9 col-sm-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="property col-4" *ngFor="let property of (properties |filter:filterParams)">
+                            <app-property-card [property]="property" [ifPreview]="true"></app-property-card>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

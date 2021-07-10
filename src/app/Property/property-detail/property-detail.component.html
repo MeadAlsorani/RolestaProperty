@@ -79,15 +79,21 @@
                     <tabset class="member-tabset" style="text-align: right; direction: rtl">
                         <tab [heading]="'propertyFields.description' | translate">
                             <h3 translate>propertyFields.description</h3>
-                            <p *ngIf="currentLang == 'ar'">{{ property.description }}</p>
-                            <p *ngIf="currentLang == 'en'">{{ property.descriptionEn }}</p>
-                            <p *ngIf="currentLang == 'tr'">{{ property.descriptionTr }}</p>
+                            <p *ngIf="currentLang == 'ar'" [innerHTML]="safeHtml(property.description)">
+                            </p>
+                            <p *ngIf="currentLang == 'en'" [innerHTML]="safeHtml(property.descriptionEn)"></p>
+                            <p *ngIf="currentLang == 'tr'" [innerHTML]="safeHtml(property.descriptionTr)"></p>
                         </tab>
                         <tab [heading]="'propertyFields.comunicationDetails' | translate">
                             <h1 translate>propertyFields.comunicationDetails</h1>
                             <div class="container">
                                 <div class="row">
-                                    <h4>{{ property.phoneNumber }}</h4>
+                                    <h4 [innerHTML]="safeHtml(property.phoneNumber)" style="width: 100%;
+                                    text-align: center;
+                                    direction: ltr;
+                                    ">
+                                        <!-- {{ property.phoneNumber }} -->
+                                    </h4>
                                 </div>
                             </div>
                         </tab>

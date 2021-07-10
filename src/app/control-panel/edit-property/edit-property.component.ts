@@ -131,7 +131,7 @@ export class EditPropertyComponent implements OnInit {
       subCategoryId: new FormControl(null),
       secondSubCategoryId: new FormControl(null),
       phoneNumber: new FormControl(null),
-      descritpionTr: new FormControl(null),
+      descriptionTr: new FormControl(null),
       descriptionEn: new FormControl(null),
     });
   }
@@ -196,12 +196,21 @@ export class EditPropertyComponent implements OnInit {
     console.log(this.response);
   }
 
-  onSubmit(propertyPreview): void {
+  onSubmit(propertyPreview:IProperty): void {
+    console.log(propertyPreview);
     if (this.response) {
-      propertyPreview.image = this.response;
+      propertyPreview.image =Object.assign([],this.response) ;
     } else {
       propertyPreview.image = this.propertyPreview.image;
     }
+    let newPhone=propertyPreview.phoneNumber.replace(/\n/gi,'<br>');
+    propertyPreview.phoneNumber=newPhone;
+    var newdesc=propertyPreview.description.replace(/\n/gi,"<br>");
+    propertyPreview.description=newdesc;
+    var newDescTr=propertyPreview.descriptionTr.replace(/\n/gi,"<br>");
+    propertyPreview.descriptionTr=newDescTr;
+    var newDescEn=propertyPreview.descriptionEn.replace(/\n/gi,"<br>");
+    propertyPreview.descriptionEn=newDescEn;
     propertyPreview.date = this.propertyPreview.date;
     propertyPreview.id = this.propertyId;
     this.hs.editProperty(this.propertyId, propertyPreview).subscribe(

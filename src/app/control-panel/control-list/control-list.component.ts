@@ -11,6 +11,7 @@ import { HousingService } from '../../Services/Housing.service';
 import { AlertService } from '../../Services/Alert.service';
 import { MatTable } from '@angular/material/table';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { FilterService } from 'src/app/Services/filter.service';
 @Component({
   selector: 'app-control-list',
   templateUrl: './control-list.component.html',
@@ -37,26 +38,15 @@ export class ControlListComponent implements OnInit {
   constructor(
     private hs: HousingService,
     private alert: AlertService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private filterService:FilterService
   ) {}
   ngOnInit() {
-    this.hs.getTypes().subscribe((typeData) => {
-      this.typesArray = typeData;
-      this.hs.getHeatings().subscribe((heatData) => {
-        this.heatingArray = heatData;
-        this.hs.getAllProperties().subscribe((data) => {
-          for (let product = 0; product < data.length; product++) {
-            data[product].type = this.typesArray.find(
-              (x) => x.id === data[product].typeId
-            );
-            data[product].heating = this.heatingArray.find(
-              (y) => y.id === data[product].heatingId
-            );
-          }
-          this.dataSource.data = data;
-        });
-      });
-    });
+
+    this.hs.getAllProperties(this.filterService.defaultFilter).subscribe(data=>{
+      this.propertyList=data.records;
+      this.dataSource.data=data.records
+    })
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -81,8 +71,8 @@ export class ControlListComponent implements OnInit {
             this.hs.deleteImage(frmData).subscribe((dara) => {});
           }
 
-          this.hs.getAllProperties().subscribe((AllProperties) => {
-            this.dataSource.data = AllProperties;
+          this.hs.getAllProperties(this.filterService.defaultFilter).subscribe((AllProperties) => {
+            this.dataSource.data = AllProperties.records;
           });
           this.alert.success('property have been deleted successfuly');
         },

@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { IProperty } from '../Interfaces/IProperty.interface';
+import { FilterParameters } from '../Interfaces/ResponseObject';
 @Pipe({
   name: 'filter',
 })
@@ -74,16 +75,4 @@ console.log(filterInfo);
   }
 }
 
-export interface FilterParameters {
-  name: string;
-  categoryId: number;
-  subCategoryId: number;
-  secondSubCategoryId: number;
-  lowPrice:number;
-  highPrice:number;
-  lowArea:number;
-  highArea:number;
-  noOfRooms:number;
-  buildingAgeLow:number;
-  buildingAgeHigh:number
-}
+

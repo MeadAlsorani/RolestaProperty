@@ -5,6 +5,7 @@ import { HousingService } from '../../Services/Housing.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-property-detail',
   templateUrl: './property-detail.component.html',
@@ -60,7 +61,8 @@ export class PropertyDetailComponent implements OnInit {
     private translate: TranslateService,
     private hs: HousingService,
     private modalService: BsModalService,
-    private router: Router
+    private router: Router,
+    private _sanitizer:DomSanitizer
   ) {}
   ngOnInit(): void {
     this.currentLang = this.translate.currentLang;
@@ -79,6 +81,9 @@ export class PropertyDetailComponent implements OnInit {
           this.isLoading=false;
       });
     });
+  }
+  safeHtml(html) {
+    return this._sanitizer.bypassSecurityTrustHtml(html);
   }
   pic;
   openModal(template: TemplateRef<any>, item) {

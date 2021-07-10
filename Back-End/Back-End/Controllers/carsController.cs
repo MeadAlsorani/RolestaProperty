@@ -10,6 +10,8 @@ using Back_End.Models;
 using System.IO;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.Hosting;
+using System.Linq.Expressions;
+using Back_End.Extensions;
 
 namespace Back_End.Controllers
 {
@@ -28,12 +30,33 @@ namespace Back_End.Controllers
 
     // GET: api/cars
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<car>>> Getcars()
+    public async Task<QueryResult<car>> Getcars(filter filter)
     {
-      return await _context.cars
-        .Include(x=>x.carCompany)
-        .OrderByDescending(x=>x.id)
-        .ToListAsync();
+      QueryResult<car> queryResult = new QueryResult<car>();
+      var columnsMap = new Dictionary<string, Expression<Func<car, object>>>()
+      {
+        ["modelYear"] = a => a.modelYear,
+        ["lostAmount"] = p => p.lostAmount,
+        ["price"] = n => n.price,
+        ["id"] = d => d.id
+      };
+      var cars=_context.cars
+        .Include(x => x.carCompany)
+        .AsQueryable();
+      queryResult.totalRecors = await cars.CountAsync();
+      if (filter.filters.Keys.Count > 0)
+      {
+
+      }
+      if (filter.sort.sortBy != null)
+      {
+        cars = ExtensionMethods.ApplySorting(cars, filter.sort, columnsMap);
+      }
+      queryResult.filteredRecords = await cars.CountAsync();
+      cars = ExtensionMethods.ApplyPaging(cars, filter.pagination);
+
+      queryResult.records = await cars.ToListAsync();
+      return queryResult;
     }
 
     // GET: api/cars/5
@@ -58,17 +81,66 @@ namespace Back_End.Controllers
       return Ok(cars);
     }
     [HttpGet("rent")]
-    public async Task<ActionResult<car>> GetRentCars()
+    public async Task<QueryResult<car>> GetRentCars(filter filter)
     {
-      var rents = await _context.cars.Where(x=>x.isRent==true).ToListAsync();
-      return Ok(rents);
+      QueryResult<car> queryResult = new QueryResult<car>();
+      var rents =  _context.cars
+        .Where(x=>x.isRent==true)
+        .Include(x => x.carCompany)
+        .AsQueryable();
+      queryResult.totalRecors = await rents.CountAsync();
+      var columnsMap = new Dictionary<string, Expression<Func<car, object>>>()
+      {
+        ["modelYear"] = a => a.modelYear,
+        ["lostAmount"] = p => p.lostAmount,
+        ["price"] = n => n.price,
+        ["id"] = d => d.id
+      };
+      if (filter.filters.Keys.Count > 0)
+      {
+
+      }
+      if (filter.sort.sortBy != null)
+      {
+        rents = ExtensionMethods.ApplySorting(rents, filter.sort, columnsMap);
+      }
+      queryResult.filteredRecords = await rents.CountAsync();
+      rents = ExtensionMethods.ApplyPaging(rents, filter.pagination);
+
+      queryResult.records = await rents.ToListAsync();
+      return queryResult;
     }
 
     [HttpGet("buy")]
-    public async Task<ActionResult<car>> GetBuyCars()
+    public async Task<QueryResult<car>> GetBuyCars(filter filter)
     {
-      var buys = await _context.cars.Where(x => x.isRent == false).ToListAsync();
-      return Ok(buys);
+      var buys =  _context.cars
+        .Where(x => x.isRent == false)
+        .Include(x=>x.carCompany)
+        .AsQueryable();
+      QueryResult<car> queryResult = new QueryResult<car>();
+      
+      queryResult.totalRecors = await buys.CountAsync();
+      var columnsMap = new Dictionary<string, Expression<Func<car, object>>>()
+      {
+        ["modelYear"] = a => a.modelYear,
+        ["lostAmount"] = p => p.lostAmount,
+        ["price"] = n => n.price,
+        ["id"] = d => d.id
+      };
+      if (filter.filters.Keys.Count > 0)
+      {
+
+      }
+      if (filter.sort.sortBy != null)
+      {
+        buys = ExtensionMethods.ApplySorting(buys, filter.sort, columnsMap);
+      }
+      queryResult.filteredRecords = await buys.CountAsync();
+      buys = ExtensionMethods.ApplyPaging(buys, filter.pagination);
+
+      queryResult.records = await buys.ToListAsync();
+      return queryResult;
     }
 
     // PUT: api/cars/5
