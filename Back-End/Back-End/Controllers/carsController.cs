@@ -29,8 +29,8 @@ namespace Back_End.Controllers
     }
 
     // GET: api/cars
-    [HttpGet]
-    public async Task<QueryResult<car>> Getcars(filter filter)
+    [HttpPost("getAllCars")]
+    public async Task<QueryResult<car>> Getcars([FromBody]filter filter)
     {
       QueryResult<car> queryResult = new QueryResult<car>();
       var columnsMap = new Dictionary<string, Expression<Func<car, object>>>()
@@ -46,7 +46,7 @@ namespace Back_End.Controllers
       queryResult.totalRecors = await cars.CountAsync();
       if (filter.filters.Keys.Count > 0)
       {
-
+        cars = ExtensionMethods.Carsfiltering(filter.filters, cars);
       }
       if (filter.sort.sortBy != null)
       {
@@ -80,8 +80,8 @@ namespace Back_End.Controllers
       var cars = _context.cars.OrderByDescending(x => x.id).Take(lastAmount);
       return Ok(cars);
     }
-    [HttpGet("rent")]
-    public async Task<QueryResult<car>> GetRentCars(filter filter)
+    [HttpPost("carsForRent")]
+    public async Task<QueryResult<car>> GetRentCars([FromBody]filter filter)
     {
       QueryResult<car> queryResult = new QueryResult<car>();
       var rents =  _context.cars
@@ -98,7 +98,7 @@ namespace Back_End.Controllers
       };
       if (filter.filters.Keys.Count > 0)
       {
-
+        rents = ExtensionMethods.Carsfiltering(filter.filters, rents);
       }
       if (filter.sort.sortBy != null)
       {
@@ -111,8 +111,8 @@ namespace Back_End.Controllers
       return queryResult;
     }
 
-    [HttpGet("buy")]
-    public async Task<QueryResult<car>> GetBuyCars(filter filter)
+    [HttpPost("carsForSale")]
+    public async Task<QueryResult<car>> GetBuyCars([FromBody]filter filter)
     {
       var buys =  _context.cars
         .Where(x => x.isRent == false)
@@ -130,7 +130,7 @@ namespace Back_End.Controllers
       };
       if (filter.filters.Keys.Count > 0)
       {
-
+        buys = ExtensionMethods.Carsfiltering(filter.filters, buys);
       }
       if (filter.sort.sortBy != null)
       {

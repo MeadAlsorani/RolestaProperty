@@ -10,9 +10,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { SharedModule } from '../shared/shared.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
-import {PropertyRentComponent} from '../Property/property-rent/property-rent.component';
-import {PropertBuyComponent} from '../Property/propert-buy/propert-buy.component';
-import {FilterPipe} from '../Pipes/filter.pipe';
+import { PropertyRentComponent } from '../Property/property-rent/property-rent.component';
+import { PropertBuyComponent } from '../Property/propert-buy/propert-buy.component';
 @NgModule({
   declarations: [
     PropertyCardComponent,
@@ -23,15 +22,13 @@ import {FilterPipe} from '../Pipes/filter.pipe';
     EditPropertyComponent,
     PropertBuyComponent,
     PropertyRentComponent,
-    FilterPipe
   ],
   imports: [
     CommonModule,
     SharedModule,
     TabsModule.forRoot(),
     ModalModule.forRoot(),
-
   ],
-  exports:[PropertyCardComponent]
+  exports: [PropertyCardComponent],
 })
-export class PropertModModule { }
+export class PropertModModule {}

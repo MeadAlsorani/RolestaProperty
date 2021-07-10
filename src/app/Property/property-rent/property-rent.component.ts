@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HousingService} from '../../Services/Housing.service';
+import { HousingService } from '../../Services/Housing.service';
 import { IProperty } from '../../Interfaces/IProperty.interface';
 import { FilterParameters, filterRoot } from '../../Interfaces/ResponseObject';
 import { CategoryService } from 'src/app/Services/category.service';
@@ -8,69 +8,74 @@ import { FilterService } from 'src/app/Services/filter.service';
 @Component({
   selector: 'app-property-rent',
   templateUrl: './property-rent.component.html',
-  styleUrls: ['./property-rent.component.css']
+  styleUrls: ['./property-rent.component.css'],
 })
 export class PropertyRentComponent implements OnInit {
-  properties:IProperty[];
-  isLoading:boolean=true;
-  categories:ICategory[];
-  filterParams:FilterParameters={
-    categoryId:null,
-    highArea:null,
-    highPrice:null,
-    lowArea:null,
-    lowPrice:null,
-    name:null,
-    noOfRooms:null,
-    secondSubCategoryId:null,
-    subCategoryId:null,
-    buildingAgeLow:null,
-    buildingAgeHigh:null
-  }
+  properties: IProperty[];
+  isLoading = true;
+  categories: ICategory[];
+  filterParams: FilterParameters = {
+    categoryId: null,
+    highArea: null,
+    highPrice: null,
+    lowArea: null,
+    lowPrice: null,
+    name: null,
+    noOfRooms: null,
+    secondSubCategoryId: null,
+    subCategoryId: null,
+    buildingAgeLow: null,
+    buildingAgeHigh: null,
+  };
+  filters: filterRoot = {
+    pagination: {
+      pageNumber: 1,
+      pageSize: 20,
+    },
+    sort: {
+      isAsec: true,
+      sortBy: 'date',
+    },
+    filters: {},
+  };
   constructor(
-    private proService:HousingService,
-    private catService:CategoryService,
-    private filterService:FilterService
-  ) { }
+    private proService: HousingService,
+    private catService: CategoryService,
+    private filterService: FilterService
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getProperties(this.filterService.defaultFilter);
-    this.catService.getCategoris().subscribe(data=>{
-      this.categories=data;
+    this.catService.getCategoris().subscribe((data) => {
+      this.categories = data;
     });
   }
 
-  getProperties(filterParameters:filterRoot){
+  getProperties(filterParameters: filterRoot): void {
     this.proService.getRentProperties(filterParameters).subscribe(
-      data=>{
+      (data) => {
         console.log(data);
 
-        this.properties=data.records;
-      },error=>{
+        this.properties = data.records;
+      },
+      (error) => {
         console.log(error);
       },
-      ()=>{
-        this.isLoading=false;
+      () => {
+        this.isLoading = false;
       }
-    )
+    );
   }
 
-  onFilter(event){
+  onFilter(event): void {
     console.log(event);
 
-    this.filterParams={
-      categoryId:this.filterParams.categoryId,
-      highArea:this.filterParams.highArea,
-      highPrice:this.filterParams.highPrice,
-      lowArea:this.filterParams.lowArea,
-      lowPrice:this.filterParams.lowPrice,
-      name:this.filterParams.name,
-      noOfRooms:this.filterParams.noOfRooms,
-      secondSubCategoryId:this.filterParams.secondSubCategoryId,
-      subCategoryId:this.filterParams.subCategoryId,
-      buildingAgeHigh:this.filterParams.buildingAgeHigh,
-      buildingAgeLow:this.filterParams.buildingAgeLow
+    try {
+      this.filters.filters = this.filterService.propertiesFilter(event).filters;
+      console.log(this.filters);
+      this.getProperties(this.filters);
+    } catch (error) {
+      console.log(error);
     }
   }
-
 }
