@@ -39,7 +39,6 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, .4);
-    z-index: 10;
 }
 
 .title {
@@ -58,4 +57,18 @@ mat-form-field.mat-form-field {
 
 .filter-field {
     text-align: center;
+}
+
+@media screen and (max-width:992px) {
+    .example-sidenav {
+        top: 10% !important;
+        z-index: 999 !important;
+        width: 100%;
+    }
+}
+
+.example-sidenav {
+    top: 10% !important;
+    z-index: 999 !important;
+    width: 300px;
 }

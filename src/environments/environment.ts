@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://rolestadan.com/',
-  apiUrl: 'https://rolestadan.com/api/',
-  heatingApi: 'https://rolestadan.com/api/heating/',
-  typeApi: 'https://rolestadan.com/api/type/',
+  baseUrl: 'https://rolestadan.com/backEnd/',
+  apiUrl: 'https://rolestadan.com/backEnd/api/',
+  heatingApi: 'https://rolestadan.com/backEnd/api/heating/',
+  typeApi: 'https://rolestadan.com/backEnd/api/type/',
 };
 
 /*
